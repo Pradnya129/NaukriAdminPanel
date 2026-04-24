@@ -18,6 +18,32 @@ const [selectedTicket, setSelectedTicket] = useState(null)
   const data = activeTab === 'candidates' ? candidateTickets : recruiterTickets
 
   return (
+
+    <>
+   <div className="box-heading mb-3">
+        <div className="box-title">
+          <h3 className="mb-5">Help & Support</h3>
+          <p className="font-sm color-text-paragraph-2">
+    Manage user queries, resolve technical issues, and assist candidates and recruiters efficiently.
+          </p>
+        </div>
+
+        <div className="box-breadcrumb">
+          <div className="breadcrumbs mb-15">
+            <ul>
+              <li>
+                <a className="icon-home" href="/admin/dashboard">
+                  Admin
+                </a>
+              </li>
+              <li>
+                <span>Help & Support</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     <div className="section-box">
       <div className="panel-white">
 
@@ -268,5 +294,6 @@ const [selectedTicket, setSelectedTicket] = useState(null)
   </div>
 )}
     </div>
+    </>
   )
 }
