@@ -1,0 +1,16 @@
+{
+  "name": "JobBox - Job Portal",
+  "short_name": "JobBox",
+  "description": "Find your dream job with JobBox",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#05264e",
+  "icons": [
+    {
+      "src": "/assets/imgs/template/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
