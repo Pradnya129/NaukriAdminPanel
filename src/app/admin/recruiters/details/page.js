@@ -1,16 +1,15 @@
 'use client'
+import { useState } from 'react'
 import Footer from '../../../../components/Footer'
 
 export default function EmployerDetailsPage() {
+    const [previewDoc, setPreviewDoc] = useState(null)
     return (
         <>
-
-            {/* ── PAGE HEADING: employer name + status + action buttons ── */}
-       <div className="box-heading d-flex align-items-center justify-content-between mb-3">
-
+{/* ── PAGE HEADING: employer name + status + action buttons ── */}
+ <div className="box-heading d-flex align-items-center justify-content-between mb-3">
   {/* LEFT */}
-  <div className="box-title d-flex align-items-center" style={{ gap: '12px' }}>
-    
+  <div className="box-title d-flex align-items-center" style={{ gap: '12px' }}>    
     <div style={{
       width: '42px',
       height: '42px',
@@ -27,7 +26,6 @@ export default function EmployerDetailsPage() {
       SL
     </div>
 
-    {/* ❌ removed mb-4 */}
     <div className='mt-1'>
       <h5 className="mb-0">Stellar Logistics Pvt. Ltd.</h5>
 
@@ -50,15 +48,15 @@ export default function EmployerDetailsPage() {
       <div className="d-flex align-items-center mt-2" style={{ gap: '14px', flexWrap: 'wrap' }}>
 
   <span className="font-xs color-text-paragraph-2">
-    ⚡ AI: <strong>86%</strong>
+     AI: <strong>86%</strong>
   </span>
 
   <span className="font-xs">
-    🎯 Risk: <strong style={{ color: '#e65100' }}>Medium</strong>
+     Risk: <strong style={{ color: '#e65100' }}>Medium</strong>
   </span>
 
   <span className="font-xs">
-    👤 Assigned: <strong>Sarah</strong>
+     Assigned: <strong>Sarah</strong>
   </span>
 
   <span className="font-xs color-text-paragraph-2">
@@ -92,6 +90,7 @@ export default function EmployerDetailsPage() {
 
     <div className="panel-head">
       <h6 className="mb-0">Recruiter Information</h6>
+      
     </div>
 
     <div className="panel-body">
@@ -138,52 +137,10 @@ export default function EmployerDetailsPage() {
 
                             <div className="panel-head d-flex justify-content-between" style={{ alignItems: 'center' }}>
                                 <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                                    <i className="fi-rr-building font-sm color-brand-2"></i>
                                     <h6 className="mb-0">Company Information</h6>
                                 </div>
 
-                                {/* RIGHT: Actions */}
-                                <div className="d-flex align-items-center flex-wrap" style={{ gap: '8px' }}>
-
-                                    <button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#fff3e0',
-    color: '#e65100',
-    border: '1px solid #ffcc80',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Suspend
-</button>
-
-<button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#fdecea',
-    color: '#c62828',
-    border: '1px solid #ef9a9a',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Reject
-</button>
-
-<button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#e8f5e9',
-    color: '#2e7d32',
-    border: '1px solid #a5d6a7',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Approve
-</button>
-                                </div>
+                            
                             </div>
                             <div className="panel-body">
                                 <div className="row">
@@ -262,19 +219,19 @@ export default function EmployerDetailsPage() {
                                         {
                                             title: 'GST Certificate', sub: 'GST Document',
                                             status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user1.png',
+                                            img: "https://www.legalwiz.in/wp-content/uploads/image-570.png",
                                             expired: false, aiMatch: null, meta: null,
                                         },
                                         {
                                             title: 'PAN Card - Corporate', sub: 'PAN Document',
                                             status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user2.png',
+                                            img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGCen-C1d098jk5azlItLqxCsPwRy5ET0KczRjB1I7B6TvbqgyJn5GxG6cuywT3D3yPnnydre4oqifOE03SFYEqmS9kN6azD-TawLZWwLPe9mOiGJqLh0adYt11LqlUNvv_HQOhmVDAJE/s1600/IMG-20180320-WA0001.jpg',
                                             expired: false, aiMatch: null, meta: null,
                                         },
                                         {
                                             title: 'POE License Copy', sub: 'POE Document',
                                             status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user3.png',
+                                            img: 'https://pbs.twimg.com/media/GYeyu9hW0AE5iyz?format=jpg&name=900x900',
                                             expired: false,
                                             aiMatch: { label: '98% Match', color: '#2e7d32', bg: '#e8f5e9' },
                                             meta: { licenseNo: 'POE-9928/2023', validTill: '2025-12-31' },
@@ -282,15 +239,14 @@ export default function EmployerDetailsPage() {
                                         {
                                             title: 'RPSL Certification', sub: 'RPSL Document',
                                             status: 'Pending', statusColor: '#e65100', statusBg: '#fff3e0',
-                                            img: '/assets/imgs/page/candidates/user4.png',
-                                            expired: true,
+                                            img: 'https://vigilss.com/wp-content/uploads/2023/07/RPSL-LIC-1-768x723.png',
                                             aiMatch: { label: '64% Match', color: '#e65100', bg: '#fff3e0' },
                                             meta: { licenseNo: 'RPSL-MUM-442', validTill: '2023-01-15' },
                                         },
                                         {
                                             title: 'Business Reg Certificate', sub: 'BR Document',
                                             status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user5.png',
+                                            img: 'https://imgv2-2-f.scribdassets.com/img/document/768783389/original/959dd3323c/1?v=1',
                                             expired: false, aiMatch: null, meta: null,
                                         },
                                     ].map((doc) => (
@@ -307,8 +263,17 @@ export default function EmployerDetailsPage() {
                                                 )}
                                                 {/* Thumbnail */}
                                                 <div style={{ height: '165px', overflow: 'hidden', background: '#dde4f0' }}>
-                                                    <img src={doc.img} alt={doc.title}
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                   <img
+  src={doc.img}
+  alt={doc.title}
+  onClick={() => setPreviewDoc(doc)}
+  style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    cursor: 'pointer'   // 🔥 important
+  }}
+/>
                                                 </div>
                                                 {/* Card body */}
                                                 <div className="card-block-info" style={{ padding: '12px' }}>
@@ -648,7 +613,53 @@ export default function EmployerDetailsPage() {
                 {/* end right sidebar */}
 
             </div>
+{previewDoc && (
+  <div
+    onClick={() => setPreviewDoc(null)}
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0,0,0,0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999
+    }}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: '#fff',
+        borderRadius: '10px',
+        padding: '10px',
+        maxWidth: '90%',
+        maxHeight: '90%'
+      }}
+    >
+      <img
+        src={previewDoc.img}
+        alt={previewDoc.title}
+        style={{
+          maxWidth: '100%',
+          maxHeight: '80vh',
+          borderRadius: '6px'
+        }}
+      />
 
+      {/* TITLE */}
+      <p style={{
+        marginTop: '10px',
+        fontWeight: 600,
+        color: '#05264E'
+      }}>
+        {previewDoc.title}
+      </p>
+    </div>
+  </div>
+)}
             <Footer />
         </>
     )

@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from "react"
 import Footer from "../../../../components/Footer"
 
 export default function CandidateDetailsPage() {
+  const [preview, setPreview] = useState(null)
   return (
     <>
       <div className="box-heading">
@@ -151,7 +153,7 @@ export default function CandidateDetailsPage() {
                 <div className="row mt-15">
                   <div className="col-md-6 mb-15">
                     <img
-                      src="/assets/imgs/page/candidates/user1.png"
+                      src="https://pvcprint.shop/wp-content/uploads/2025/04/aadhar-card-front.png"
                       className="img-responsive"
                       style={{ borderRadius: "12px", width: "100%" }}
                     />
@@ -159,7 +161,7 @@ export default function CandidateDetailsPage() {
 
                   <div className="col-md-6 mb-15">
                     <img
-                      src="/assets/imgs/page/candidates/user1.png"
+                      src="https://pbs.twimg.com/media/CvwpwnjVMAEoFoi.jpg"
                       className="img-responsive"
                       style={{ borderRadius: "12px", width: "100%" }}
                     />
@@ -182,13 +184,32 @@ export default function CandidateDetailsPage() {
                     minHeight: "260px"
                   }}
                 >
-                  <p className="mt-50 color-text-paragraph-2">
-                    Certificate Preview
-                  </p>
+                 <div style={{ position: 'relative' }}>
+  <img
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjV_NKW48YeqkUxUYHNN3mhKX-YybptO9Tg&s"
+    alt="ITI Certificate"
+    style={{
+      width: '100%',
+      maxHeight: '220px',
+      objectFit: 'cover',
+      borderRadius: '10px',
+      border: '1px solid #eee'
+    }}
+  />
 
-                  <button className="btn btn-grey-big mt-20">
-                    View Original
-                  </button>
+  {/* VIEW BUTTON */}
+  <button
+    className="btn btn-grey-small"
+    onClick={() => setPreview("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjV_NKW48YeqkUxUYHNN3mhKX-YybptO9Tg&s")}
+    style={{
+      position: 'absolute',
+      bottom: '10px',
+      right: '10px'
+    }}
+  >
+    View Original
+  </button>
+</div>
                 </div>
 
                 <div className="row">
@@ -394,6 +415,35 @@ export default function CandidateDetailsPage() {
       </div>
 
       <Footer />
+      {preview && (
+  <div
+    onClick={() => setPreview(null)}
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0,0,0,0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999
+    }}
+  >
+    <img
+      src={preview}
+      alt="Preview"
+      style={{
+        maxWidth: '90%',
+        maxHeight: '90%',
+        borderRadius: '10px',
+        background: '#fff',
+        padding: '6px'
+      }}
+    />
+  </div>
+)}
     </>
   )
 }

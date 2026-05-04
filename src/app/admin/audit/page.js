@@ -166,55 +166,110 @@ const filtered = logsData.filter(l =>
             <div className="panel-white">
 
               {/* Filter bar */}
-              <div style={{ padding: '16px 20px', borderBottom: '1px solid #eee', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                <div style={{ position: 'relative', flex: '1 1 150px', minWidth: '130px' }}>
-                  <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#aaa', fontSize: '13px' }}>
-                    &#128100;
-                  </span>
-                  <input className="form-control font-xs" placeholder="Filter by Actor"
-                    value={actorFilter} onChange={e => setActorFilter(e.target.value)}
-                    style={{ paddingLeft: '30px' }} />
-                </div>
-                <div style={{ position: 'relative', flex: '1 1 150px', minWidth: '130px' }}>
-                  <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#aaa', fontSize: '13px' }}>
-                    &#9874;
-                  </span>
-                  <input className="form-control font-xs" placeholder="Action Type"
-                    value={actionFilter} onChange={e => setActionFilter(e.target.value)}
-                    style={{ paddingLeft: '30px' }} />
-                </div>
-                <div style={{ position: 'relative', flex: '1 1 140px', minWidth: '120px' }}>
-                  <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#aaa', fontSize: '13px' }}>
-                    &#128197;
-                  </span>
-                  <input className="form-control font-xs" type="date"
-                    value={dateFilter} onChange={e => setDateFilter(e.target.value)}
-                    style={{ paddingLeft: '30px' }} />
-                </div>
-                <select
-  className="form-control font-xs"
-  value={severityFilter}
-  onChange={(e) => setSeverityFilter(e.target.value)}
-  style={{ minWidth: '120px' }}
+            {/* Filter bar */}
+<div
+  className="d-flex align-items-center justify-content-between"
+  style={{
+    padding: '12px 20px',
+    borderBottom: '1px solid #eee',
+    gap: '8px',
+    flexWrap: 'nowrap',   // 🔥 IMPORTANT
+    overflowX: 'auto'     // 🔥 prevents breaking
+  }}
 >
-  <option value="">Severity</option>
-  <option value="critical">Critical</option>
-  <option value="warning">Warning</option>
-  <option value="info">Info</option>
-</select>
-                <button
-                  className="btn btn-default hover-up"
-                  onClick={() => {
-  setActorFilter('')
-  setActionFilter('')
-  setDateFilter('')
-  setSeverityFilter('')
-}}
-                  style={{ padding: '8px 18px', fontSize: '13px', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '5px' }}
-                >
-                  &#9878; Apply
-                </button>
-              </div>
+
+  {/* Actor */}
+  <div style={{ position: 'relative', minWidth: '150px' }}>
+    <span style={{
+      position: 'absolute',
+      left: '8px',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      color: '#aaa',
+      fontSize: '12px'
+    }}>
+      👤
+    </span>
+    <input
+      className="form-control font-xs"
+      placeholder="Actor"
+      value={actorFilter}
+      onChange={(e) => setActorFilter(e.target.value)}
+      style={{ paddingLeft: '26px', height: '42px' }}
+    />
+  </div>
+
+  {/* Action */}
+  <div style={{ position: 'relative', minWidth: '160px' }}>
+    <span style={{
+      position: 'absolute',
+      left: '8px',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      color: '#aaa',
+      fontSize: '12px'
+    }}>
+      ⚙
+    </span>
+    <input
+      className="form-control font-xs"
+      placeholder="Action"
+      value={actionFilter}
+      onChange={(e) => setActionFilter(e.target.value)}
+      style={{ paddingLeft: '26px', height: '42px' }}
+    />
+  </div>
+
+  {/* Date */}
+ {/* Date */}
+<div style={{ minWidth: '190px', maxWidth: '190px' }}>
+  <input
+    type="date"
+    className="form-control font-xs"
+    value={dateFilter}
+    onChange={(e) => setDateFilter(e.target.value)}
+    style={{
+      height: '42px',
+      fontSize: '11px',   // 🔥 smaller text
+      padding: '4px 6px'
+    }}
+  />
+</div>
+
+  {/* Severity */}
+  <div style={{ minWidth: '150px' }}>
+    <select
+      className="form-control font-xs"
+      value={severityFilter}
+      onChange={(e) => setSeverityFilter(e.target.value)}
+      style={{ height: '42px' }}
+    >
+      <option value="">Severity</option>
+      <option value="critical">Critical</option>
+      <option value="warning">Warning</option>
+      <option value="info">Info</option>
+    </select>
+  </div>
+
+  {/* Reset Button */}
+  <button
+    className="btn btn-grey-small"
+    onClick={() => {
+      setActorFilter('')
+      setActionFilter('')
+      setDateFilter('')
+      setSeverityFilter('')
+    }}
+    style={{
+      height: '34px',
+      padding: '0 14px',
+      whiteSpace: 'nowrap'
+    }}
+  >
+    Reset
+  </button>
+
+</div>
 
               {/* Table */}
               <div style={{ overflowX: 'auto' }}>

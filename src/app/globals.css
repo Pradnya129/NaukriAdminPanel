@@ -37,6 +37,9 @@
   grid-template-columns:repeat(4,1fr);
   gap:14px;
 }
+.card-info {
+height: 100px;
+}
 
 .action-btn{
   height:52px;

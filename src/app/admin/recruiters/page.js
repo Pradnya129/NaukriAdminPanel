@@ -110,99 +110,78 @@ export default function RecruiterPage() {
       </div>
 
      {/* Stats */}
+{/* Stats */}
 <div className="section-box mt-20">
-  <div className="row g-3">
+  <div className="row g-3 align-items-stretch">
 
     {/* 1 */}
-    <div className="col-xl-3 col-lg-6 col-md-6">
-      <div className="panel-white ">
-        <div className="box-padding d-flex align-items-center" style={{ gap: '12px' }}>
-
-          {/* ICON */}
-          <div className="card-image">
-            <img src="/assets/imgs/page/dashboard/candidates.svg" alt="" style={{height:'40px'}} />
+    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+      <div className="card-style-1 hover-up w-100">
+        <div className="card-image">
+          <img src="/assets/imgs/page/dashboard/candidates.svg" alt="" />
+        </div>
+        <div className="card-info">
+          <div className="card-title">
+            <h3>
+              1,284
+              <span className="font-sm status up ms-2">+12%</span>
+            </h3>
           </div>
-
-          {/* TEXT */}
-          <div>
-            <p className="font-sm color-text-paragraph-2 mb-5">
-              Total Employers
-            </p>
-            <h3 className="mb-5">1,284</h3>
-            <span className="color-success font-sm">
-              +12% registered accounts
-            </span>
-          </div>
-
+          <p className="color-text-paragraph-2">Total Employers</p>
         </div>
       </div>
     </div>
 
     {/* 2 */}
-    <div className="col-xl-3 col-lg-6 col-md-6" >
-      <div className="panel-white " style={{height:'172px'}}>
-        <div className="box-padding d-flex align-items-center" style={{ gap: '12px' }}>
-
-          <div className="card-image">
-            <img src="/assets/imgs/page/dashboard/tasks.svg" alt="" style={{height:'40px'}} />
+    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+      <div className="card-style-1 hover-up w-100">
+        <div className="card-image">
+          <img src="/assets/imgs/page/dashboard/tasks.svg" alt="" />
+        </div>
+        <div className="card-info">
+          <div className="card-title">
+            <h3>
+              24 <br></br>
+              <span className="font-sm status down ms-2">Pending</span>
+            </h3>
           </div>
-
-          <div>
-            <p className="font-sm color-text-paragraph-2 mb-5">
-              Pending Approvals
-            </p>
-            <h3 className="mb-5">24</h3>
-            <span className="font-sm">
-              awaiting verification
-            </span>
-          </div>
-
+          <p className="color-text-paragraph-2">Pending Approvals</p>
         </div>
       </div>
     </div>
 
     {/* 3 */}
-    <div className="col-xl-3 col-lg-6 col-md-6">
-      <div className="panel-white " style={{height:'172px'}}>
-        <div className="box-padding d-flex align-items-center" style={{ gap: '12px' }}>
-
-          <div className="card-image">
-            <img src="/assets/imgs/page/dashboard/authentication.svg" alt="" style={{height:'40px'}} />
+    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+      <div className="card-style-1 hover-up w-100">
+        <div className="card-image">
+          <img src="/assets/imgs/page/dashboard/authentication.svg" alt="" />
+        </div>
+        <div className="card-info">
+          <div className="card-title">
+            <h3>
+              92% <br></br>
+              <span className="font-sm status up ms-2">GST</span>
+            </h3>
           </div>
-
-          <div>
-            <p className="font-sm color-text-paragraph-2 mb-5">
-              GST Verified
-            </p>
-            <h3 className="mb-5">92%</h3>
-            <span className="font-sm">
-              of total database
-            </span>
-          </div>
-
+          <p className="color-text-paragraph-2">Verification Rate</p>
         </div>
       </div>
     </div>
 
     {/* 4 */}
-    <div className="col-xl-3 col-lg-6 col-md-6">
-      <div className="panel-white h-80">
-        <div className="box-padding d-flex align-items-center" style={{ gap: '12px' }}>
-
-          <div className="card-image">
-            <img src="/assets/imgs/page/dashboard/doc.svg" alt="" style={{height:'40px'}} />
+    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+      <div className="card-style-1 hover-up w-100">
+        <div className="card-image">
+          <img src="/assets/imgs/page/dashboard/doc.svg" alt="" />
+        </div>
+        <div className="card-info">
+          <div className="card-title">
+            <h3>
+              842 <br></br>
+              <span className="font-sm status up ms-2">+5%</span>
+            </h3>
           </div>
-
-          <div>
-            <p className="font-sm color-text-paragraph-2 mb-5">
-              Active Subscriptions
-            </p>
-            <h3 className="mb-5">842</h3>
-            <span className="color-success font-sm">
-              +5% paid enterprise plans
-            </span>
-          </div>
-
+          <p className="color-text-paragraph-2">Active Subscriptions</p>
         </div>
       </div>
     </div>

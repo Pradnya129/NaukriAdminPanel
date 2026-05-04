@@ -406,8 +406,8 @@ export default function UserVerificationPage() {
                 {/* Document images — each with re-upload button */}
                 <div className="row mb-25">
                   {[
-                    { label: 'Front Side', src: '/assets/imgs/page/candidates/user3.png' },
-                    { label: 'Back Side', src: '/assets/imgs/page/candidates/user4.png' },
+                    { label: 'Front Side', src: 'https://pvcprint.shop/wp-content/uploads/2025/04/aadhar-card-front.png' },
+                    { label: 'Back Side', src: 'https://pbs.twimg.com/media/CvwpwnjVMAEoFoi.jpg' },
                   ].map((doc) => (
                     <div key={doc.label} className="col-md-6 col-sm-12 mb-15">
                       <div className="d-flex align-items-center justify-content-between mb-10">

@@ -3,6 +3,24 @@
 import Footer from "../../../../components/Footer"
 
 export default function EditCandidatePage() {
+  const documents = [
+  {
+    name: "Aadhaar_Front.jpg",
+    img: "https://i.imgur.com/2DhmtJ4.png"
+  },
+  {
+    name: "Aadhaar_Back.jpg",
+    img: "https://i.imgur.com/Z8mY7QF.png"
+  },
+  {
+    name: "PAN_Card.jpg",
+    img: "https://i.imgur.com/4AiXzf8.jpeg"
+  },
+  {
+    name: "ITI_Certificate.jpg",
+    img: "https://i.imgur.com/6Iej2c3.jpeg"
+  }
+]
   return (
     <>
       {/* Header */}
@@ -132,7 +150,7 @@ export default function EditCandidatePage() {
 
                     <div className="border rounded p-3 d-flex gap-3 align-items-center">
                       <img
-                        src="/assets/imgs/page/dashboard/img-profile.png"
+                        src="https://pvccardwala.com/wp-content/uploads/2022/11/WhatsApp-Image-2022-11-12-at-5.02.59-PM-1.jpeg"
                         style={{
                           width: "70px",
                           height: "70px",
@@ -176,7 +194,7 @@ export default function EditCandidatePage() {
 
                     <div className="border rounded p-2 text-center">
                       <img
-                        src="/assets/imgs/page/dashboard/banner.png"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjV_NKW48YeqkUxUYHNN3mhKX-YybptO9Tg&s"
                         style={{
                           width: "100%",
                           borderRadius: "12px",
