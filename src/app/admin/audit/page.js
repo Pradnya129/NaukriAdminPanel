@@ -374,28 +374,23 @@ export default function AuditLogsPage() {
               </div>
 
               {/* Pagination */}
-              <div className="d-flex align-items-center justify-content-between"
-                style={{ padding: '14px 20px', borderTop: '1px solid #eee', flexWrap: 'wrap', gap: '10px' }}>
-                <span className="font-xs color-text-paragraph-2">
-                  Showing {filtered.length} of 14,202 entries
-                </span>
-                <div className="d-flex align-items-center" style={{ gap: '6px' }}>
-                  <button className="btn btn-grey-small hover-up"
-                    onClick={() => setPage(p => Math.max(1, p - 1))}
-                    style={{ padding: '6px 16px', fontSize: '13px' }}>
-                    Previous
-                  </button>
-                  <span className="btn btn-primary mt-0"
-                    style={{ padding: '6px 12px', fontSize: '13px', minWidth: '36px', textAlign: 'center', pointerEvents: 'none' }}>
-                    {page}
-                  </span>
-                  <button className="btn btn-grey-small hover-up"
-                    onClick={() => setPage(p => p + 1)}
-                    style={{ padding: '6px 16px', fontSize: '13px' }}>
-                    Next
-                  </button>
-                </div>
-              </div>
+                      <div className="paginations mt-25">
+        <div className="row align-items-center g-2">
+          <div className="col-lg-6">
+            <p className="font-sm color-text-paragraph-2 mb-0">
+              Showing 1–6 of <strong>3,248</strong> candidates
+            </p>
+          </div>
+
+          <div className="col-lg-6 text-lg-end">
+            <ul className="pager justify-content-lg-end">
+              <li><a className="pager-prev"></a></li>
+              <li><a className="pager-number active">1</a></li>
+              <li><a className="pager-next"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
             </div>
           </div>

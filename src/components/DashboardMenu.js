@@ -14,6 +14,7 @@ import {
   Settings,
   LogOut
 } from "lucide-react";
+import { useEffect, useState } from 'react';
 const navItems = [
   { href: '/admin/dashboard', icon: '/assets/imgs/page/dashboard/dashboard.svg', name: 'Dashboard' },
   { href: '/admin/candidates', icon: '/assets/imgs/page/dashboard/candidates.svg', name: 'Candidates' },
@@ -29,6 +30,7 @@ const navItems = [
 
 export default function DashboardMenu() {
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
 
   const isActive = (href) => {
     // exact match
@@ -39,33 +41,51 @@ export default function DashboardMenu() {
 
     return false;
   };
+  useEffect(() => {
+  const mainEl = document.querySelector('.main');
+  if (!mainEl) return;
 
-  return (
-    <div className="nav">
-      <a className="btn btn-expanded"></a>
+  if (collapsed) {
+    mainEl.classList.add('nav-close');
+  } else {
+    mainEl.classList.remove('nav-close');
+  }
+}, [collapsed]);
 
-      <nav className="nav-main-menu">
-        <ul className="main-menu">
-         {navItems.map((item) => (
-  <li key={item.href}>
-    <Link
-      href={item.href}
-      className={`dashboard2 ${isActive(item.href) ? 'active' : ''}`}
-    >
-      <span className="menu-icon">
-  {typeof item.icon === "string" ? (
-    <img src={item.icon} alt={item.name} />
-  ) : (
-    <item.icon size={20} />
-  )}
-</span>
+return (
+  <div className="nav">
 
-      <span className="name">{item.name}</span>
-    </Link>
-  </li>
-))}
-        </ul>
-      </nav>
-    </div>
-  );
+    {/* Toggle Button */}
+    <a
+      className={`btn btn-expanded${collapsed ? ' btn-collapsed' : ''}`}
+      onClick={() => setCollapsed(!collapsed)}
+      style={{ cursor: 'pointer' }}
+    />
+
+    {/* Menu */}
+    <nav className="nav-main-menu">
+      <ul className="main-menu">
+        {navItems.map((item) => (
+          <li key={item.href} title={collapsed ? item.name : undefined}>
+            <Link
+              href={item.href}
+              className={`dashboard2 ${isActive(item.href) ? 'active' : ''}`}
+            >
+              <span className="menu-icon">
+                {typeof item.icon === 'string' ? (
+                  <img src={item.icon} alt={item.name} />
+                ) : (
+                  <item.icon size={20} strokeWidth={2.2} />
+                )}
+              </span>
+
+              <span className="name">{item.name}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+  </div>
+);
 }
