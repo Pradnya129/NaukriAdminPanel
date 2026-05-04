@@ -229,8 +229,7 @@ const filtered = logsData.filter(l =>
                         { label: 'Target Entity',  align: 'left'  },
                         { label: 'IP Address',     align: 'left'  },
                         { label: 'Severity', align: 'left' },
-{ label: 'Session', align: 'left' },
-                        { label: 'Actions',        align: 'right' },
+{ label: 'Session', align: 'left' }
                       ].map(h => (
                         <th key={h.label} className="font-xs color-text-paragraph-2"
                           style={{
@@ -298,15 +297,7 @@ const filtered = logsData.filter(l =>
   {row.session_id || '-'}
 </td>
 
-                        <td style={{ padding: '14px 10px', textAlign: 'right', verticalAlign: 'top' }}>
-                          <button
-  className="font-sm color-brand-1 hover-up"
-  style={{ background: 'none', border: 'none', fontWeight: 600 }}
-  onClick={() => setOpenRow(openRow === i ? null : i)}
->
-  👁 
-</button>
-                        </td>
+                   
 
                       </tr>
     

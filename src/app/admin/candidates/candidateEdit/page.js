@@ -6,16 +6,16 @@ export default function EditCandidatePage() {
   return (
     <>
       {/* Header */}
-     <div className="box-heading">
+      <div className="box-heading">
 
-  <div className="box-title">
-    <h3 className="mb-5">Edit Candidate Profile</h3>
-    <p className="font-sm color-text-paragraph-2">
-      User ID: CAND-98234-RS
-    </p>
-  </div>
+        <div className="box-title">
+          <h3 className="mb-5">Edit Candidate Profile</h3>
+          <p className="font-sm color-text-paragraph-2">
+            User ID: CAND-98234-RS
+          </p>
+        </div>
 
-   <div className="box-breadcrumb">
+        <div className="box-breadcrumb">
           <div className="breadcrumbs">
             <ul>
               <li><a className="icon-home" href="/admin/dashboard">Admin</a></li>
@@ -25,7 +25,7 @@ export default function EditCandidatePage() {
           </div>
         </div>
 
-</div>
+      </div>
 
       <div className="section-box mt-20">
         <div className="row">
@@ -41,43 +41,43 @@ export default function EditCandidatePage() {
 
                   <div className="d-flex gap-2 flex-wrap">
                     <button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#fff3e0',
-    color: '#e65100',
-    border: '1px solid #ffcc80',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Suspend
-</button>
+                      className="btn btn-default hover-up"
+                      style={{
+                        background: '#fff3e0',
+                        color: '#e65100',
+                        border: '1px solid #ffcc80',
+                        height: '36px',
+                        padding: '0 14px'
+                      }}
+                    >
+                      Suspend
+                    </button>
 
-<button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#fdecea',
-    color: '#c62828',
-    border: '1px solid #ef9a9a',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Reject
-</button>
+                    <button
+                      className="btn btn-default hover-up"
+                      style={{
+                        background: '#fdecea',
+                        color: '#c62828',
+                        border: '1px solid #ef9a9a',
+                        height: '36px',
+                        padding: '0 14px'
+                      }}
+                    >
+                      Reject
+                    </button>
 
-<button
-  className="btn btn-default hover-up"
-  style={{
-    background: '#e8f5e9',
-    color: '#2e7d32',
-    border: '1px solid #a5d6a7',
-    height: '36px',
-    padding: '0 14px'
-  }}
->
-  Approve
-</button>
+                    <button
+                      className="btn btn-default hover-up"
+                      style={{
+                        background: '#e8f5e9',
+                        color: '#2e7d32',
+                        border: '1px solid #a5d6a7',
+                        height: '36px',
+                        padding: '0 14px'
+                      }}
+                    >
+                      Approve
+                    </button>
                   </div>
                 </div>
 

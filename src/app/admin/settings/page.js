@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Footer from '../../../components/Footer'
 
 export default function SettingsPage() {
+const [newPack, setNewPack] = useState(null)
 
   // ── Registration & Access state ──
   const [enableRegistrations, setEnableRegistrations] = useState(true)
@@ -17,12 +18,14 @@ export default function SettingsPage() {
   ])
   const [serviceTax, setServiceTax] = useState('12% Included')
   const [editingPack, setEditingPack] = useState(null) // id of pack being edited
-
-  const addPack = () => {
-    const newId = Date.now()
-    setPacks(p => [...p, { id: newId, name: 'New Pack', credits: '0 Credits', price: '0.00' }])
-    setEditingPack(newId)
-  }
+const addPack = () => {
+  setNewPack({
+    id: Date.now(),
+    name: '',
+    credits: '',
+    price: ''
+  })
+}
   const deletePack = (id) => setPacks(p => p.filter(pk => pk.id !== id))
   const updatePack = (id, field, val) => setPacks(p => p.map(pk => pk.id === id ? { ...pk, [field]: val } : pk))
 
@@ -174,90 +177,248 @@ export default function SettingsPage() {
           </div>
 
           {/* Credit Pack Pricing */}
-          <div className="section-box">
-            <div className="panel-white">
-              <div className="panel-head">
-                <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '8px',
-                    background: '#FFF0EA', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '18px', flexShrink: 0,
-                  }}>&#128181;</div>
-                  <div>
-                    <h5 className="mb-0">Credit Pack Pricing</h5>
-                    <p className="font-xs color-text-paragraph-2 mb-0">Configure the cost of platform credits.</p>
-                  </div>
+         {/* Credit Pack Pricing */}
+<div className="section-box">
+  <div className="panel-white">
+
+    {/* HEADER */}
+    <div className="panel-head d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+        <div style={{
+          width: '36px',
+          height: '36px',
+          borderRadius: '8px',
+          background: '#FFF0EA',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '18px'
+        }}>
+          💰
+        </div>
+        <div>
+          <h5 className="mb-0">Credit Pack Pricing</h5>
+          <p className="font-xs color-text-paragraph-2 mb-0">
+            Configure the cost of platform credits.
+          </p>
+        </div>
+      </div>
+
+      <button
+        className="btn btn-primary p-2 btn-sm hover-up"
+        onClick={addPack}
+      >
+        + 
+      </button>
+    </div>
+
+    {/* BODY */}
+    <div className="panel-body">
+{newPack && (
+  <div className="d-flex align-items-center justify-content-between hover-up"
+    style={{ padding: '12px 0', borderBottom: '1px solid #f5f5f5' }}>
+
+    <div style={{ flex: 1 }}>
+
+      <input
+        className="form-control font-sm mb-5"
+        value={newPack.name}
+        onChange={(e) => setNewPack({ ...newPack, name: e.target.value })}
+        placeholder="Pack name"
+      />
+
+      <div className="d-flex" style={{ gap: '6px' }}>
+        <input
+          className="form-control font-xs"
+          value={newPack.credits}
+          onChange={(e) => setNewPack({ ...newPack, credits: e.target.value })}
+          placeholder="Credits"
+        />
+
+        <input
+          className="form-control font-sm"
+          value={newPack.price}
+          onChange={(e) => setNewPack({ ...newPack, price: e.target.value })}
+          placeholder="Price"
+        />
+      </div>
+
+    </div>
+
+    <div className="d-flex" style={{ gap: '6px', marginLeft: '10px' }}>
+
+      {/* SAVE */}
+      <button
+        className="btn btn-grey-small"
+        onClick={() => {
+          if (!newPack.name || !newPack.price) return alert("Fill required fields")
+
+          setPacks([...packs, newPack])   // ✅ ADD HERE
+          setNewPack(null)
+          changed()
+        }}
+      >
+        ✓
+      </button>
+
+      {/* CANCEL */}
+      <button
+        className="btn btn-grey-small"
+        onClick={() => setNewPack(null)}   // ✅ DISCARD
+      >
+        ✕
+      </button>
+
+    </div>
+
+  </div>
+)}
+      {packs.map((pk) => (
+        <div
+          key={pk.id}
+          className="d-flex align-items-center justify-content-between hover-up"
+          style={{
+            padding: '12px 0',
+            borderBottom: '1px solid #f5f5f5'
+          }}
+        >
+
+          {/* LEFT CONTENT */}
+          <div style={{ flex: 1 }}>
+
+            {editingPack === pk.id ? (
+              <>
+                <input
+                  className="form-control font-sm mb-5"
+                  value={pk.name}
+                  onChange={(e) => updatePack(pk.id, 'name', e.target.value)}
+                  placeholder="Pack name"
+                />
+
+                <div className="d-flex align-items-center" style={{ gap: '6px' }}>
+                  <input
+                    className="form-control font-xs"
+                    value={pk.credits}
+                    onChange={(e) => updatePack(pk.id, 'credits', e.target.value)}
+                    placeholder="Credits"
+                  />
+
+                  <input
+                    className="form-control font-sm"
+                    value={pk.price}
+                    onChange={(e) => updatePack(pk.id, 'price', e.target.value)}
+                    placeholder="Price"
+                  />
                 </div>
-                <button
-                  className="btn btn-grey-small hover-up"
-                  onClick={addPack}
-                  style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}
-                >
-                  &#8853; Add Pack
-                </button>
-              </div>
+              </>
+            ) : (
+              <>
+                <p className="font-sm mb-0" style={{ fontWeight: 600 }}>
+                  {pk.name}
+                </p>
+                <span className="font-xs color-text-paragraph-2">
+                  {pk.credits}
+                </span>
+              </>
+            )}
 
-              <div className="panel-body">
-                {packs.map((pk) => (
-                  <div key={pk.id} className="hover-up" style={{
-                    padding: '12px 0',
-                    borderBottom: '1px solid #f5f5f5',
-                    display: 'flex', alignItems: 'center', gap: '10px',
-                  }}>
-                    {editingPack === pk.id ? (
-                      /* Edit mode */
-                      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                        <input className="form-control font-sm" value={pk.name}
-                          onChange={e => updatePack(pk.id, 'name', e.target.value)}
-                          placeholder="Pack name" style={{ padding: '5px 10px' }} />
-                        <input className="form-control font-xs" value={pk.credits}
-                          onChange={e => updatePack(pk.id, 'credits', e.target.value)}
-                          placeholder="e.g. 500 Credits" style={{ padding: '5px 10px' }} />
-                        <div style={{ display: 'flex', gap: '6px' }}>
-                          <input className="form-control font-sm" value={pk.price}
-                            onChange={e => updatePack(pk.id, 'price', e.target.value)}
-                            placeholder="Price" style={{ padding: '5px 10px', flex: 1 }} />
-                          <button className="btn btn-default hover-up"
-                            onClick={() => setEditingPack(null)}
-                            style={{ padding: '5px 12px', fontSize: '12px' }}>✓</button>
-                        </div>
-                      </div>
-                    ) : (
-                      /* View mode */
-                      <>
-                        <div style={{ flex: 1 }}>
-                          <p className="font-sm mb-0" style={{ fontWeight: 600, color: '#05264E' }}>{pk.name}</p>
-                          <span className="font-xs color-text-paragraph-2">{pk.credits}</span>
-                        </div>
-                        <strong style={{ color: '#3C65F5', fontSize: '14px', whiteSpace: 'nowrap' }}>${pk.price}</strong>
-                        <button
-                          onClick={() => setEditingPack(pk.id)} title="Edit pack"
-                          style={{ background: 'none', border: 'none', color: '#b0b7c3', cursor: 'pointer', fontSize: '14px', padding: '2px 4px' }}>
-                          ✎
-                        </button>
-                        <button
-                          onClick={() => { deletePack(pk.id); changed() }} title="Delete pack"
-                          style={{ background: 'none', border: 'none', color: '#e57373', cursor: 'pointer', fontSize: '14px', padding: '2px 4px' }}>
-                          &#128465;
-                        </button>
-                      </>
-                    )}
-                  </div>
-                ))}
-
-                {/* Platform Service Tax */}
-                <div style={{ padding: '14px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span className="font-sm" style={{ fontWeight: 600, color: '#05264E' }}>Platform Service Tax</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <input className="form-control font-sm" value={serviceTax}
-                      onChange={e => { setServiceTax(e.target.value); changed() }}
-                      style={{ width: '120px', padding: '4px 8px', textAlign: 'right', color: '#3C65F5', fontWeight: 600 }} />
-                  </div>
-                </div>
-
-              </div>
-            </div>
           </div>
+
+          {/* PRICE */}
+          {editingPack !== pk.id && (
+            <strong
+              className="font-sm"
+              style={{ color: '#3C65F5', minWidth: '80px', textAlign: 'right' }}
+            >
+              ₹{pk.price}
+            </strong>
+          )}
+
+          {/* ACTIONS */}
+          <div className="d-flex align-items-center" style={{ gap: '6px', marginLeft: '12px' }}>
+
+            {editingPack === pk.id ? (
+              <>
+                {/* SAVE */}
+                <button
+                  className="btn btn-grey-small"
+                  onClick={() => {
+                    setEditingPack(null)
+                    changed()
+                  }}
+                  title="Save"
+                >
+                  ✓
+                </button>
+
+                {/* CANCEL */}
+                <button
+                  className="btn btn-grey-small"
+                  onClick={() => setEditingPack(null)}
+                  title="Cancel"
+                >
+                  ✕
+                </button>
+              </>
+            ) : (
+              <>
+                {/* EDIT */}
+                <button
+                  className="btn btn-grey-small"
+                  onClick={() => setEditingPack(pk.id)}
+                  title="Edit"
+                >
+                  ✎
+                </button>
+
+                {/* DELETE */}
+                <button
+                  className="btn btn-grey-small"
+                  onClick={() => {
+                    deletePack(pk.id)
+                    changed()
+                  }}
+                  title="Delete"
+                  style={{ color: '#c62828' }}
+                >
+                  🗑
+                </button>
+              </>
+            )}
+
+          </div>
+
+        </div>
+      ))}
+
+      {/* TAX SECTION */}
+      <div
+        className="d-flex align-items-center justify-content-between"
+        style={{ padding: '14px 0' }}
+      >
+        <span className="font-sm" style={{ fontWeight: 600 }}>
+          Platform Service Tax
+        </span>
+
+        <input
+          className="form-control font-sm"
+          value={serviceTax}
+          onChange={(e) => {
+            setServiceTax(e.target.value)
+            changed()
+          }}
+          style={{
+            width: '120px',
+            textAlign: 'right',
+            fontWeight: 600,
+            color: '#3C65F5'
+          }}
+        />
+      </div>
+
+    </div>
+  </div>
+</div>
 
         </div>
 
