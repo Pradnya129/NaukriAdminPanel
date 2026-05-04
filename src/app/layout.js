@@ -185,11 +185,16 @@ export default function RootLayout({ children }) {
 <Script
   src="/assets2/js/plugins/moment.min.js"
   strategy="afterInteractive"
-/>        {/* Main JS last */}
+/>      
+
+  {/* Main JS last */}
         <Script
           src="/assets2/js/main.js?v=4.1"
           strategy="afterInteractive"
         />
+
+
+        <Script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js" />
       </body>
     </html>
   );

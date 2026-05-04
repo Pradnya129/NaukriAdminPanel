@@ -30,13 +30,13 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="header-menu d-none d-md-block">
+          {/* <div className="header-menu d-none d-md-block">
             <ul>
               <li><Link href="/">Home</Link></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="header-right">
            
