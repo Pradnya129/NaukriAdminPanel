@@ -67,6 +67,19 @@ const recruiters = [
 ]
 
 export default function RecruiterPage() {
+
+  const getStatusStyle = (status) => {
+  switch (status) {
+    case 'Active':
+      return { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
+    case 'Pending':
+      return { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
+    case 'Suspended':
+      return { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
+    default:
+      return { bg: '#f5f5f5', color: '#555', border: '#ddd' }
+  }
+}
   return (
     <>
 
@@ -331,16 +344,52 @@ export default function RecruiterPage() {
 
                       {/* GST */}
                       <td>
-                        <span className="btn btn-tags-sm">
-                          {r.gst}
-                        </span>
+                       {(() => {
+  const gstStyle =
+    r.gst === 'Verified'
+      ? { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
+      : r.gst === 'Pending'
+      ? { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
+      : { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
+
+  return (
+    <span
+      style={{
+        fontSize: '11px',
+        fontWeight: 600,
+        padding: '4px 12px',
+        borderRadius: '20px',
+        background: gstStyle.bg,
+        color: gstStyle.color,
+        border: `1px solid ${gstStyle.border}`
+      }}
+    >
+      {r.gst}
+    </span>
+  )
+})()}
                       </td>
 
                       {/* Status */}
                       <td>
-                        <span className="btn btn-tags-sm">
-                          {r.status}
-                        </span>
+                        {(() => {
+  const s = getStatusStyle(r.status)
+  return (
+    <span
+      style={{
+        fontSize: '11px',
+        fontWeight: 600,
+        padding: '4px 12px',
+        borderRadius: '20px',
+        background: s.bg,
+        color: s.color,
+        border: `1px solid ${s.border}`
+      }}
+    >
+      {r.status}
+    </span>
+  )
+})()}
                       </td>
 
                       {/* Registered */}

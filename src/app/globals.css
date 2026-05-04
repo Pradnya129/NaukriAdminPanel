@@ -9,7 +9,11 @@
 /* =========================
    DASHBOARD RESPONSIVE FIX
 ========================= */
-
+.main-menu img {
+  width: 20px;      /* same width for all */
+  height: 20px;     /* same height for all */
+  object-fit: contain; /* keeps aspect ratio */
+}
 /* reduce main content padding */
 .box-content {
   padding: 20px !important;
@@ -24,7 +28,9 @@
   border-radius: 16px;
   margin-bottom: 0px !important;
 }
-
+.header.stick {
+    padding: 14px 20px !important;
+}
 /* better card number */
 .action-bar{
   display:grid;

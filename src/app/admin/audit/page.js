@@ -80,74 +80,67 @@ export default function AuditLogsPage() {
           </a>
         
         </div>
-      {/* ── MAIN TWO-COLUMN LAYOUT ── */}
+         {/* ✅ FIXED: FULL WIDTH WIDGETS */}
+      <div className="section-box">
+        <div className="row">
+
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+            <div className="card-style-1 hover-up">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/computer.svg" />
+              </div>
+              <div className="card-info">
+                <h3>14,202</h3>
+                <p>Total Logs (24h)</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+            <div className="card-style-1 hover-up">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/authentication.svg" />
+              </div>
+              <div className="card-info">
+                <h3>24</h3>
+                <p>Critical Actions</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+            <div className="card-style-1 hover-up">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/look.svg" />
+              </div>
+              <div className="card-info">
+                <h3>98.2%</h3>
+                <p>DPDP Status</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+            <div className="card-style-1 hover-up">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/doc.svg" />
+              </div>
+              <div className="card-info">
+                <h3>2h ago</h3>
+                <p>Last Export</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <div className="row">
 
         {/* ════ LEFT COLUMN — stat cards + table + inspections ════ */}
-        <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
+        <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
 
           {/* ── 4 STAT CARDS — inside left col only ── */}
-          <div className="section-box">
-            <div className="row">
-
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-3">
-                <div className="card-style-1 hover-up" style={{ borderLeft: '3px solid #3C65F5' }}>
-                  <div className="card-image">
-                    <img src="/assets/imgs/page/dashboard/computer.svg" alt="jobBox" />
-                  </div>
-                  <div className="card-info">
-                    <div className="card-title"><h3>14,202</h3></div>
-                    <p className="color-text-paragraph-2 mb-5">Total Logs (24h)</p>
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#2e7d32' }}>
-                      &#8679; +12% from yesterday
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div className="card-style-1 hover-up" style={{ borderLeft: '3px solid #e65100' }}>
-                  <div className="card-image">
-                    <img src="/assets/imgs/page/dashboard/authentication.svg" alt="jobBox" />
-                  </div>
-                  <div className="card-info">
-                    <div className="card-title"><h3>24</h3></div>
-                    <p className="color-text-paragraph-2 mb-5">Critical Actions</p>
-                    <span style={{ fontSize: '11px', color: '#888' }}>Requires review</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div className="card-style-1 hover-up" style={{ borderLeft: '3px solid #2e7d32' }}>
-                  <div className="card-image">
-                    <img src="/assets/imgs/page/dashboard/look.svg" alt="jobBox" />
-                  </div>
-                  <div className="card-info">
-                    <div className="card-title"><h3>98.2%</h3></div>
-                    <p className="color-text-paragraph-2 mb-5">DPDP Status</p>
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#2e7d32' }}>
-                      &#9679; Highly Compliant
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div className="card-style-1 hover-up" style={{ borderLeft: '3px solid #7c3aed' }}>
-                  <div className="card-image">
-                    <img src="/assets/imgs/page/dashboard/doc.svg" alt="jobBox" />
-                  </div>
-                  <div className="card-info">
-                    <div className="card-title"><h3>2h ago</h3></div>
-                    <p className="color-text-paragraph-2 mb-5">Last Export</p>
-                    <span style={{ fontSize: '11px', color: '#888' }}>Scheduled Backup</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
+       
 
           {/* ── AUDIT LOG TABLE ── */}
           <div className="section-box">
@@ -280,78 +273,87 @@ export default function AuditLogsPage() {
           </div>
 
           {/* ── RECENT DETAIL INSPECTIONS ── */}
-          <div className="section-box">
-            <div className="panel-white">
-              <div className="panel-head">
-                <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                  <span style={{ fontSize: '16px', color: '#3C65F5' }}>&#9658;</span>
-                  <h5 className="mb-0">Recent Detail Inspections</h5>
-                </div>
-              </div>
-              <div className="panel-body" style={{ padding: '0' }}>
-                {inspections.map((item, i) => (
-                  <div key={item.id}>
-                    <div
-                      className="hover-up"
-                      onClick={() => setOpenInspection(openInspection === i ? null : i)}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: '12px',
-                        padding: '16px 20px',
-                        borderBottom: openInspection === i ? 'none' : (i < inspections.length - 1 ? '1px solid #f5f5f5' : 'none'),
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <span style={{
-                        fontSize: '11px', fontWeight: 700, padding: '4px 12px', borderRadius: '20px',
-                        whiteSpace: 'nowrap', flexShrink: 0,
-                        color: item.levelColor, background: item.levelBg,
-                        border: `1px solid ${item.levelColor}40`,
-                      }}>{item.level}</span>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <span className="font-sm" style={{ fontWeight: 600, color: '#05264E' }}>
-                          {item.title}: {item.id}
-                        </span>
-                        <span className="font-xs color-text-paragraph-2" style={{ marginLeft: '8px' }}>
-                          Actor: {item.actor}
-                        </span>
-                      </div>
-                      <span style={{
-                        fontSize: '16px', color: '#888', flexShrink: 0,
-                        display: 'inline-block',
-                        transform: openInspection === i ? 'rotate(180deg)' : 'none',
-                        transition: 'transform .2s',
-                      }}>&#8964;</span>
-                    </div>
-                    {openInspection === i && (
-                      <div style={{
-                        padding: '16px 20px 20px',
-                        background: '#F8FAFF',
-                        borderLeft: `3px solid ${item.levelColor}`,
-                        borderBottom: i < inspections.length - 1 ? '1px solid #f5f5f5' : 'none',
-                      }}>
-                        <p className="font-sm color-text-paragraph-2 mb-10" style={{ lineHeight: 1.7 }}>
-                          {item.detail}
-                        </p>
-                        <div className="d-flex" style={{ gap: '8px' }}>
-                          <a className="btn btn-grey-small hover-up font-xs" href="#">&#128065; Full Log</a>
-                          <a className="btn btn-default hover-up font-xs" href="#">&#128196; Export Entry</a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+       
 
         </div>
         {/* end left column */}
 
         {/* ════ RIGHT SIDEBAR ════ */}
-        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
+       
+        {/* end right sidebar */}
 
-          {/* DPDP Guidelines */}
-          <div className="section-box">
+      </div>
+
+<div className='row'>
+
+  {/* LEFT COLUMN */}
+  <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
+
+    <div className="section-box">
+      <div className="panel-white">
+        <div className="panel-head">
+          <div className="d-flex align-items-center" style={{ gap: '8px' }}>
+            <span style={{ fontSize: '16px', color: '#3C65F5' }}>&#9658;</span>
+            <h5 className="mb-0">Recent Detail Inspections</h5>
+          </div>
+        </div>
+
+        <div className="panel-body" style={{ padding: '0' }}>
+          {inspections.map((item, i) => (
+            <div key={item.id}>
+              <div
+                className="hover-up"
+                onClick={() => setOpenInspection(openInspection === i ? null : i)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '16px 20px',
+                  borderBottom: openInspection === i ? 'none' : (i < inspections.length - 1 ? '1px solid #f5f5f5' : 'none'),
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{
+                  fontSize: '11px', fontWeight: 700, padding: '4px 12px', borderRadius: '20px',
+                  whiteSpace: 'nowrap',
+                  color: item.levelColor, background: item.levelBg,
+                  border: `1px solid ${item.levelColor}40`,
+                }}>{item.level}</span>
+
+                <div style={{ flex: 1 }}>
+                  <span className="font-sm" style={{ fontWeight: 600, color: '#05264E' }}>
+                    {item.title}: {item.id}
+                  </span>
+                  <span className="font-xs color-text-paragraph-2" style={{ marginLeft: '8px' }}>
+                    Actor: {item.actor}
+                  </span>
+                </div>
+
+                <span style={{
+                  fontSize: '16px', color: '#888',
+                  transform: openInspection === i ? 'rotate(180deg)' : 'none',
+                }}>&#8964;</span>
+              </div>
+
+              {/* {openInspection === i && (
+                <div style={{
+                  padding: '16px 20px 20px',
+                  background: '#F8FAFF',
+                  borderLeft: `3px solid ${item.levelColor}`,
+                }}>
+                  <p className="font-sm color-text-paragraph-2">{item.detail}</p>
+                </div>
+              )} */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {/* RIGHT COLUMN */}
+  <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
+
+   <div className="section-box">
             <div className="container">
               <div className="panel-white">
                 <div className="panel-head">
@@ -387,48 +389,9 @@ export default function AuditLogsPage() {
             </div>
           </div>
 
-          {/* Privacy Note */}
-          <div className="section-box">
-            <div className="container">
-              <div className="panel-white" style={{ background: '#F0F6FF', border: '1px solid #bdd4f5' }}>
-                <div className="panel-head" style={{ borderBottom: '1px solid #bdd4f5' }}>
-                  <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                    <span style={{ fontSize: '16px' }}>&#9432;</span>
-                    <h5 className="mb-0" style={{ color: '#1565c0' }}>Privacy Note</h5>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  <p className="font-xs mb-15" style={{ lineHeight: 1.7, color: '#444' }}>
-                    Under the DPDP Act 2023, every data access must have a legitimate purpose.{' '}
-                    <strong style={{ color: '#1565c0' }}>Unauthorized data exports are monitored</strong>{' '}
-                    and flagged to the Data Protection Officer (DPO) immediately.
-                  </p>
-                  <blockquote style={{
-                    borderLeft: '3px solid #3C65F5', paddingLeft: '12px',
-                    margin: '0 0 15px', fontSize: '12px', color: '#555',
-                    fontStyle: 'italic', lineHeight: 1.6,
-                  }}>
-                    "SkillBridge ensures end-to-end auditability of personal data processing as per Digital India regulations."
-                  </blockquote>
-                  <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                    <span style={{ fontSize: '22px' }}>&#128737;</span>
-                    <div>
-                      <p className="font-xs mb-0" style={{ fontWeight: 600, color: '#05264E' }}>Certification Status</p>
-                      <span className="font-xs" style={{ color: '#2e7d32', fontWeight: 700, letterSpacing: '0.5px' }}>
-                        ISO/IEC 27001 COMPLIANT
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  </div>
 
-        </div>
-        {/* end right sidebar */}
-
-      </div>
-
+</div>
       <Footer />
     </>
   )

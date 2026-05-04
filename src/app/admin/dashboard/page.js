@@ -1,9 +1,9 @@
 'use client'
 import { useEffect } from 'react'
 import Footer from '../../../components/Footer'
-
+import { useRouter } from 'next/navigation'
 export default function DashboardPage() {
-
+const router = useRouter()
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js'
@@ -340,13 +340,43 @@ export default function DashboardPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {[
-                        {name:'Alexander Wright',time:'2 mins ago',  type:'CANDIDATE',img:'avata1'},
-                        {name:'Sophia Chen',     time:'15 mins ago', type:'EMPLOYER', img:'avata2'},
-                        {name:'Marcus Miller',   time:'1 hour ago',  type:'CANDIDATE',img:'avata3'},
-                        {name:'Elena Rodriguez', time:'3 hours ago', type:'EMPLOYER', img:'avata4'},
-                        {name:'David Kim',       time:'5 hours ago', type:'CANDIDATE',img:'avata5'},
-                      ].map((u) => (
+                  {[
+  {
+    id: "CAND-101",
+    name: "Alexander Wright",
+    time: "2 mins ago",
+    type: "candidate",
+    img: "avata1"
+  },
+  {
+    id: "REC-201",
+    name: "Sophia Chen",
+    time: "15 mins ago",
+    type: "recruiter",
+    img: "avata2"
+  },
+  {
+    id: "CAND-102",
+    name: "Marcus Miller",
+    time: "1 hour ago",
+    type: "candidate",
+    img: "avata3"
+  },
+  {
+    id: "REC-202",
+    name: "Elena Rodriguez",
+    time: "3 hours ago",
+    type: "recruiter",
+    img: "avata4"
+  },
+  {
+    id: "CAND-103",
+    name: "David Kim",
+    time: "5 hours ago",
+    type: "candidate",
+    img: "avata5"
+  }
+].map((u) => (
                         <tr key={u.name} className="hover-up">
                           <td style={{padding:'10px 0',borderBottom:'1px solid #f5f5f5'}}>
                             <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
@@ -366,7 +396,18 @@ export default function DashboardPage() {
                             }}>{u.type}</span>
                           </td>
                           <td style={{padding:'10px 0',borderBottom:'1px solid #f5f5f5'}}>
-                            <a className="btn btn-grey-small" href="#">View</a>
+                            <button
+  className="btn btn-grey-small"
+  onClick={() => {
+    if (u.type === "candidate") {
+      router.push(`/admin/candidates/candidateDetails?${u.id}`)
+    } else {
+      router.push(`/admin/recruiters/details?${u.id}`)
+    }
+  }}
+>
+  View
+</button>
                           </td>
                         </tr>
                       ))}
@@ -385,7 +426,7 @@ export default function DashboardPage() {
               <div className="panel-white">
                 <div className="panel-head">
                   <h5>Urgent Verifications</h5>
-                  <a className="font-sm color-brand-1" href="/admin/authentication">Go to Queue ›</a>
+                  <a className="font-sm color-brand-1" href="/admin/verifications">Go to Queue ›</a>
                 </div>
                 <div className="panel-body" style={{overflowX:'auto'}}>
                   <table style={{width:'100%',borderCollapse:'collapse',minWidth:'240px'}}>
@@ -432,7 +473,7 @@ export default function DashboardPage() {
               <div className="panel-white">
                 <div className="panel-head">
                   <h5>Recent Payments</h5>
-                  <a className="font-sm color-brand-1" href="admin/settings">Finance ›</a>
+                  <a className="font-sm color-brand-1" href="admin/finance">Finance ›</a>
                 </div>
                 <div className="panel-body" style={{overflowX:'auto'}}>
                   <table style={{width:'100%',borderCollapse:'collapse',minWidth:'240px'}}>

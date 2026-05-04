@@ -1,484 +1,710 @@
 'use client'
 import Footer from '../../../../components/Footer'
 
-export default function EmployerEditPage() {
+
+export default function RecruiterEditPage() {
     return (
         <>
+            {/* PAGE HEADING */}
+            <div className="box-heading mb-5">
+                <div className="box-title ">
+                    {/* Company name + status badges */}
+                    <div className="d-flex align-items-center " style={{ flexWrap: 'wrap', gap: '10px' }}>
+                        <h3 className="mb-0">Global Marine Solutions Pvt Ltd</h3>
 
-            {/* ── PAGE HEADING: employer name + status + action buttons ── */}
-       <div className="box-heading d-flex align-items-center justify-content-between mb-3">
+                        <span className="btn btn-grey-small" style={{ background: '#e8f5e9', color: '#2e7d32', border: 'none', fontSize: '12px', fontWeight: 600 }}>
+                            ● Active &amp; Verified
+                        </span>
+                    </div>
+                    <div className="d-flex align-items-center mt-5 mb-3" style={{ gap: '16px', flexWrap: 'wrap' }}>
+  <span className="font-xs color-text-paragraph-2">⚡ AI Confidence: <strong>86%</strong></span>
 
-  {/* LEFT */}
-  <div className="box-title d-flex align-items-center" style={{ gap: '12px' }}>
-    
-    <div style={{
-      width: '42px',
-      height: '42px',
-      borderRadius: '8px',
-      background: '#3C65F5',
-      color: '#fff',
-      flexShrink: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontWeight: 700,
-      fontSize: '14px',
-    }}>
-      SL
-    </div>
+  <span className="font-xs color-text-paragraph-2">
+    🎯 Risk: <strong style={{ color: '#e65100' }}>Medium</strong>
+  </span>
 
-    {/* ❌ removed mb-4 */}
-    <div className='mt-1'>
-      <h5 className="mb-0">Stellar Logistics Pvt. Ltd.</h5>
+  <span className="font-xs color-text-paragraph-2">
+    👤 Assigned: <strong>Sarah</strong>
+  </span>
 
-      <div className="d-flex align-items-center mt-1" style={{ gap: '10px' }}>
-        <span style={{
-          fontSize: '11px',
-          fontWeight: 700,
-          padding: '2px 10px',
-          borderRadius: '20px',
-          background: '#fff3e0',
-          color: '#e65100',
-        }}>
-          Pending Review
-        </span>
+  <span className="font-xs color-text-paragraph-2">
+    ⏱ Queue Time: <strong>42 mins</strong>
+  </span>
+</div>
+                    <div className="d-flex align-items-center mt-5" style={{ gap: '16px', flexWrap: 'wrap' }}>
+                        <span className="font-xs color-text-paragraph-2">&#128196; REC-2024-9842</span>
+                        <span className="font-xs color-text-paragraph-2">&#9679;</span>
+                        <span className="font-xs color-text-paragraph-2">&#128336; Last edited by <strong>admin_alex</strong> 45m ago</span>
+                    </div>
+                </div>
+                  <div className="box-breadcrumb">
+          <div className="breadcrumbs">
+            <ul>
+              <li><a className="icon-home" href="/admin/dashboard">Admin</a></li>
+              <li><a href="/admin/recruiters">Recruiters</a></li>
+              <li><span>Edit-Alexander Wright</span></li>
+            </ul>
+          </div>
+        </div>
+            </div>
 
-        <span className="font-xs color-text-paragraph-2">
-          ID: REC-902831
-        </span>
+            {/* MAIN TWO-COLUMN LAYOUT */}
+            <div className="row mt-5">
+
+                {/* ── LEFT COLUMN (main content) ── */}
+                <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12 mt-5">
+
+                    {/* ── SECTION 1: Corporate Identity ── */}
+                    <div className="section-box mt-5">
+                        <div className="panel-white">
+                            <div className="panel-head d-flex justify-content-between align-items-center">
+                                <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+                                    {/* <span style={{ fontSize: '18px' }}>&#128196;</span> */}
+                                    <div>
+                                        <h5 className="mb-0">Corporate Identity</h5>
+                                        <p className="font-xs color-text-paragraph-2 mb-0">Legal business registration and identification parameters.</p>
+                                    </div>
+                                </div>
+                                <img src="/assets/imgs/brands/brand-1.png" alt="company"
+                                    style={{ width: '56px', height: '56px', borderRadius: '8px', objectFit: 'contain', border: '1px solid #eee' }} />
+                            </div>
+                            <div className="box-padding">
+
+                                {/* Legal Business Name */}
+                                <div className="form-group mb-20">
+                                    <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Legal Business Name *
+                                    </label>
+                                    <input className="form-control" type="text" defaultValue="Global Marine Solutions Pvt Ltd" />
+                                </div>
+
+                                {/* Trading Name + Industry */}
+                                <div className="row">
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                Trading Name (Brand)
+                                            </label>
+                                            <input className="form-control" type="text" defaultValue="GMS Shipping & Logistics" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                Industry Vertical
+                                            </label>
+                                            <input className="form-control" type="text" defaultValue="Maritime & Logistics" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Registration No + Date */}
+                                <div className="row">
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                Registration Number (CIN)
+                                            </label>
+                                            <input className="form-control" type="text" defaultValue="U74999MH2018PTC309412" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                Registration Date
+                                            </label>
+                                            <input className="form-control" type="text" defaultValue="2018-05-14" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* PAN + GSTIN */}
+                                <div className="row">
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                PAN Number
+                                            </label>
+                                            <input className="form-control" type="password" defaultValue="XXXXXX234F" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                                GSTIN / VAT ID
+                                            </label>
+                                            <input className="form-control" type="password" defaultValue="XXXXXXG1234F1Z5" />
+                                        </div>
+                                    </div>
+                                </div>
+{/* AI FIELD VALIDATION */}
+<div className="mt-10">
+  <p className="font-xs color-text-paragraph-2 mb-5" style={{ fontWeight: 600 }}>
+    AI Document Validation
+  </p>
+
+  {[
+    { label: 'Company Name Match', val: 95 },
+    { label: 'GST Match', val: 88 },
+    { label: 'PAN Match', val: 92 }
+  ].map(item => (
+    <div key={item.label} className="mb-8">
+      <div className="d-flex justify-content-between">
+        <span className="font-xs">{item.label}</span>
+        <span className="font-xs" style={{ fontWeight: 600 }}>{item.val}%</span>
+      </div>
+      <div style={{ height: '5px', background: '#eee', borderRadius: '3px' }}>
+        <div style={{
+          width: `${item.val}%`,
+          height: '100%',
+          background: item.val > 90 ? '#2e7d32' : '#e65100'
+        }}></div>
       </div>
     </div>
-
-  </div>
-
-{/* RIGHT */}
-<div className="box-breadcrumb">
-  <div className="breadcrumbs">
-    <ul>
-      <li><a className="icon-home" href="/admin/dashboard">Admin</a></li>
-      <li><a href="/admin/recruiters">Recruiters</a></li>
-      <li><span>Edit - Alexander Wright</span></li>
-    </ul>
-  </div>
+  ))}
 </div>
-
-</div>
-            {/* ── MAIN LAYOUT ── */}
-            <div className="row">
-
-                {/* ════ LEFT COLUMN ════ */}
-                <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
-
-                    {/* Company Information */}
-                    <div className="section-box">
-                        <div className="panel-white">
-
-                            {/* ── TOP ACTION BAR (NEW) ── */}
-
-                            <div className="panel-head d-flex justify-content-between" style={{ alignItems: 'center' }}>
-                                <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                                    <i className="fi-rr-building font-sm color-brand-2"></i>
-                                    <h6 className="mb-0">Company Information</h6>
-                                </div>
-
-                                {/* RIGHT: Actions */}
-                                <div className="d-flex align-items-center flex-wrap" style={{ gap: '8px' }}>
-
-                                    <button className="btn  btn-secondary btn-small" >
-                                        Suspend
-                                    </button>
-
-                                    <button className="btn btn-danger btn-small ">
-                                        Reject
-                                    </button>
-
-                                    <button className="btn btn-default btn-small mt-0">
-                                        Approve
-                                    </button>
-
-                                </div>
-                            </div>
-                            <div className="panel-body">
-                                <div className="row">
-                                    {[
-                                        { label: 'LEGAL NAME', value: 'Stellar Logistics Private Limited' },
-                                        { label: 'TRADE NAME', value: 'Stellar Express' },
-                                        { label: 'GSTIN', value: '27AACS1234L1Z5' },
-                                        { label: 'PAN', value: 'AACS1234L' },
-                                        { label: 'BUSINESS TYPE', value: 'Logistics & Warehousing' },
-                                        { label: 'STATE / JURISDICTION', value: 'Maharashtra (27)' },
-                                        { label: 'EMAIL', value: 'compliance@stellarlogistics.com' },
-                                        { label: 'REG. DATE', value: '12th March 2018' },
-                                        { label: 'CONTACT PERSON', value: 'Rajesh Kumar (Compliance Head)' },
-                                    ].map((item) => (
-                                        <div key={item.label} className="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-20 ">
-                                            <p className="font-xs color-text-paragraph-2 mb-5"
-                                                style={{ textTransform: 'uppercase', letterSpacing: '0.4px', fontSize: '10px' }}>
-                                                {item.label}
-                                            </p>
-                                            <p className="font-sm mb-0" style={{ fontWeight: 600, color: '#05264E' }}>
-                                                {item.value}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Compliance Documents */}
+                    {/* ── SECTION 2: Operational Footprint ── */}
                     <div className="section-box">
                         <div className="panel-white">
-                            <div className="panel-head" style={{ alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
-                                <div>
-                                    <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                                        <i className="fi-rr-document font-sm color-brand-2"></i>
-                                        <h6 className="mb-0">Compliance Documents</h6>
+                            <div className="panel-head">
+                                <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+                                    <span style={{ fontSize: '18px' }}>&#128205;</span>
+                                    <div>
+                                        <h5 className="mb-0">Operational Footprint</h5>
+                                        <p className="font-xs color-text-paragraph-2 mb-0">Global presence, physical address, and contact accessibility.</p>
                                     </div>
-                                    <p className="font-xs color-text-paragraph-2 mt-5 mb-0">
-                                        5 documents uploaded for verification
-                                    </p>
                                 </div>
-                                <a className="font-sm color-brand-2 hover-up" href="#">
-                                    <i className="fi-rr-download mr-5"></i>Download All (.zip)
-                                </a>
                             </div>
+                            <div className="box-padding">
 
-                            <div className="panel-body">
-                                <div className="row">
-                                    {[
-                                        {
-                                            title: 'GST Certificate', sub: 'GST Document',
-                                            status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user1.png',
-                                            expired: false, aiMatch: null, meta: null,
-                                        },
-                                        {
-                                            title: 'PAN Card - Corporate', sub: 'PAN Document',
-                                            status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user2.png',
-                                            expired: false, aiMatch: null, meta: null,
-                                        },
-                                        {
-                                            title: 'POE License Copy', sub: 'POE Document',
-                                            status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user3.png',
-                                            expired: false,
-                                            aiMatch: { label: '98% Match', color: '#2e7d32', bg: '#e8f5e9' },
-                                            meta: { licenseNo: 'POE-9928/2023', validTill: '2025-12-31' },
-                                        },
-                                        {
-                                            title: 'RPSL Certification', sub: 'RPSL Document',
-                                            status: 'Pending', statusColor: '#e65100', statusBg: '#fff3e0',
-                                            img: '/assets/imgs/page/candidates/user4.png',
-                                            expired: true,
-                                            aiMatch: { label: '64% Match', color: '#e65100', bg: '#fff3e0' },
-                                            meta: { licenseNo: 'RPSL-MUM-442', validTill: '2023-01-15' },
-                                        },
-                                        {
-                                            title: 'Business Reg Certificate', sub: 'BR Document',
-                                            status: 'Verified', statusColor: '#2e7d32', statusBg: '#e8f5e9',
-                                            img: '/assets/imgs/page/candidates/user5.png',
-                                            expired: false, aiMatch: null, meta: null,
-                                        },
-                                    ].map((doc) => (
-                                        <div key={doc.title} className="col-xl-5 col-lg-5 col-md-6 col-sm-6 mb-20">
-                                            <div className="card-grid-2" style={{ marginBottom: 0 }}>
-                                                {/* Expired badge */}
-                                                {doc.expired && (
-                                                    <div style={{
-                                                        position: 'absolute', top: '10px', right: '10px', zIndex: 2,
-                                                        background: '#dc2626', color: '#fff',
-                                                        fontSize: '10px', fontWeight: 700,
-                                                        padding: '2px 8px', borderRadius: '4px',
-                                                    }}>EXPIRED</div>
-                                                )}
-                                                {/* Thumbnail */}
-                                                <div style={{ height: '165px', overflow: 'hidden', background: '#dde4f0' }}>
-                                                    <img src={doc.img} alt={doc.title}
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                                </div>
-                                                {/* Card body */}
-                                                <div className="card-block-info" style={{ padding: '12px' }}>
-                                                    <div className="d-flex align-items-start justify-content-between mb-5">
-                                                        <p className="font-sm mb-0" style={{ fontWeight: 600, color: '#05264E', lineHeight: 1.3 }}>
-                                                            {doc.title}
-                                                        </p>
-                                                        <span style={{
-                                                            fontSize: '10px', fontWeight: 700, padding: '2px 8px',
-                                                            borderRadius: '20px', background: doc.statusBg, color: doc.statusColor,
-                                                            whiteSpace: 'nowrap', marginLeft: '6px', flexShrink: 0,
-                                                        }}>{doc.status}</span>
-                                                    </div>
-                                                    <p className="font-xs color-text-paragraph-2 mb-0">{doc.sub}</p>
-
-                                                    {doc.aiMatch && (
-                                                        <div className="d-flex align-items-center mt-10" style={{ gap: '6px' }}>
-                                                            <span className="font-xs color-text-paragraph-2"
-                                                                style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.4px' }}>
-                                                                AI EXTRACTION
-                                                            </span>
-                                                            <span style={{
-                                                                fontSize: '10px', fontWeight: 700, padding: '1px 7px',
-                                                                borderRadius: '20px', background: doc.aiMatch.bg, color: doc.aiMatch.color,
-                                                            }}>{doc.aiMatch.label}</span>
-                                                        </div>
-                                                    )}
-
-                                                    {doc.meta && (
-                                                        <div className="employers-info mt-10">
-                                                            <div className="row">
-                                                                <div className="col-6">
-                                                                    <p className="font-xs color-text-paragraph-2 mb-0"
-                                                                        style={{ fontSize: '9px', textTransform: 'uppercase' }}>License No.</p>
-                                                                    <p className="font-xs mb-0" style={{ fontWeight: 600, color: '#05264E' }}>
-                                                                        {doc.meta.licenseNo}
-                                                                    </p>
-                                                                </div>
-                                                                <div className="col-6">
-                                                                    <p className="font-xs color-text-paragraph-2 mb-0"
-                                                                        style={{ fontSize: '9px', textTransform: 'uppercase' }}>Valid Till</p>
-                                                                    <p className="font-xs mb-0" style={{ fontWeight: 600, color: '#05264E' }}>
-                                                                        {doc.meta.validTill}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
+                                {/* Full Address */}
+                                <div className="form-group mb-20">
+                                    <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Full Business Address (Headquarters) *
+                                    </label>
+                                    <textarea className="form-control" rows={3}
+                                        defaultValue="Level 14, Marine Business Tower, Sector 18, Navi Mumbai, Maharashtra" />
                                 </div>
+
+                                {/* State + City + PIN */}
+                                <div className="row">
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>State / Province</label>
+                                            <input className="form-control" type="text" defaultValue="Maharashtra" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>City</label>
+                                            <input className="form-control" type="text" defaultValue="Navi Mumbai" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>ZIP / Postal Code</label>
+                                            <input className="form-control" type="text" defaultValue="400705" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Country */}
+                                <div className="form-group mb-20">
+                                    <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Country</label>
+                                    <input className="form-control" type="text" defaultValue="India" />
+                                </div>
+
+                                {/* Website + Email + Phone */}
+                                <div className="row">
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Official Website</label>
+                                            <input className="form-control" type="text" defaultValue="https://www.globemarin..." />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Business Email</label>
+                                            <input className="form-control" type="email" defaultValue="ops@globemarine.com" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 col-sm-12">
+                                        <div className="form-group mb-20">
+                                            <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Business Phone</label>
+                                            <input className="form-control" type="text" defaultValue="+91 22 4900 1200" />
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+<div className="section-box">
+  <div className="panel-white">
+    <div className="panel-head">
+      <h5>Authorized Signatory</h5>
+    </div>
 
-                    {/* Trust & Verification Badges */}
+    <div className="box-padding">
+
+      <div className="row">
+        <div className="col-md-6">
+          <input className="form-control mb-15" defaultValue="Michael Sterling" placeholder="Name" />
+        </div>
+        <div className="col-md-6">
+          <input className="form-control mb-15" defaultValue="Director" placeholder="Designation" />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+          <input className="form-control mb-15" defaultValue="m.sterling@gms.com" />
+        </div>
+        <div className="col-md-6">
+          <input className="form-control mb-15" defaultValue="+91 98860 77777" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+                    {/* ── SECTION 3: Account Settings & Verification ── */}
                     <div className="section-box">
                         <div className="panel-white">
-                            <div className="panel-head" style={{ alignItems: 'center' }}>
-                                <div>
-                                    <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                                        <i className="fi-rr-shield-check font-sm color-brand-2"></i>
-                                        <h6 className="mb-0">Trust &amp; Verification Badges</h6>
+                            <div className="panel-head">
+                                <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+                                    <span style={{ fontSize: '18px' }}>&#128737;</span>
+                                    <div>
+                                        <h5 className="mb-0">Account Settings &amp; Verification</h5>
+                                        <p className="font-xs color-text-paragraph-2 mb-0">Manage account visibility and verification status.</p>
                                     </div>
-                                    <p className="font-xs color-text-paragraph-2 mt-5 mb-0">
-                                        Status of verification markers visible to candidates
-                                    </p>
                                 </div>
-                                <a className="btn btn-grey-small hover-up font-sm" href="#">Manage Badges</a>
                             </div>
-                            <div className="panel-body">
-                                <div className="d-flex align-items-center" style={{ gap: '8px', flexWrap: 'wrap' }}>
+                            <div className="box-padding">
+
+                                {/* Account Status + Tax Residency */}
+                                <div className="row mb-20">
+                                    <div className="col-md-6 col-sm-12">
+                                        <label className="font-xs color-text-paragraph-2 mb-10" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600, display: 'block' }}>Account Status</label>
+                                        <select className="form-control select2">
+                                            <option>Active</option>
+                                            <option>Inactive</option>
+                                            <option>Suspended</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-md-6 col-sm-12">
+                                        <label className="font-xs color-text-paragraph-2 mb-10" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600, display: 'block' }}>Tax Residency Type</label>
+                                        <div className="d-flex align-items-center" style={{ gap: '20px', paddingTop: '8px' }}>
+                                            <label className="d-flex align-items-center" style={{ gap: '6px', cursor: 'pointer' }}>
+                                                <input type="radio" name="taxType" defaultChecked /> <span className="font-sm">GST Registered</span>
+                                            </label>
+                                            <label className="d-flex align-items-center" style={{ gap: '6px', cursor: 'pointer' }}>
+                                                <input type="radio" name="taxType" /> <span className="font-sm">Non-GST</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Verification Status Badges */}
+                                <div className="d-flex align-items-center mb-20" style={{ flexWrap: 'wrap', gap: '10px' }}>
                                     {[
-                                        { label: 'GST Verified', active: true, color: '#2e7d32', bg: '#e8f5e9', border: '#a5d6a7' },
-                                        { label: 'PAN Verified', active: true, color: '#1565c0', bg: '#e3f2fd', border: '#90caf9' },
-                                        { label: 'Blue-Tick Verified', active: true, color: '#1565c0', bg: '#e3f2fd', border: '#90caf9' },
-                                        { label: 'POE Licensed', active: false, color: '#66789C', bg: '#F2F6FD', border: '#E0E6F7' },
-                                        { label: 'RPSL Certified', active: false, color: '#66789C', bg: '#F2F6FD', border: '#E0E6F7' },
-                                    ].map((badge) => (
-                                        <span key={badge.label} style={{
-                                            display: 'inline-flex', alignItems: 'center', gap: '5px',
-                                            padding: '6px 14px', borderRadius: '20px',
-                                            background: badge.bg, color: badge.color,
-                                            fontSize: '12px', fontWeight: 600,
-                                            border: `1px solid ${badge.border}`,
+                                        { label: 'GST Verified', status: 'verified' },
+                                        { label: 'PAN Verified', status: 'verified' },
+                                        { label: 'POE Pending', status: 'pending' },
+                                        { label: 'RPSL Expired', status: 'expired' },
+                                    ].map((v) => (
+                                        <span key={v.label} style={{
+                                            fontSize: '11px', fontWeight: 600, padding: '4px 12px', borderRadius: '4px',
+                                            background: v.status === 'verified' ? '#e8f5e9' : v.status === 'pending' ? '#fff3e0' : '#fdecea',
+                                            color: v.status === 'verified' ? '#2e7d32' : v.status === 'pending' ? '#e65100' : '#c62828',
+                                            border: `1px solid ${v.status === 'verified' ? '#a5d6a7' : v.status === 'pending' ? '#ffcc80' : '#ef9a9a'}`,
                                         }}>
-                                            {badge.active && <i className="fi-rr-check" style={{ fontSize: '10px' }}></i>}
-                                            {badge.label}
+                                            {v.status === 'verified' ? '✓' : v.status === 'pending' ? '○' : '✕'} {v.label}
                                         </span>
                                     ))}
+                                    <button className="btn btn-default hover-up" style={{ marginLeft: 'auto', fontSize: '12px' }}>
+                                        &#8635; Re-run AI Extraction
+                                    </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+{/* FRAUD SIGNALS */}
+<div className="mt-15">
+  <p className="font-xs color-text-paragraph-2 mb-5" style={{ fontWeight: 600 }}>
+    Risk Signals
+  </p>
 
-                    {/* Activity & Audit Trail */}
-                    <div className="section-box">
-                        <div className="panel-white">
-                            <div className="panel-head" style={{ alignItems: 'center' }}>
-                                <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                                    <i className="fi-rr-time-past font-sm color-brand-2"></i>
-                                    <h6 className="mb-0">Activity &amp; Audit Trail</h6>
-                                </div>
-                            </div>
-                            <div className="panel-body">
-                                {[
-                                    {
-                                        dot: '#3C65F5', title: 'RPSL Document Uploaded',
-                                        by: 'Sarah Jenkins', time: 'Today, 10:45 AM', note: null,
-                                    },
-                                    {
-                                        dot: '#3C65F5', title: 'GST Verified Automatically',
-                                        by: 'System AI', time: 'Yesterday, 04:20 PM',
-                                        note: '"GSTIN check successful via government portal API."',
-                                    },
-                                    {
-                                        dot: '#3C65F5', title: 'Badge Assigned: Blue Tick',
-                                        by: 'Admin User', time: '2 days ago',
-                                        note: '"Trust verification completed manually."',
-                                    },
-                                    {
-                                        dot: '#dc2626', title: 'Account Suspended',
-                                        by: 'System Security', time: 'Oct 12, 2023',
-                                        note: '"Suspicious activity detected in login patterns."',
-                                    },
-                                ].map((item, i) => (
-                                    <div key={i} className="d-flex" style={{ gap: '14px', marginBottom: '20px' }}>
-                                        <div style={{ paddingTop: '5px', flexShrink: 0 }}>
-                                            <span style={{
-                                                display: 'inline-block', width: '10px', height: '10px',
-                                                borderRadius: '50%', background: item.dot,
-                                            }}></span>
-                                        </div>
-                                        <div style={{ flex: 1 }}>
-                                            <div className="d-flex align-items-center justify-content-between"
-                                                style={{ flexWrap: 'wrap', gap: '4px' }}>
-                                                <p className="font-sm mb-0" style={{ fontWeight: 600, color: '#05264E' }}>
-                                                    {item.title}
-                                                </p>
-                                                <span className="font-xs color-text-paragraph-2">{item.time}</span>
-                                            </div>
-                                            <p className="font-xs color-text-paragraph-2 mb-5">by {item.by}</p>
-                                            {item.note && (
-                                                <div style={{
-                                                    background: '#F8FAFF', border: '1px solid #E0E6F7',
-                                                    borderRadius: '4px', padding: '8px 12px',
-                                                }}>
-                                                    <p className="font-xs color-text-paragraph-2 mb-0">{item.note}</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-
-                                <div className="text-center mt-10">
-                                    <a className="font-sm color-brand-2 hover-up" href="#">View Full Audit History</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                {/* end left col */}
-
-                {/* ════ RIGHT SIDEBAR ════ */}
-                <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
-
-                    {/* Quick Insights */}
-                    <div className="section-box">
-                        <div className="panel-white">
-                            <div className="panel-head">
-                                <h6 className="mb-0" style={{
-                                    textTransform: 'uppercase', fontSize: '11px',
-                                    letterSpacing: '0.6px', color: '#66789C',
-                                }}>Quick Insights</h6>
-                            </div>
-                            <div className="panel-body">
-                                <div className="card-style-1 hover-up mb-15">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/doc.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Registered On
-                                        </p>
-                                        <div className="card-title mt-2"><h5 className="mb-0">Oct 2023</h5></div>
-                                    </div>
-                                </div>
-
-                                <div className="card-style-1 hover-up mb-15">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/recruiters.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Total Open Jobs
-                                        </p>
-                                        <div className="card-title mt-2">
-                                            <h5 className="mb-0">42 <span className="font-xs status up">+5 this month</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="card-style-1 hover-up">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/bank.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Current Credits
-                                        </p>
-                                        <div className="card-title mt-2"><h5 className="mb-0">12,500</h5></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Account Health */}
-                    <div className="section-box">
-                        <div className="panel-white">
-                            <div className="panel-head">
-                                <h6 className="mb-0" style={{
-                                    textTransform: 'uppercase', fontSize: '11px',
-                                    letterSpacing: '0.6px', color: '#66789C',
-                                }}>Account Health</h6>
-                            </div>
-                            <div className="panel-body">
-                                <div className="d-flex align-items-center justify-content-between mb-10">
-                                    <span className="font-sm color-text-paragraph-2">Profile Completion</span>
-                                    <strong className="font-sm color-brand-1">85%</strong>
-                                </div>
-                                <div className="box-progress-bar mb-10">
-                                    <div className="progress">
-                                        <div className="progress-bar bg-brand-2"
-                                            role="progressbar"
-                                            style={{ width: '85%', borderRadius: '5px', background: '#3C65F5' }}>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p className="font-xs color-text-paragraph-2 mt-10 mb-0">
-                                    "RPSL documentation needs re-upload as the previous file has reached its expiry date."
+  {[
+    { label: 'Duplicate Company', val: 'No Match', color: '#2e7d32' },
+    { label: 'Sanctions Check', val: 'Clear', color: '#2e7d32' },
+    { label: 'Document Expiry', val: '1 Expiring Soon', color: '#e65100' }
+  ].map(item => (
+    <div key={item.label} className="d-flex justify-content-between mb-5">
+      <span className="font-xs">{item.label}</span>
+      <span className="font-xs" style={{ color: item.color, fontWeight: 600 }}>
+        {item.val}
+      </span>
+    </div>
+  ))}
+</div>
+                                <p className="font-xs color-text-paragraph-2">
+                                    Last automated verification completed on <strong>12 Oct 2023</strong>
                                 </p>
+
                             </div>
                         </div>
                     </div>
 
-                    {/* Primary Contact */}
+                    {/* ── SECTION 4: Compliance & Documents ── */}
                     <div className="section-box">
                         <div className="panel-white">
-                            <div className="panel-head">
-                                <h6 className="mb-0" style={{
-                                    textTransform: 'uppercase', fontSize: '11px',
-                                    letterSpacing: '0.6px', color: '#66789C',
-                                }}>Primary Contact</h6>
+                            <div className="panel-head ">
+                                <div className="d-flex align-items-center mb-3" style={{ gap: '10px' }}>
+                                    <span style={{ fontSize: '18px' }}>&#128196;</span>
+                                    <h5 className=" ">Compliance &amp; Documents</h5>
+                                </div>
+                                <a className="btn btn-default icon-edit hover-up mt-3  " href="#" style={{ fontSize: '12px' }}>+ Upload New</a>
                             </div>
-                            <div className="panel-body text-center">
-                                <div style={{
-                                    width: '56px', height: '56px', borderRadius: '50%',
-                                    background: '#3C65F5', color: '#fff',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    fontWeight: 700, fontSize: '18px', margin: '0 auto 10px',
-                                }}>SJ</div>
-                                <h6 className="mb-0">Sarah Jenkins</h6>
-                                <p className="font-xs color-text-paragraph-2 mt-5 mb-20">HR Director</p>
-                                <a className="btn btn-grey-big hover-up font-sm mb-10" href="#"
-                                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                                    <i className="fi-rr-envelope"></i>Message HR
-                                </a>
-                                <a className="font-sm color-brand-2 hover-up" href="#">View All Team Members</a>
+                            <div className="box-padding">
+                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                    <thead>
+                                        <tr style={{ borderBottom: '1px solid #eee' }}>
+                                            <th className="font-xs color-text-paragraph-2" style={{ padding: '8px 0', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Document Type</th>
+                                            <th className="font-xs color-text-paragraph-2" style={{ padding: '8px 8px', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Status</th>
+                                            <th className="font-xs color-text-paragraph-2" style={{ padding: '8px 8px', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Expiry</th>
+                                            <th  className="font-xs color-text-paragraph-2" style={{ padding: '8px 8px', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.5px' }}>AI Score</th>
+                                            <th className="font-xs color-text-paragraph-2" style={{ padding: '8px 0', textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {[
+                                            { name: 'GST Registration Certificate', issued: 'Jan 11, 2023', status: 'Verified', expiry: 'Dec 31, 2028', statusColor: '#2e7d32', statusBg: '#e8f5e9' },
+                                            { name: 'Incorporation Certificate', issued: 'May 14, 2018', status: 'Verified', expiry: 'No Expiry', statusColor: '#2e7d32', statusBg: '#e8f5e9' },
+                                            { name: 'POE License (Form A)', issued: 'Jun 18, 2019', status: 'Pending', expiry: 'Jun 15, 2024', statusColor: '#e65100', statusBg: '#fff3e0' },
+                                            { name: 'RPSL Maritime License', issued: 'Nov 21, 2018', status: 'Expired', expiry: 'Nov 20, 2023', statusColor: '#c62828', statusBg: '#fdecea' },
+                                        ].map((doc) => (
+                                            <tr key={doc.name} className="hover-up" style={{ borderBottom: '1px solid #f5f5f5' }}>
+                                                <td style={{ padding: '14px 0' }}>
+                                                    <p className="font-sm mb-0" style={{ fontWeight: 600 }}>&#128196; {doc.name}</p>
+                                                    <span className="font-xs color-text-paragraph-2">Issued: {doc.issued}</span>
+                                                </td>
+                                                <td style={{ padding: '14px 8px' }}>
+                                                    <span style={{
+                                                        fontSize: '11px', fontWeight: 600, padding: '3px 10px', borderRadius: '4px',
+                                                        color: doc.statusColor, background: doc.statusBg, whiteSpace: 'nowrap'
+                                                    }}>
+                                                        {doc.status === 'Verified' ? '✓' : doc.status === 'Pending' ? '○' : '✕'} {doc.status}
+                                                    </span>
+                                                </td>
+                                                <td style={{ padding: '14px 8px' }}>
+                                                    <span className="font-xs color-text-paragraph-2">{doc.expiry}</span>
+                                                </td>
+                                                <td>
+  <span style={{ fontWeight: 600, color: '#1565c0' ,padding: '14px 8px'  }}>
+    88%
+  </span>
+</td>
+                                                <td style={{ padding: '14px 0' }}>
+                                                    <a className="btn btn-grey-small" href="#" style={{ marginRight: '6px' }}>Review</a>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <div className="mt-15">
+                                    <a className="font-sm color-brand-1" href="#">Manage All 12 Documents →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── SECTION 5: Review & Audit Commitment ── */}
+                    <div className="section-box">
+                        <div className="panel-white">
+                            <div className="panel-head" style={{ borderLeft: '3px solid #1565c0', paddingLeft: '12px' }}>
+                                <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+                                    <span style={{ fontSize: '18px' }}>&#128065;</span>
+                                    <div>
+                                        <h5 className="mb-0">Review &amp; Audit Commitment</h5>
+                                        <p className="font-xs color-text-paragraph-2 mb-0">A mandatory audit comment is required to persist any modifications.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-padding">
+                                <div className="form-group mb-15">
+                                    <label className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Mandatory Change Comment *
+                                    </label>
+                                    <textarea className="form-control" rows={4}
+                                        placeholder="Describe the reason for these edits (e.g., 'Updated address based on new utility bill', 'Fixed typo in VAT ID')..." />
+                                </div>
+                                <div className="d-flex align-items-center" style={{ gap: '8px' }}>
+                                    <span style={{ fontSize: '12px', color: '#2e7d32', fontWeight: 600 }}>&#9679; GDPR Consent: Active (v2.4)</span>
+                                    <span className="font-xs color-text-paragraph-2" style={{ marginLeft: '8px' }}>Consent Timestamp: 14 Oct 2023, 11:22 AM</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                {/* end right sidebar */}
 
+                {/* ── RIGHT COLUMN (sidebar panels) ── */}
+                <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
+<div className="section-box">
+  <div className="panel-white">
+    <div className="panel-head">
+      <h5>Payment Status</h5>
+    </div>
+    <div className="panel-body">
+      <span style={{ color: '#2e7d32', fontWeight: 600 }}>
+        ✔ Completed
+      </span>
+    </div>
+  </div>
+</div>
+<div className="section-box">
+  <div className="panel-white">
+    <div className="panel-head">
+      <h5>Risk Score</h5>
+    </div>
+    <div className="panel-body">
+      <h3 style={{ color: '#e65100' }}>Medium Risk</h3>
+      <span className="font-xs color-text-paragraph-2">
+        Based on AI + history + compliance
+      </span>
+    </div>
+  </div>
+</div>
+                    {/* Financial & Credits */}
+                    <div className="section-box">
+                        <div className="container">
+                            <div className="panel-white">
+                                <div className="panel-head">
+                                    <div className="d-flex align-items-center" style={{ gap: '8px' }}>
+                                        <span style={{ fontSize: '14px' }}>&#128179;</span>
+                                        <h5 className="mb-0">Financial &amp; Credits</h5>
+                                    </div>
+                                    <span style={{ fontSize: '11px', fontWeight: 700, padding: '3px 10px', borderRadius: '4px', background: '#7c3aed', color: '#fff' }}>
+                                        Premium
+                                    </span>
+                                </div>
+                                <div className="panel-body">
+                                    <div className="d-flex align-items-baseline" style={{ gap: '6px', marginBottom: '4px' }}>
+                                        <h3 style={{ color: '#1565c0', margin: 0, fontSize: '32px', fontWeight: 700 }}>12,450</h3>
+                                        <span className="font-xs color-text-paragraph-2" style={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Credits</span>
+                                    </div>
+                                    {/* Usage bar */}
+                                    <div className="d-flex justify-content-between mb-5">
+                                        <span className="font-xs color-text-paragraph-2">Monthly Usage</span>
+                                        <span className="font-xs" style={{ fontWeight: 600 }}>85%</span>
+                                    </div>
+                                    <div className="progress mb-20" style={{ height: '6px', borderRadius: '3px', background: '#eee' }}>
+                                        <div className="progress-bar" style={{ width: '85%', background: '#1565c0', borderRadius: '3px' }}></div>
+                                    </div>
+                                    {/* Adjust balance */}
+                                    <p className="font-xs color-text-paragraph-2 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Adjust Balance (Admin Only)
+                                    </p>
+                                    <div className="d-flex" style={{ gap: '8px' }}>
+                                        <input className="form-control" type="number" defaultValue="12450" style={{ flex: 1 }} />
+                                        <button className="btn btn-default hover-up" style={{ whiteSpace: 'nowrap' }}>Apply</button>
+                                    </div>
+                                    <div className="mt-15">
+                                        <a className="font-sm color-brand-1" href="#">View Billing History ↗</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Contact Network */}
+                    <div className="section-box">
+                        <div className="container">
+                            <div className="panel-white">
+                                <div className="panel-head">
+                                    <div className="d-flex align-items-center" style={{ gap: '8px' }}>
+                                        <span style={{ fontSize: '14px' }}>&#128100;</span>
+                                        <h5 className="mb-0">Contact Network</h5>
+                                    </div>
+                                    <a className="btn btn-grey-small" href="#">+</a>
+                                </div>
+                                <div className="panel-body">
+                                    {/* Primary Contact */}
+                                    <p className="font-xs color-text-paragraph-2 mb-10" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Primary Point of Contact
+                                    </p>
+                                    <div className="card-style-3 hover-up mb-20" style={{ border: '1px solid #eee', borderRadius: '8px', padding: '12px' }}>
+                                        <div className="card-image online">
+                                            <img src="/assets/imgs/page/dashboard/avata1.png" alt="contact" />
+                                        </div>
+                                        <div className="card-title">
+                                            <h6>Michael Sterling</h6>
+                                            <span className="job-position">Head of Operations</span>
+                                        </div>
+                                        <div style={{ marginTop: '6px' }}>
+                                            <p className="font-xs color-brand-1 mb-2">m.sterling@gms.com</p>
+                                            <p className="font-xs color-text-paragraph-2 mb-0">+91 98860 77777</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Regional Reps */}
+                                    <p className="font-xs color-text-paragraph-2 mb-10" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Regional Representatives
+                                    </p>
+                                    {[
+                                        { name: 'Sarah Jenkins', role: 'HR Compliance', img: 'avata2' },
+                                        { name: 'Robert Chen', role: 'Accounts Lead', img: 'avata3' },
+                                    ].map((rep) => (
+                                        <div key={rep.name} className="d-flex align-items-center hover-up mb-10" style={{ justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f5f5f5' }}>
+                                            <div className="d-flex align-items-center" style={{ gap: '10px' }}>
+                                                <img src={`/assets/imgs/page/dashboard/${rep.img}.png`} alt={rep.name}
+                                                    style={{ width: '32px', height: '32px', borderRadius: '50%', flexShrink: 0 }} />
+                                                <div>
+                                                    <p className="font-sm mb-0" style={{ fontWeight: 600 }}>{rep.name}</p>
+                                                    <span className="font-xs color-text-paragraph-2">{rep.role}</span>
+                                                </div>
+                                            </div>
+                                            <span className="font-xs color-text-paragraph-2">⋮</span>
+                                        </div>
+                                    ))}
+
+                                    {/* Preferred Channel */}
+                                    <p className="font-xs color-text-paragraph-2 mt-15 mb-5" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Preferred Contact Channel
+                                    </p>
+                                    <select className="form-control select2">
+                                        <option>Email</option>
+                                        <option>Phone</option>
+                                        <option>WhatsApp</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* System Provenance */}
+                    <div className="section-box">
+                        <div className="container">
+                            <div className="panel-white">
+                                <div className="panel-head">
+                                    <h5 className="mb-0">System Provenance</h5>
+                                </div>
+                                <div className="panel-body">
+                                    <div className="row mb-15">
+                                        <div className="col-6">
+                                            <p className="font-xs color-text-paragraph-2 mb-3" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Created At</p>
+                                            <p className="font-sm mb-0" style={{ fontWeight: 600 }}>May 14, 2018</p>
+                                            <span className="font-xs color-text-paragraph-2">by system_core</span>
+                                        </div>
+                                        <div className="col-6">
+                                            <p className="font-xs color-text-paragraph-2 mb-3" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Operating Hours</p>
+                                            <p className="font-sm mb-0" style={{ fontWeight: 600 }}>09:00 - 18:00 IST</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Strategic Labels */}
+                                    <p className="font-xs color-text-paragraph-2 mb-8" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Strategic Labels
+                                    </p>
+                                    <div className="d-flex flex-wrap mb-15" style={{ gap: '6px' }}>
+                                        {['#TopTier', '#MaritimeExpert', '#HighRetention', '#GoldVerified'].map(tag => (
+                                            <span key={tag} className="btn btn-tag" style={{ fontSize: '11px', padding: '3px 8px' }}>{tag}</span>
+                                        ))}
+                                    </div>
+
+                                    {/* Recent History Logs */}
+                                    <p className="font-xs color-text-paragraph-2 mb-8" style={{ textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>
+                                        Recent History Logs
+                                    </p>
+                                    {[
+                                        { action: 'Verified PAN Details', by: 'Sarah L', when: '3 days ago', color: '#2e7d32' },
+                                        { action: 'POE Expiry Extracted', by: 'AI Bot', when: '5 days ago', color: '#1565c0' },
+                                        { action: 'Credits Adjusted (+500)', by: 'Admin Alex', when: '1 week ago', color: '#e65100' },
+                                    ].map((log) => (
+                                        <div key={log.action} className="mb-10" style={{ borderLeft: `3px solid ${log.color}`, paddingLeft: '10px' }}>
+                                            <p className="font-sm mb-0" style={{ fontWeight: 600, color: log.color }}>{log.action}</p>
+                                            <span className="font-xs color-text-paragraph-2">{log.by} · {log.when}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {/* ── STICKY FOOTER ACTION BAR ── */}
+            <div className="section-box">
+                <div className="panel-white" style={{ padding: '16px 20px' }}>
+                    <div className="d-flex align-items-center justify-content-between" style={{ flexWrap: 'wrap', gap: '12px' }}>
+                        <div className="d-flex align-items-center" style={{ gap: '20px', flexWrap: 'wrap' }}>
+                            <span className="font-xs" style={{ color: '#2e7d32', fontWeight: 600 }}>&#9679; CONSENT VALID</span>
+                            <span className="font-xs color-text-paragraph-2">&#9675; 0 Prior Rejections</span>
+                            <span className="font-xs color-text-paragraph-2" style={{ fontStyle: 'italic', maxWidth: '400px' }}>
+                                "By saving these changes, you acknowledge that all updated information has been verified against physical or digital originals."
+                            </span>
+                        </div>
+                        <div className="d-flex gap-2 flex-wrap">
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#e8f5e9',
+    color: '#2e7d32',
+    border: '1px solid #a5d6a7',
+    height: '44px',
+    borderRadius: '10px'
+  }}
+>
+  ✔ Approve
+</button>
+
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fdecea',
+    color: '#c62828',
+    border: '1px solid #ef9a9a',
+    height: '44px',
+    borderRadius: '10px'
+  }}
+>
+  ✕ Reject
+</button>
+
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fff3e0',
+    color: '#e65100',
+    border: '1px solid #ffcc80',
+    height: '44px',
+    borderRadius: '10px'
+  }}
+>
+  ⚠ Flag
+</button>
+                            <a
+                                href="/recruiters"
+                                className="btn d-flex align-items-center justify-content-center"
+                                style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}
+                            >
+                                Discard Changes
+                            </a>
+
+                            <a
+                                href="#"
+                                className="btn btn-primary d-flex align-items-center justify-content-center"
+                                style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}
+                            >
+                                Save Changes
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <Footer />

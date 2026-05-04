@@ -5,8 +5,8 @@ export default function DashboardLayout({ children }) {
   return (
     <>
 
-      <main className="main">
         <Header/>
+      <main className="main">
         <DashboardMenu />
 
         <div className="box-content">

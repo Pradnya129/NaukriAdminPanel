@@ -1,8 +1,51 @@
-import Footer from '../../../components/Footer'
+'use client'
 
-export const metadata = { title: 'Verification Queue - Jobbox Admin' }
+import { useState } from 'react'
+import Footer from '../../../components/Footer'
+import { useRouter } from 'next/navigation'
 
 export default function VerificationQueuePage() {
+  const [activeTab, setActiveTab] = useState('candidate')
+  const [search, setSearch] = useState('')
+  const router = useRouter()
+const [filters, setFilters] = useState({
+  priority: 'all',
+  confidence: 'all'
+})
+const candidateRecords = [
+  { name: 'Vikram Sahay', id: 'VER-9021', img: 'avata1', type: 'Candidate', date: '10/24/2023', time: '09:30 AM', priority: 'Urgent', confidence: 98 },
+  { name: 'Sarah Jenkins', id: 'VER-8842', img: 'avata2', type: 'Candidate', date: '10/24/2023', time: '10:15 AM', priority: 'High', confidence: 85 },
+  { name: 'Elena Rodriguez', id: 'VER-8655', img: 'avata4', type: 'Candidate', date: '10/24/2023', time: '11:45 AM', priority: 'High', confidence: 78 },
+  { name: 'David Smith', id: 'VER-8540', img: 'avata5', type: 'Candidate', date: '10/24/2023', time: '12:30 PM', priority: 'Normal', confidence: 94 },
+  { name: 'Priya Sharma', id: 'VER-8212', img: 'avata3', type: 'Candidate', date: '10/24/2023', time: '02:10 PM', priority: 'Normal', confidence: 90 },
+]
+
+const recruiterRecords = [
+  { name: 'Global Marine Ltd', id: 'VER-8450', img: 'avata2', type: 'Recruiter', date: '10/24/2023', time: '01:10 PM', priority: 'High', confidence: 72 },
+  { name: 'Oceanic Corp', id: 'VER-8321', img: 'avata3', type: 'Recruiter', date: '10/24/2023', time: '01:40 PM', priority: 'Urgent', confidence: 68 },
+  { name: 'NexusGlobal Pvt Ltd', id: 'VER-8001', img: 'avata1', type: 'Recruiter', date: '10/24/2023', time: '03:20 PM', priority: 'Urgent', confidence: 88 },
+  { name: 'Skyline Logistics', id: 'VER-7902', img: 'avata4', type: 'Recruiter', date: '10/24/2023', time: '03:50 PM', priority: 'Normal', confidence: 82 },
+  { name: 'BlueWave Shipping', id: 'VER-7805', img: 'avata5', type: 'Recruiter', date: '10/24/2023', time: '04:20 PM', priority: 'High', confidence: 76 },
+]
+
+let records = activeTab === 'candidate' ? candidateRecords : recruiterRecords
+
+records = records.filter((r) => {
+
+  // Priority filter
+  if (filters.priority !== 'all' && r.priority !== filters.priority) {
+    return false
+  }
+
+  // Confidence filter
+  if (filters.confidence !== 'all') {
+    if (filters.confidence === 'high' && r.confidence < 90) return false
+    if (filters.confidence === 'medium' && (r.confidence < 80 || r.confidence > 90)) return false
+    if (filters.confidence === 'low' && r.confidence >= 80) return false
+  }
+
+  return true
+})
   return (
     <>
       {/* PAGE HEADING */}
@@ -79,61 +122,120 @@ export default function VerificationQueuePage() {
       {/* ── MAIN TABLE PANEL ── */}
       <div className="section-box">
         <div className="panel-white">
+<div
+  className="d-flex align-items-center"
+  style={{
+    gap: '10px',
+    paddingBottom: '12px',
+    flexWrap: 'nowrap',
+    overflowX: 'auto'
+  }}
+>
 
+  {/* Search */}
+  <input
+    className="form-control"
+    placeholder="Search..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    style={{
+      width: '220px',
+      minWidth: '180px',
+      fontSize: '13px'
+    }}
+  />
+
+  {/* Priority */}
+  <select
+    className="form-control"
+    style={{ width: '130px', fontSize: '13px' }}
+    value={filters.priority}
+    onChange={(e) => setFilters({ ...filters, priority: e.target.value })}
+  >
+    <option value="all">Priority</option>
+    <option value="Urgent">Urgent</option>
+    <option value="High">High</option>
+    <option value="Normal">Normal</option>
+  </select>
+
+  {/* Confidence */}
+  <select
+    className="form-control"
+    style={{ width: '150px', fontSize: '13px' }}
+    value={filters.confidence}
+    onChange={(e) => setFilters({ ...filters, confidence: e.target.value })}
+  >
+    <option value="all">AI Confidence</option>
+    <option value="high">Above 90%</option>
+    <option value="medium">80–90%</option>
+    <option value="low">Below 80%</option>
+  </select>
+
+  {/* Reset */}
+  <button
+    className="btn btn-primary"
+    style={{ whiteSpace: 'nowrap' }}
+    onClick={() => setFilters({ priority: 'all', confidence: 'all' })}
+  >
+    Reset
+  </button>
+
+</div>
           {/* Tabs + Filter/Sort */}
           <div className="panel-head d-flex justify-content-between" style={{ flexWrap: 'wrap', gap: '12px', alignItems: 'center', borderBottom: '1px solid #eee', paddingBottom: '0' }}>
 
             {/* Tab bar */}
             <div className="d-flex align-items-end" style={{ gap: '0', overflowX: 'auto' }}>
-              {/* Active tab */}
-              <div style={{
-                padding: '12px 16px', cursor: 'pointer', whiteSpace: 'nowrap',
-                borderBottom: '2px solid #1565c0', color: '#1565c0', fontWeight: 600, fontSize: '14px'
-              }}>
-                KYC (Identity)
-                <span style={{
-                  marginLeft: '8px', fontSize: '11px', fontWeight: 700,
-                  background: '#e8f4fd', color: '#1565c0',
-                  padding: '2px 8px', borderRadius: '10px'
-                }}>5</span>
-              </div>
-              {/* Inactive tab */}
-              <div style={{
-                padding: '12px 16px', cursor: 'pointer', whiteSpace: 'nowrap',
-                borderBottom: '2px solid transparent', color: '#888', fontWeight: 500, fontSize: '14px'
-              }}>
-                Employer Documents
-                <span style={{
-                  marginLeft: '8px', fontSize: '11px', fontWeight: 700,
-                  background: '#f5f5f5', color: '#888',
-                  padding: '2px 8px', borderRadius: '10px'
-                }}>2</span>
-              </div>
-              {/* Tab with red badge */}
-              <div style={{
-                padding: '12px 16px', cursor: 'pointer', whiteSpace: 'nowrap',
-                borderBottom: '2px solid transparent', color: '#888', fontWeight: 500, fontSize: '14px'
-              }}>
-                Low AI Confidence
-                <span style={{
-                  marginLeft: '8px', fontSize: '11px', fontWeight: 700,
-                  background: '#c62828', color: '#fff',
-                  padding: '2px 8px', borderRadius: '10px'
-                }}>2</span>
-              </div>
-            </div>
 
-            {/* Filter + Sort buttons */}
-            <div className="d-flex" style={{ gap: '8px', marginLeft: 'auto', flexShrink: 0, paddingBottom: '12px' }}>
-              <a className="btn btn-grey-small hover-up" href="#"
-                style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '8px 14px', fontSize: '13px' }}>
-                &#9878; Filters
-              </a>
-              <a className="btn btn-grey-small hover-up" href="#"
-                style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '8px 14px', fontSize: '13px' }}>
-                &#8645; Sort
-              </a>
-            </div>
+  {/* Candidate Tab */}
+  <div onClick={() => setActiveTab('candidate')} style={{
+    padding: '12px 16px',
+    cursor: 'pointer',
+    borderBottom: activeTab === 'candidate' ? '2px solid #1565c0' : '2px solid transparent',
+    color: activeTab === 'candidate' ? '#1565c0' : '#888',
+    fontWeight: 600,
+    fontSize: '14px'
+  }}>
+    Candidate Verification
+    <span style={{
+      marginLeft: '8px',
+      fontSize: '11px',
+      fontWeight: 700,
+      background: activeTab === 'candidate' ? '#e8f4fd' : '#f5f5f5',
+      color: activeTab === 'candidate' ? '#1565c0' : '#888',
+      padding: '2px 8px',
+      borderRadius: '10px'
+    }}>
+      {candidateRecords.length}
+    </span>
+  </div>
+
+  {/* Recruiter Tab */}
+  <div onClick={() => setActiveTab('recruiter')} style={{
+    padding: '12px 16px',
+    cursor: 'pointer',
+    borderBottom: activeTab === 'recruiter' ? '2px solid #1565c0' : '2px solid transparent',
+    color: activeTab === 'recruiter' ? '#1565c0' : '#888',
+    fontWeight: 600,
+    fontSize: '14px'
+  }}>
+    Recruiter Verification
+    <span style={{
+      marginLeft: '8px',
+      fontSize: '11px',
+      fontWeight: 700,
+      background: activeTab === 'recruiter' ? '#e8f4fd' : '#f5f5f5',
+      color: activeTab === 'recruiter' ? '#1565c0' : '#888',
+      padding: '2px 8px',
+      borderRadius: '10px'
+    }}>
+      {recruiterRecords.length}
+    </span>
+  </div>
+
+</div>
+
+
 
           </div>
 
@@ -165,14 +267,9 @@ export default function VerificationQueuePage() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {[
-                  { name: 'Vikram Sahay',     id: 'VER-9021', img: 'avata1', type: 'Individual',     date: '10/24/2023', time: '09:30 AM', priority: 'Urgent', confidence: 98 },
-                  { name: 'Sarah Jenkins',    id: 'VER-8842', img: 'avata2', type: 'Individual',     date: '10/24/2023', time: '10:15 AM', priority: 'High',   confidence: 85 },
-                  { name: 'Michael Chen',     id: 'VER-8761', img: 'avata3', type: 'International',  date: '10/24/2023', time: '11:00 AM', priority: 'Normal', confidence: 92 },
-                  { name: 'Elena Rodriguez',  id: 'VER-8655', img: 'avata4', type: 'Individual',     date: '10/24/2023', time: '11:45 AM', priority: 'High',   confidence: 78 },
-                  { name: 'David Smith',      id: 'VER-8540', img: 'avata5', type: 'Individual',     date: '10/24/2023', time: '12:30 PM', priority: 'Normal', confidence: 94 },
-                ].map((row) => {
+           <tbody>
+  {records.map((row) => {
+                
                   const priorityStyle = {
                     'Urgent': { color: '#c62828', bg: '#fdecea', border: '#ef9a9a' },
                     'High':   { color: '#e65100', bg: '#fff3e0', border: '#ffcc80' },
@@ -240,11 +337,23 @@ export default function VerificationQueuePage() {
                       <td style={{ padding: '16px 0', textAlign: 'right' }} >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
                        
-                          <a className="btn btn-default hover-up" href="/admin/verifications/preview"
-                            style={{ padding: '6px 16px', fontSize: '13px', fontWeight: 600,
-                              display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            Review ›
-                          </a>
+                         <button
+  className="btn btn-default hover-up"
+  style={{
+    padding: '6px 16px',
+    fontSize: '13px',
+    fontWeight: 600
+  }}
+  onClick={() => {
+    if (activeTab === "candidate") {
+      router.push(`/admin/verifications/preview/${row.id}`)
+    } else {
+      router.push(`/admin/verifications/recruiter/${row.id}`)
+    }
+  }}
+>
+  Review ›
+</button>
                         </div>
                       </td>
 

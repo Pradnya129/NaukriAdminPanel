@@ -241,7 +241,7 @@ export default function SubAdminPage() {
             { label: 'Role Presets',     value: Object.keys(PRESETS).length,                          icon: 'authentication.svg', accent: '#7c3aed' },
           ].map(c => (
             <div key={c.label} className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div className="card-style-1 hover-up" style={{ borderLeft: `3px solid ${c.accent}` }}>
+              <div className="card-style-1 hover-up" >
                 <div className="card-image"><img src={`/assets/imgs/page/dashboard/${c.icon}`} alt="" /></div>
                 <div className="card-info">
                   <div className="card-title"><h3>{c.value}</h3></div>

@@ -40,9 +40,44 @@ export default function EditCandidatePage() {
                   <h5 className="mb-0">Profile Information</h5>
 
                   <div className="d-flex gap-2 flex-wrap">
-                    <button className="btn btn-primary">Approve</button>
-                    <button className="btn btn-danger">Reject</button>
-                    <button className="btn  btn-secondary">Suspend</button>
+                    <button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fff3e0',
+    color: '#e65100',
+    border: '1px solid #ffcc80',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Suspend
+</button>
+
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fdecea',
+    color: '#c62828',
+    border: '1px solid #ef9a9a',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Reject
+</button>
+
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#e8f5e9',
+    color: '#2e7d32',
+    border: '1px solid #a5d6a7',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Approve
+</button>
                   </div>
                 </div>
 

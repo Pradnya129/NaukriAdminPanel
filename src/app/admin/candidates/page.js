@@ -285,9 +285,39 @@ export default function CandidatesPage() {
     
 
           {/* Status */}
-          <td className="align-middle">
-            <span className="btn-paragraph-2">{c.status}</span>
-          </td>
+         <td className="align-middle">
+  <span
+    style={{
+      fontSize: '11px',
+      fontWeight: 600,
+      padding: '4px 12px',
+      borderRadius: '20px',
+      display: 'inline-block',
+      width:'100px',
+      textAlign:'center',
+      background:
+        c.status === 'Active'
+          ? '#e8f5e9'
+          : c.status === 'Pending'
+          ? '#fff3e0'
+          : '#fdecea',
+      color:
+        c.status === 'Active'
+          ? '#2e7d32'
+          : c.status === 'Pending'
+          ? '#e65100'
+          : '#c62828',
+      border:
+        c.status === 'Active'
+          ? '1px solid #a5d6a7'
+          : c.status === 'Pending'
+          ? '1px solid #ffcc80'
+          : '1px solid #ef9a9a'
+    }}
+  >
+    {c.status}
+  </span>
+</td>
 
           {/* Company */}
           <td className="align-middle">

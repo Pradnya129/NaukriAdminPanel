@@ -9,11 +9,11 @@ const navItems = [
   { href: '/admin/recruiters', icon: '/assets/imgs/page/dashboard/recruiters.svg', name: 'Recruiters' },
   { href: '/admin/verifications', icon: '/assets/imgs/page/dashboard/jobs.svg', name: 'Verifications' },
   { href: '/admin/finance', icon: '/assets/imgs/page/dashboard/tasks.svg', name: 'Finance' },
-  { href: '/admin/subadmin', icon: '/assets/imgs/page/dashboard/cv-manage.svg', name: 'Sub-Admin' },
-  { href: '/admin/helpAndsupport', icon: '/assets/imgs/page/dashboard/cv-manage.svg', name: 'Help & Support' },
+  { href: '/admin/subadmin', icon: '/assets/imgs/page/dashboard/profiles.svg', name: 'Sub-Admin' },
+  { href: '/admin/helpAndsupport', icon: '/assets/imgs/page/dashboard/headphone.svg', name: 'Help & Support' },
   { href: '/admin/settings', icon: '/assets/imgs/page/dashboard/settings.svg', name: 'Settings' },
-  { href: '/admin/audit', icon: '/assets/imgs/page/dashboard/cv-manage.svg', name: 'Audit Logs' },
-  { href: '/admin/login', icon: '/assets/imgs/page/dashboard/logout.svg', name: 'Logout' },
+  { href: '/admin/audit', icon: '/assets/imgs/page/dashboard/open-file.svg', name: 'Audit Logs' },
+  { href: '/', icon: '/assets/imgs/page/dashboard/logout.svg', name: 'Logout' },
 ];
 
 export default function DashboardMenu() {

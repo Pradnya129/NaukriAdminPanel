@@ -328,26 +328,61 @@ export default function CandidateDetailsPage() {
   <div className="box-padding">
 
     <div className="action-bar">
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fdecea',
+    color: '#c62828',
+    border: '1px solid #ef9a9a',
+    height: '36px',
+    padding: '0 14px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px'
+  }}
+>
+  <i className="fi-rr-trash"></i>
+  Delete
+</button>
 
-      <button className="action-btn danger-outline">
-        <i className="fi-rr-trash me-2"></i>
-        Delete
-      </button>
+     <button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fff3e0',
+    color: '#e65100',
+    border: '1px solid #ffcc80',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Suspend
+</button>
 
-      <button className="action-btn warning-outline">
-        <i className="fi-rr-ban me-2"></i>
-        Suspend
-      </button>
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#fdecea',
+    color: '#c62828',
+    border: '1px solid #ef9a9a',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Reject
+</button>
 
-      <button className="action-btn reject-outline">
-        <i className="fi-rr-cross-circle me-2"></i>
-        Reject
-      </button>
-
-      <button className="action-btn primary-fill">
-        <i className="fi-rr-check me-2"></i>
-        Approve
-      </button>
+<button
+  className="btn btn-default hover-up"
+  style={{
+    background: '#e8f5e9',
+    color: '#2e7d32',
+    border: '1px solid #a5d6a7',
+    height: '36px',
+    padding: '0 14px'
+  }}
+>
+  Approve
+</button>
 
     </div>
 
