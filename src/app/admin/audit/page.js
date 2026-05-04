@@ -3,8 +3,25 @@ import { useState } from 'react'
 import Footer from '../../../components/Footer'
 
 const logsData = [
-  { ts: '2023-11-24\n14:22:01', actor: 'sarah.admin@skillbridge.io',  action: 'USER_SUSPENDED',     actionColor: '#c62828', actionBg: '#fdecea', entity: 'John Doe (ID: 1293)',      ip: '192.168.1.45'  },
-  { ts: '2023-11-24\n13:05:12', actor: 'system.automator',            action: 'BATCH_PAYMENT_INIT', actionColor: '#05264E', actionBg: '#f0f0f0', entity: 'Payroll #402',             ip: '10.0.0.8'      },
+  {
+    ts: '2023-11-24\n14:22:01',
+    actor: 'sarah.admin@skillbridge.io',
+    actor_id: 'ADM-001',
+    action: 'USER_SUSPENDED',
+    action_tag: 'USER_ACTION',
+    severity: 'critical',
+    session_id: 'SES-77821',
+    entity: 'John Doe',
+    target_id: 'USR-1293',
+    ip: '192.168.1.45',
+    change_reason: 'Repeated violations',
+    old_value: 'Active',
+    new_value: 'Suspended',
+    hash: 'a8f5f167f44f4964e6c998dee827110c',
+    actionColor: '#c62828',
+    actionBg: '#fdecea'
+  },
+    { ts: '2023-11-24\n13:05:12', actor: 'system.automator',            action: 'BATCH_PAYMENT_INIT', actionColor: '#05264E', actionBg: '#f0f0f0', entity: 'Payroll #402',             ip: '10.0.0.8'      },
   { ts: '2023-11-24\n11:45:55', actor: 'mike.finance@skillbridge.io', action: 'DATA_EXPORT_DPDP',   actionColor: '#1565c0', actionBg: '#e8f4fd', entity: 'Q3 Revenue Report',        ip: '172.16.254.1'  },
   { ts: '2023-11-24\n09:12:30', actor: 'admin.super',                 action: 'CONFIG_CHANGE',      actionColor: '#2e7d32', actionBg: '#e8f5e9', entity: 'Global Registration Fee',  ip: '192.168.5.112' },
   { ts: '2023-11-24\n08:30:00', actor: 'sarah.admin@skillbridge.io',  action: 'LOGIN_SUCCESS',      actionColor: '#555',    actionBg: '#f5f5f5', entity: 'Admin Session',            ip: '192.168.1.45'  },
@@ -38,11 +55,13 @@ export default function AuditLogsPage() {
   const [dateFilter,      setDateFilter]      = useState('')
   const [openInspection,  setOpenInspection]  = useState(null)
   const [page,            setPage]            = useState(1)
-
-  const filtered = logsData.filter(l =>
-    l.actor.toLowerCase().includes(actorFilter.toLowerCase()) &&
-    l.action.toLowerCase().includes(actionFilter.toLowerCase())
-  )
+  const [openRow, setOpenRow] = useState(null)
+  const [severityFilter, setSeverityFilter] = useState('')
+const filtered = logsData.filter(l =>
+  l.actor.toLowerCase().includes(actorFilter.toLowerCase()) &&
+  l.action.toLowerCase().includes(actionFilter.toLowerCase()) &&
+  (severityFilter === '' || l.severity === severityFilter)
+)
 
   return (
     <>
@@ -172,9 +191,25 @@ export default function AuditLogsPage() {
                     value={dateFilter} onChange={e => setDateFilter(e.target.value)}
                     style={{ paddingLeft: '30px' }} />
                 </div>
+                <select
+  className="form-control font-xs"
+  value={severityFilter}
+  onChange={(e) => setSeverityFilter(e.target.value)}
+  style={{ minWidth: '120px' }}
+>
+  <option value="">Severity</option>
+  <option value="critical">Critical</option>
+  <option value="warning">Warning</option>
+  <option value="info">Info</option>
+</select>
                 <button
                   className="btn btn-default hover-up"
-                  onClick={() => { setActorFilter(''); setActionFilter(''); setDateFilter('') }}
+                  onClick={() => {
+  setActorFilter('')
+  setActionFilter('')
+  setDateFilter('')
+  setSeverityFilter('')
+}}
                   style={{ padding: '8px 18px', fontSize: '13px', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   &#9878; Apply
@@ -186,12 +221,15 @@ export default function AuditLogsPage() {
                 <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '580px' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #eee' }}>
+                      
                       {[
                         { label: 'Timestamp',      align: 'left'  },
                         { label: 'Actor (Admin)',   align: 'left'  },
                         { label: 'Action',         align: 'left'  },
                         { label: 'Target Entity',  align: 'left'  },
                         { label: 'IP Address',     align: 'left'  },
+                        { label: 'Severity', align: 'left' },
+{ label: 'Session', align: 'left' },
                         { label: 'Actions',        align: 'right' },
                       ].map(h => (
                         <th key={h.label} className="font-xs color-text-paragraph-2"
@@ -202,9 +240,11 @@ export default function AuditLogsPage() {
                           }}>{h.label}</th>
                       ))}
                     </tr>
+
                   </thead>
                   <tbody>
                     {filtered.map((row, i) => (
+                      <>
                       <tr key={i} className="hover-up" style={{ borderBottom: '1px solid #f5f5f5' }}>
                         <td style={{ padding: '14px 10px', verticalAlign: 'top', whiteSpace: 'pre', lineHeight: 1.6 }}>
                           <span className="font-xs" style={{ color: '#05264E', fontWeight: 500 }}>{row.ts}</span>
@@ -212,13 +252,52 @@ export default function AuditLogsPage() {
                         <td style={{ padding: '14px 10px', verticalAlign: 'top' }}>
                           <span className="font-xs" style={{ fontWeight: 600, color: '#05264E', wordBreak: 'break-all' }}>{row.actor}</span>
                         </td>
-                        <td style={{ padding: '14px 10px', verticalAlign: 'top' }}>
-                          <span style={{
-                            fontSize: '10px', fontWeight: 700, padding: '4px 10px',
-                            borderRadius: '4px', whiteSpace: 'nowrap', letterSpacing: '0.3px',
-                            color: row.actionColor, background: row.actionBg,
-                          }}>{row.action}</span>
-                        </td>
+{/* Action */}
+<td style={{ padding: '14px 10px' }}>
+  <span style={{
+    fontSize: '10px',
+    fontWeight: 700,
+    padding: '4px 10px',
+    borderRadius: '4px',
+    color: row.actionColor,
+    background: row.actionBg,
+  }}>
+    {row.action}
+  </span>
+</td>
+
+{/* Target */}
+<td style={{ padding: '14px 10px' }}>
+  {row.entity}
+</td>
+
+{/* IP */}
+<td style={{ padding: '14px 10px' }}>
+  {row.ip}
+</td>
+
+{/* Severity */}
+<td style={{ padding: '14px 10px' }}>
+  <span style={{
+    fontSize: '10px',
+    padding: '3px 8px',
+    borderRadius: '20px',
+    background:
+      row.severity === 'critical' ? '#fdecea' :
+      row.severity === 'warning' ? '#fff3e0' : '#e8f5e9',
+    color:
+      row.severity === 'critical' ? '#c62828' :
+      row.severity === 'warning' ? '#e65100' : '#2e7d32'
+  }}>
+    {row.severity || 'info'}
+  </span>
+</td>
+
+{/* Session */}
+<td style={{ padding: '14px 10px' }}>
+  {row.session_id || '-'}
+</td>
+
                         <td style={{ padding: '14px 10px', verticalAlign: 'top' }}>
                           <span className="font-xs" style={{ color: '#05264E', fontWeight: 500 }}>{row.entity}</span>
                         </td>
@@ -226,21 +305,30 @@ export default function AuditLogsPage() {
                           <span className="font-xs color-text-paragraph-2">{row.ip}</span>
                         </td>
                         <td style={{ padding: '14px 10px', textAlign: 'right', verticalAlign: 'top' }}>
-                          <a className="font-sm color-brand-1 hover-up" href="#"
-                            style={{ fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                            &#128065; View
-                          </a>
+                          <button
+  className="font-sm color-brand-1 hover-up"
+  style={{ background: 'none', border: 'none', fontWeight: 600 }}
+  onClick={() => setOpenRow(openRow === i ? null : i)}
+>
+  👁 View
+</button>
                         </td>
+
                       </tr>
+    
+                      </>
                     ))}
+
 
                     {filtered.length === 0 && (
                       <tr>
-                        <td colSpan={6} style={{ padding: '30px', textAlign: 'center' }}>
+                        <td colSpan={8} style={{ padding: '30px', textAlign: 'center' }}>
                           <span className="font-sm color-text-paragraph-2">No logs match your filters.</span>
                         </td>
+
                       </tr>
                     )}
+
                   </tbody>
                 </table>
               </div>
