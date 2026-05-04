@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const router = useRouter();
+export default function LogoutPage() {
+  const router = useRouter();
 
-const handleLogout = () => {
-  // 🔥 remove token (based on your storage)
-  localStorage.removeItem("token");
-  sessionStorage.removeItem("token");
+  useEffect(() => {
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
 
-  // optional: clear everything
-  // localStorage.clear();
+    router.replace("/login"); // better than push
+  }, [router]);
 
-  // redirect
-  router.push("/login");
-};
+  return null; // ✅ no UI rendered
+}
