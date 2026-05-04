@@ -346,9 +346,9 @@ records = records.filter((r) => {
   }}
   onClick={() => {
     if (activeTab === "candidate") {
-      router.push(`/admin/verifications/preview/${row.id}`)
+      router.push(`/admin/verifications/preview/?${row.id}`)
     } else {
-      router.push(`/admin/verifications/recruiter/${row.id}`)
+      router.push(`/admin/recruiters/Edit?${row.id}`)
     }
   }}
 >

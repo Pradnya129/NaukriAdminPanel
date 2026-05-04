@@ -281,7 +281,7 @@ export default function SubAdminPage() {
                 <tr style={{ borderBottom: '1px solid #eee' }}>
                   {['Sub Admin', 'Role', 'Access', 'Status', 'Last Login', 'Joined', 'Actions'].map((h, i) => (
                     <th key={h}
-                      style={{ padding: '12px 12px', textAlign: i === 6 ? 'right' : 'left',  letterSpacing: '0.4px', fontSize: '14px', whiteSpace: 'nowrap' }}>
+                      style={{ padding: '12px 12px', textAlign: i === 6 ? 'center' : 'left',  letterSpacing: '0.4px', fontSize: '14px', whiteSpace: 'nowrap' }}>
                       {h}
                     </th>
                   ))}
@@ -336,25 +336,49 @@ export default function SubAdminPage() {
                       </td>
 
                       {/* Actions */}
-                      <td style={{ padding: '14px 10px', textAlign: 'right' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px' }}>
-                        
-                          <button className="btn btn-grey-small hover-up w-100" onClick={() => openEdit(admin)}
-                            style={{ fontSize: '12px', padding: '5px 10px' }}>
-                            ✎ Edit
-                          </button>
+<td className="text-end">
 
-                          <button className="btn btn-grey-small hover-up w-100" onClick={() => toggleStatus(admin.id)}
-                            style={{ fontSize: '12px', padding: '5px 10px', color: admin.status === 'Active' ? '#c62828' : '#2e7d32' }}>
-                            {admin.status === 'Active' ? '⊘ Suspend' : '✓ Activate'}
-                          </button>
+  <div className="d-flex align-items-center justify-content-end" style={{ gap: '6px' }}>
 
-                          <button onClick={() => setDelId(admin.id)}
-                            style={{ background: 'none', border: '1px solid #ef9a9a', borderRadius: '6px', padding: '5px 8px', cursor: 'pointer', color: '#c62828', fontSize: '13px' }}>
-                            ✕
-                          </button>
-                        </div>
-                      </td>
+    {/* EDIT */}
+    <button
+      className="btn btn-grey-small"
+      onClick={() => openEdit(admin)}
+      title="Edit"
+      style={{ padding: '4px 6px' }}
+    >
+      ✎
+    </button>
+
+    {/* STATUS */}
+    <button
+      className="btn btn-grey-small"
+      onClick={() => toggleStatus(admin.id)}
+      title={admin.status === 'Active' ? 'Suspend' : 'Activate'}
+      style={{
+        padding: '4px 6px',
+        color: admin.status === 'Active' ? '#c62828' : '#2e7d32'
+      }}
+    >
+      {admin.status === 'Active' ? '✓' : '⊘'}
+    </button>
+
+    {/* DELETE */}
+    <button
+      className="btn btn-grey-small"
+      onClick={() => setDelId(admin.id)}
+      title="Delete"
+      style={{
+        padding: '4px 6px',
+        color: '#c62828'
+      }}
+    >
+      ✕
+    </button>
+
+  </div>
+
+</td>
                     </tr>
 
                     {/* Expanded permission view */}

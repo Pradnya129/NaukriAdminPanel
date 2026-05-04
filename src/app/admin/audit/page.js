@@ -298,19 +298,13 @@ const filtered = logsData.filter(l =>
   {row.session_id || '-'}
 </td>
 
-                        <td style={{ padding: '14px 10px', verticalAlign: 'top' }}>
-                          <span className="font-xs" style={{ color: '#05264E', fontWeight: 500 }}>{row.entity}</span>
-                        </td>
-                        <td style={{ padding: '14px 10px', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
-                          <span className="font-xs color-text-paragraph-2">{row.ip}</span>
-                        </td>
                         <td style={{ padding: '14px 10px', textAlign: 'right', verticalAlign: 'top' }}>
                           <button
   className="font-sm color-brand-1 hover-up"
   style={{ background: 'none', border: 'none', fontWeight: 600 }}
   onClick={() => setOpenRow(openRow === i ? null : i)}
 >
-  👁 View
+  👁 
 </button>
                         </td>
 
@@ -345,7 +339,7 @@ const filtered = logsData.filter(l =>
                     style={{ padding: '6px 16px', fontSize: '13px' }}>
                     Previous
                   </button>
-                  <span className="btn btn-default"
+                  <span className="btn btn-primary mt-0"
                     style={{ padding: '6px 12px', fontSize: '13px', minWidth: '36px', textAlign: 'center', pointerEvents: 'none' }}>
                     {page}
                   </span>
