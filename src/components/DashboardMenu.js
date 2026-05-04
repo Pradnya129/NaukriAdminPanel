@@ -11,8 +11,8 @@ const navItems = [
   { href: '/admin/finance', icon: '/assets/imgs/page/dashboard/tasks.svg', name: 'Finance' },
   { href: '/admin/subadmin', icon: '/assets/imgs/page/dashboard/profiles.svg', name: 'Sub-Admin' },
   { href: '/admin/helpAndsupport', icon: '/assets/imgs/page/dashboard/headphone.svg', name: 'Help & Support' },
-  { href: '/admin/settings', icon: '/assets/imgs/page/dashboard/settings.svg', name: 'Settings' },
   { href: '/admin/audit', icon: '/assets/imgs/page/dashboard/open-file.svg', name: 'Audit Logs' },
+  { href: '/admin/settings', icon: '/assets/imgs/page/dashboard/settings.svg', name: 'Settings' },
   { href: '/', icon: '/assets/imgs/page/dashboard/logout.svg', name: 'Logout' },
 ];
 
