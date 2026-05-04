@@ -5,6 +5,9 @@ export default function AdminSupportPage() {
 
   const [activeTab, setActiveTab] = useState('candidates')
 const [selectedTicket, setSelectedTicket] = useState(null)
+const [status, setStatus] = useState("");
+const [category, setCategory] = useState("");
+const [search, setSearch] = useState("");
   const candidateTickets = [
     { id: "SUP-4201", name: "John Carter", img: "avata1", issue: "Resume upload failed", category: "Profile", status: "Pending", date: "14 Apr 2026" },
     { id: "SUP-4202", name: "Aisha Khan", img: "avata2", issue: "Payment issue", category: "Billing", status: "Resolved", date: "12 Apr 2026" }
@@ -16,7 +19,19 @@ const [selectedTicket, setSelectedTicket] = useState(null)
   ]
 
   const data = activeTab === 'candidates' ? candidateTickets : recruiterTickets
+const filteredData = data.filter((r) => {
+  return (
+    // search
+    (r.name.toLowerCase().includes(search.toLowerCase()) ||
+      r.issue.toLowerCase().includes(search.toLowerCase())) &&
 
+    // status
+    (status === "" || r.status === status) &&
+
+    // category
+    (category === "" || r.category === category)
+  );
+});
   return (
 
     <>
@@ -88,9 +103,55 @@ const [selectedTicket, setSelectedTicket] = useState(null)
           </div>
 
           {/* Filter */}
-          <div style={{ paddingBottom: '12px' }}>
-            <a className="btn btn-grey-small hover-up">Filters</a>
-          </div>
+        <div className="d-flex align-items-center" style={{ gap: "8px", flexWrap: "wrap", paddingBottom: "12px" }}>
+
+  {/* Search */}
+  <input
+    className="form-control"
+    placeholder="Search ticket..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    style={{ width: "180px" }}
+  />
+
+ <select
+  className="form-control"
+  style={{ width: "140px" }}
+  value={status}
+  onChange={(e) => setStatus(e.target.value)}
+>
+  <option value="">Status</option>
+  <option value="Pending">Pending</option>
+  <option value="Resolved">Resolved</option>
+  <option value="In Progress">In Progress</option>
+</select>
+
+  {/* Category */}
+<select
+  className="form-control"
+  style={{ width: "140px" }}
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+>
+  <option value="">Category</option>
+  <option value="Billing">Billing</option>
+  <option value="Technical">Technical</option>
+  <option value="Profile">Profile</option>
+</select>
+
+  {/* Reset */}
+<button
+  className="btn btn-secondary"
+  onClick={() => {
+    setSearch("");
+    setStatus("");
+    setCategory("");
+  }}
+>
+  Clear Filters
+</button>
+
+</div>
 
         </div>
 
@@ -111,7 +172,7 @@ const [selectedTicket, setSelectedTicket] = useState(null)
             </thead>
 
             <tbody>
-              {data.map((row) => {
+              {filteredData.map((row) => {
 
                 const statusStyle = {
                   'Pending': { color: '#e65100', bg: '#fff3e0' },

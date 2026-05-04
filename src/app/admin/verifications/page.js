@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Footer from '../../../components/Footer'
 import { useRouter } from 'next/navigation'
+import { Clock, FileText, AlertTriangle, CheckCircle } from "lucide-react";
 
 export default function VerificationQueuePage() {
   const [activeTab, setActiveTab] = useState('candidate')
@@ -71,7 +72,7 @@ records = records.filter((r) => {
           <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div className="card-style-1 hover-up">
               <div className="card-image">
-                <img src="/assets/imgs/page/dashboard/tasks.svg" alt="jobBox" style={{height:'40px'}} />
+                <img src="/assets/imgs/page/dashboard/tasks.svg" alt="jobBox" style={{height:'28px'}} />
               </div>
               <div className="card-info">
                 <div className="card-title"><h3>142</h3></div>
@@ -83,7 +84,7 @@ records = records.filter((r) => {
           <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div className="card-style-1 hover-up">
               <div className="card-image">
-                <img src="/assets/imgs/page/dashboard/doc.svg" alt="jobBox" style={{height:'40px'}} />
+  <FileText size={28} strokeWidth={2.2} />
               </div>
               <div className="card-info">
                 <div className="card-title"><h3>28</h3></div>
@@ -95,7 +96,7 @@ records = records.filter((r) => {
           <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div className="card-style-1 hover-up">
               <div className="card-image">
-                <img src="/assets/imgs/page/dashboard/authentication.svg" alt="jobBox" style={{height:'40px'}} />
+  <AlertTriangle size={28} strokeWidth={2.2} />
               </div>
               <div className="card-info">
                 <div className="card-title"><h3>12</h3></div>
@@ -107,7 +108,7 @@ records = records.filter((r) => {
           <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div className="card-style-1 hover-up">
               <div className="card-image">
-                <img src="/assets/imgs/page/dashboard/look.svg" alt="jobBox"  style={{height:'40px'}}/>
+  <CheckCircle size={28} strokeWidth={2.2} />
               </div>
               <div className="card-info">
                 <div className="card-title"><h3>64</h3></div>
@@ -137,9 +138,10 @@ records = records.filter((r) => {
     className="form-control"
     placeholder="Search..."
     value={search}
+
     onChange={(e) => setSearch(e.target.value)}
     style={{
-      width: '220px',
+      width: '620px',
       minWidth: '180px',
       fontSize: '13px'
     }}
@@ -173,11 +175,11 @@ records = records.filter((r) => {
 
   {/* Reset */}
   <button
-    className="btn btn-primary"
+    className="btn btn-secondary"
     style={{ whiteSpace: 'nowrap' }}
     onClick={() => setFilters({ priority: 'all', confidence: 'all' })}
   >
-    Reset
+                      Clear Filters
   </button>
 
 </div>
@@ -245,7 +247,6 @@ records = records.filter((r) => {
               <thead>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
                   <th style={{ padding: '12px 0', width: '36px' }}>
-                    <input type="checkbox" style={{ cursor: 'pointer' }} />
                   </th>
                   <th >
                     User / Entity
@@ -283,7 +284,6 @@ records = records.filter((r) => {
 
                       {/* Checkbox */}
                       <td >
-                        <input type="checkbox" style={{ cursor: 'pointer' }} />
                       </td>
 
                       {/* User / Entity */}
@@ -365,14 +365,23 @@ records = records.filter((r) => {
           </div>
 
           {/* Pagination */}
-          <div className="d-flex align-items-center justify-content-between" style={{ padding: '14px 20px', borderTop: '1px solid #eee', flexWrap: 'wrap', gap: '10px' }}>
-            <span className="font-xs color-text-paragraph-2">Showing 1-5 of 5 entries</span>
-            <div className="d-flex align-items-center" style={{ gap: '6px' }}>
-              <a className="btn btn-grey-small hover-up" href="#" style={{ padding: '6px 14px', fontSize: '13px' }}>Previous</a>
-              <span className="btn btn-primary" style={{ padding: '6px 12px', fontSize: '13px', minWidth: '36px', textAlign: 'center' }}>1</span>
-              <a className="btn btn-grey-small hover-up" href="#" style={{ padding: '6px 14px', fontSize: '13px' }}>Next</a>
-            </div>
+              <div className="paginations mt-25">
+        <div className="row align-items-center g-2">
+          <div className="col-lg-6">
+            <p className="font-sm color-text-paragraph-2 mb-0">
+              Showing 1–6 of <strong>3,248</strong> candidates
+            </p>
           </div>
+
+          <div className="col-lg-6 text-lg-end">
+            <ul className="pager justify-content-lg-end">
+              <li><a className="pager-prev"></a></li>
+              <li><a className="pager-number active">1</a></li>
+              <li><a className="pager-next"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
         </div>
       </div>
@@ -381,12 +390,11 @@ records = records.filter((r) => {
       <div className="row">
 
         {/* Compliance Reminder */}
-        <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+        <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
           <div className="section-box">
             <div className="panel-white" style={{ background: '#f0f6ff', border: '1px solid #bdd4f5' }}>
               <div className="panel-body">
                 <div className="d-flex align-items-center mb-15" style={{ gap: '10px' }}>
-                  <span style={{ fontSize: '18px', color: '#1565c0' }}>&#128737;</span>
                   <h5 className="mb-0" style={{ color: '#1565c0' }}>Compliance Reminder</h5>
                 </div>
                 <p className="font-sm color-text-paragraph-2 mb-15" style={{ lineHeight: 1.7 }}>
@@ -402,46 +410,7 @@ records = records.filter((r) => {
           </div>
         </div>
 
-        {/* Workload Status */}
-        <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-          <div className="section-box">
-            <div className="panel-white">
-              <div className="panel-head">
-                <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                  <span style={{ fontSize: '16px' }}>&#128100;</span>
-                  <h5 className="mb-0">Workload Status</h5>
-                </div>
-                <span style={{
-                  fontSize: '11px', fontWeight: 700, padding: '3px 12px', borderRadius: '20px',
-                  background: '#e8f5e9', color: '#2e7d32', border: '1px solid #a5d6a7'
-                }}>
-                  &#9679; Live
-                </span>
-              </div>
-              <div className="panel-body">
-                {[
-                  { admin: 'Admin: Sarah (Self)',  items: 4,  color: '#1565c0' },
-                  { admin: 'Admin: James Miller',  items: 12, color: '#e65100' },
-                  { admin: 'Admin: Priya Singh',   items: 8,  color: '#2e7d32' },
-                ].map((w) => (
-                  <div key={w.admin} className="d-flex align-items-center justify-content-between hover-up"
-                    style={{ padding: '14px 0', borderBottom: '1px solid #f5f5f5' }}>
-                    <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                      <span style={{
-                        width: '8px', height: '8px', borderRadius: '50%',
-                        background: w.color, display: 'inline-block', flexShrink: 0
-                      }}></span>
-                      <span className="font-sm" style={{ fontWeight: 500 }}>{w.admin}</span>
-                    </div>
-                    <span className="font-sm color-text-paragraph-2" style={{ fontWeight: 600 }}>
-                      {w.items} items active
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
       </div>
 

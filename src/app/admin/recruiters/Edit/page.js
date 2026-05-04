@@ -1,7 +1,15 @@
 'use client'
 import { useState } from 'react'
 import Footer from '../../../../components/Footer'
-
+import {
+  Brain,
+  AlertTriangle,
+  User,
+  Clock,
+  Hash,
+  Circle,
+  Edit3
+} from "lucide-react";
 // ── Document Review Modal ────────────────────────────────────────────────────
 function DocumentReviewModal({ doc, onClose, onApprove, onReject }) {
   const [zoom, setZoom] = useState(100)
@@ -614,17 +622,43 @@ export default function RecruiterEditPage() {
               ● Active &amp; Verified
             </span>
           </div>
-          <div className="d-flex align-items-center mt-5 mb-3" style={{ gap: '16px', flexWrap: 'wrap' }}>
-            <span className="font-xs color-text-paragraph-2"> AI Confidence: <strong>86%</strong></span>
-            <span className="font-xs color-text-paragraph-2"> Risk: <strong style={{ color: '#e65100' }}>Medium</strong></span>
-            <span className="font-xs color-text-paragraph-2"> Assigned: <strong>Sarah</strong></span>
-            <span className="font-xs color-text-paragraph-2">⏱ Queue Time: <strong>42 mins</strong></span>
-          </div>
-          <div className="d-flex align-items-center mt-5" style={{ gap: '16px', flexWrap: 'wrap' }}>
-            <span className="font-xs color-text-paragraph-2">📄 REC-2024-9842</span>
-            <span className="font-xs color-text-paragraph-2">●</span>
-            <span className="font-xs color-text-paragraph-2">🕐 Last edited by <strong>admin_alex</strong> 45m ago</span>
-          </div>
+<div
+  className="d-flex align-items-center mt-5 mb-3 w-100"
+  style={{ gap: '16px', flexWrap: 'nowrap' }}
+>
+
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <Brain size={14} /> AI Confidence: <strong>86%</strong>
+  </span>
+
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <AlertTriangle size={14} /> Risk:
+    <strong style={{ color: '#e65100' }}>Medium</strong>
+  </span>
+
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <User size={14} /> Assigned: <strong>Sarah</strong>
+  </span>
+
+ 
+
+</div>
+
+<div className="d-flex align-items-center mt-5" style={{ gap: '16px', flexWrap: 'wrap' }}>
+
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <Hash size={14} /> REC-2024-9842
+  </span>
+
+  <span className="font-xs color-text-paragraph-2">
+    <Circle size={6} fill="#ccc" />
+  </span>
+
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <Edit3 size={14} /> Last edited by <strong>admin_alex</strong> 45m ago
+  </span>
+
+</div>
         </div>
         <div className="box-breadcrumb">
           <div className="breadcrumbs">

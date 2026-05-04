@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Footer from '../../../../components/Footer'
+import { Brain, AlertTriangle, User, Clock } from "lucide-react";
 
 export default function EmployerDetailsPage() {
     const [previewDoc, setPreviewDoc] = useState(null)
@@ -45,23 +46,30 @@ export default function EmployerDetailsPage() {
           ID: REC-902831
         </span>
       </div>
-      <div className="d-flex align-items-center mt-2" style={{ gap: '14px', flexWrap: 'wrap' }}>
+<div
+  className="d-flex align-items-center mt-2"
+  style={{ gap: '14px', flexWrap: 'wrap' }}
+>
 
-  <span className="font-xs color-text-paragraph-2">
-     AI: <strong>86%</strong>
+  <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <Brain size={14} strokeWidth={2} />
+    AI: <strong>86%</strong>
   </span>
 
-  <span className="font-xs">
-     Risk: <strong style={{ color: '#e65100' }}>Medium</strong>
+  <span className="font-xs d-flex align-items-center gap-1">
+    <AlertTriangle size={14} strokeWidth={2} />
+    Risk: <strong style={{ color: '#e65100' }}>Medium</strong>
   </span>
 
-  <span className="font-xs">
-     Assigned: <strong>Sarah</strong>
+  <span className="font-xs d-flex align-items-center gap-1">
+    <User size={14} strokeWidth={2} />
+    Assigned: <strong>Sarah</strong>
   </span>
 
-  <span className="font-xs color-text-paragraph-2">
-    ⏱ 42 mins in queue
-  </span>
+  {/* <span className="font-xs color-text-paragraph-2 d-flex align-items-center gap-1">
+    <Clock size={14} strokeWidth={2} />
+    42 mins in queue
+  </span> */}
 
 </div>
     </div>

@@ -1,8 +1,11 @@
 'use client';
-
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function Header() {
+ useEffect(() => {
+    import('bootstrap/dist/js/bootstrap.bundle.min.js')
+  }, [])
   return (
     <header className="header sticky-bar ">
       <div className="container">
@@ -79,9 +82,9 @@ export default function Header() {
                       className="dropdown-menu dropdown-menu-light dropdown-menu-end"
                       aria-labelledby="dropdownProfile"
                     >
-                      <li><Link className="dropdown-item" href="/profile">Profiles</Link></li>
-                      <li><Link className="dropdown-item" href="/resume">CV Manager</Link></li>
-                      <li><Link className="dropdown-item" href="/login">Logout</Link></li>
+                      {/* <li><Link className="dropdown-item" href="/profile">Profiles</Link></li>
+                      <li><Link className="dropdown-item" href="/resume">CV Manager</Link></li> */}
+                      <li><Link className="dropdown-item" href="/">Logout</Link></li>
                     </ul>
                   </div>
                 </div>

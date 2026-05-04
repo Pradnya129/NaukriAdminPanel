@@ -2,7 +2,18 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
+import {
+  LayoutDashboard,
+  Users,
+  Building,
+  ShieldCheck,
+  Wallet,
+  UserCog,
+  Headphones,
+  FileText,
+  Settings,
+  LogOut
+} from "lucide-react";
 const navItems = [
   { href: '/admin/dashboard', icon: '/assets/imgs/page/dashboard/dashboard.svg', name: 'Dashboard' },
   { href: '/admin/candidates', icon: '/assets/imgs/page/dashboard/candidates.svg', name: 'Candidates' },
@@ -10,8 +21,8 @@ const navItems = [
   { href: '/admin/verifications', icon: '/assets/imgs/page/dashboard/jobs.svg', name: 'Verifications' },
   { href: '/admin/finance', icon: '/assets/imgs/page/dashboard/tasks.svg', name: 'Finance' },
   { href: '/admin/subadmin', icon: '/assets/imgs/page/dashboard/profiles.svg', name: 'Sub-Admin' },
-  { href: '/admin/helpAndsupport', icon: '/assets/imgs/page/dashboard/headphone.svg', name: 'Help & Support' },
-  { href: '/admin/audit', icon: '/assets/imgs/page/dashboard/open-file.svg', name: 'Audit Logs' },
+  { href: '/admin/helpAndsupport', icon:Headphones, name: 'Help & Support' },
+  { href: '/admin/audit', icon: FileText, name: 'Audit Logs' },
   { href: '/admin/settings', icon: '/assets/imgs/page/dashboard/settings.svg', name: 'Settings' },
   { href: '/', icon: '/assets/imgs/page/dashboard/logout.svg', name: 'Logout' },
 ];
@@ -35,17 +46,24 @@ export default function DashboardMenu() {
 
       <nav className="nav-main-menu">
         <ul className="main-menu">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`dashboard2 ${isActive(item.href) ? 'active' : ''}`}
-              >
-                <img src={item.icon} alt={item.name} />
-                <span className="name">{item.name}</span>
-              </Link>
-            </li>
-          ))}
+         {navItems.map((item) => (
+  <li key={item.href}>
+    <Link
+      href={item.href}
+      className={`dashboard2 ${isActive(item.href) ? 'active' : ''}`}
+    >
+      <span className="menu-icon">
+  {typeof item.icon === "string" ? (
+    <img src={item.icon} alt={item.name} />
+  ) : (
+    <item.icon size={20} />
+  )}
+</span>
+
+      <span className="name">{item.name}</span>
+    </Link>
+  </li>
+))}
         </ul>
       </nav>
     </div>

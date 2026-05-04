@@ -256,30 +256,9 @@ export default function EditCandidatePage() {
             {/* Status + Billing */}
             <div className="row">
 
-              <div className="col-md-6">
-                <div className="panel-white mb-20">
-                  <div className="box-padding">
-                    <h5 className="mb-20">Account Status</h5>
+            
 
-                    <label className="font-sm mb-10">Account Type</label>
-                    <input
-                      className="form-control mb-20"
-                      defaultValue="Candidate (Read-only)"
-                      readOnly
-                    />
-
-                    <label className="font-sm mb-10">Current Status</label>
-                    <select className="form-control">
-                      <option>Approved</option>
-                      <option>Pending</option>
-                      <option>Rejected</option>
-                      <option>Suspended</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <div className="panel-white mb-20">
                   <div className="box-padding">
                     <h5 className="mb-20">Billing & Payments</h5>
@@ -315,17 +294,7 @@ export default function EditCandidatePage() {
                 <h5 className="mb-20">Internal Administrative Use</h5>
 
                 <div className="row">
-                  <div className="col-md-4 mb-20">
-                    <label className="font-sm mb-10">Credit Balance</label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      defaultValue="500"
-                    />
-                    <p className="font-xs color-text-paragraph-2 mt-5">
-                      Only Admin roles can modify balances.
-                    </p>
-                  </div>
+              
 
                   <div className="col-md-8">
                     <label className="font-sm mb-10">
@@ -398,14 +367,7 @@ export default function EditCandidatePage() {
               </div>
             </div>
 
-            <div className="panel-white">
-              <div className="box-padding">
-                <p className="font-sm color-warning mb-0">
-                  Changes to Email, Phone or National ID will trigger
-                  mandatory audit entry and candidate notification.
-                </p>
-              </div>
-            </div>
+           
 
           </div>
 

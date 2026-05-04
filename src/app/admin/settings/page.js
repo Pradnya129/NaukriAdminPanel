@@ -108,11 +108,7 @@ const addPack = () => {
             <div className="panel-white">
               <div className="panel-head">
                 <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '8px',
-                    background: '#EEF3FE', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '18px', flexShrink: 0,
-                  }}>&#128100;</div>
+                  
                   <div>
                     <h5 className="mb-0">Registration &amp; Access</h5>
                     <p className="font-xs color-text-paragraph-2 mb-0">Control who can join the platform and how.</p>
@@ -184,18 +180,8 @@ const addPack = () => {
     {/* HEADER */}
     <div className="panel-head d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-        <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '8px',
-          background: '#FFF0EA',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '18px'
-        }}>
-          💰
-        </div>
+        
+          
         <div>
           <h5 className="mb-0">Credit Pack Pricing</h5>
           <p className="font-xs color-text-paragraph-2 mb-0">
@@ -430,11 +416,7 @@ const addPack = () => {
             <div className="panel-white">
               <div className="panel-head">
                 <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '8px',
-                    background: '#E8F5E9', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '18px', flexShrink: 0,
-                  }}>&#127760;</div>
+                 
                   <div>
                     <h5 className="mb-0">Regional &amp; Compliance</h5>
                     <p className="font-xs color-text-paragraph-2 mb-0">Localization and market restrictions.</p>
@@ -508,11 +490,7 @@ const addPack = () => {
             <div className="panel-white">
               <div className="panel-head">
                 <div className="d-flex align-items-center" style={{ gap: '10px' }}>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '8px',
-                    background: '#F3E5F5', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '18px', flexShrink: 0,
-                  }}>&#128737;</div>
+                  
                   <div>
                     <h5 className="mb-0">System Security</h5>
                     <p className="font-xs color-text-paragraph-2 mb-0">Admin authentication and session rules.</p>
@@ -580,7 +558,6 @@ const addPack = () => {
             <div className="panel-white">
               <div className="panel-head">
                 <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                  <span style={{ fontSize: '16px' }}>&#128336;</span>
                   <h5 className="mb-0">Change History</h5>
                 </div>
               
@@ -649,7 +626,7 @@ const addPack = () => {
                 onClick={() => setUnsaved(false)}
                 style={{ padding: '10px 24px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}
               >
-                &#128190; Save Configuration Changes
+                Save Configuration Changes
               </button>
             </div>
 

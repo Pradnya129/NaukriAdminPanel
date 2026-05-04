@@ -2,6 +2,9 @@
 
 import Footer from "../../../components/Footer"
 import Link from "next/link";
+  import { useState } from "react";
+
+import { Users, UserCheck, UserPlus, Clock } from "lucide-react";
 const candidates = [
   {
     id: 1,
@@ -79,6 +82,15 @@ const stats = [
 ]
 
 export default function CandidatesPage() {
+
+const [search, setSearch] = useState("");
+const [status, setStatus] = useState("");
+const filteredCandidates = candidates.filter((c) => {
+  return (
+    c.name.toLowerCase().includes(search.toLowerCase()) &&
+    (status === "" || c.status === status)
+  );
+});
   return (
     <>
       {/* Header */}
@@ -126,7 +138,7 @@ export default function CandidatesPage() {
     <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
       <div className="card-style-1 hover-up">
         <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/look.svg" alt="active" />
+  <UserCheck size={28} strokeWidth={2.2} />
         </div>
         <div className="card-info">
           <div className="card-title">
@@ -160,7 +172,7 @@ export default function CandidatesPage() {
     <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
       <div className="card-style-1 hover-up">
         <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/doc.svg" alt="review" />
+  <Clock size={28} strokeWidth={2.2} />
         </div>
         <div className="card-info">
           <div className="card-title">
@@ -187,49 +199,50 @@ export default function CandidatesPage() {
       {/* Filters */}
       <div className="row g-3 align-items-end mb-25">
 
-        <div className="col-xl-4 col-lg-12">
+        <div className="col-xl-8 col-lg-12">
           <div className="form-group mb-0">
             <i className="fi-rr-search"></i>
             <input
               type="text"
               className="form-control form-icons"
               placeholder="Search candidates..."
+                onChange={(e) => setSearch(e.target.value)}
+
             />
           </div>
         </div>
 
-        <div className="col-xl-8 col-lg-12">
+        <div className="col-xl-4 col-lg-12">
           <div className="row g-2">
 
-            <div className="col-md-3 col-6">
-              <select className="form-control">
-               <option>All Roles</option>
-                    <option>Developer</option>
-                    <option>Designer</option>
-              </select>
+          
+
+            <div className="col-md-6 col-6">
+              <select
+  className="form-control"
+  value={status}
+  onChange={(e) => setStatus(e.target.value)}
+>
+  <option value="">All Status</option>
+  <option value="Active">Active</option>
+  <option value="Pending">Pending</option>
+  <option value="Suspended">Suspended</option>
+</select>
             </div>
 
-            <div className="col-md-3 col-6">
-              <select className="form-control">
-                <option>Status</option>
-                    <option>Active</option>
-                    <option>Pending</option>
-                    <option>Offline</option>
-              </select>
-            </div>
+  
 
-            <div className="col-md-3 col-6">
-              <select className="form-control">
- <option>Location</option>
-                    <option>US</option>
-                    <option>UK</option>
-                    <option>India</option>              </select>
-            </div>
+            <div className="col-md-6 col-6">
+              <button
+  className="btn btn-secondary w-100 py-3"
+  onClick={() => {
+    setSearch("");
+    setStatus("");
+  }}
+>
+                        Clear Filters
 
-            <div className="col-md-3 col-6">
-              <a href="#" className="btn btn-grey-small w-100 py-2">
-               <h6>Reset</h6> 
-              </a>
+</button>
             </div>
 
           </div>
@@ -252,7 +265,7 @@ export default function CandidatesPage() {
     </thead>
 
     <tbody>
-      {candidates.map((c) => (
+      {filteredCandidates.map((c) => (
         <tr key={c.id}>
 
           {/* Candidate */}
@@ -279,7 +292,7 @@ export default function CandidatesPage() {
 
           {/* National ID */}
           <td className="align-middle">
-            <span className="btn btn-tags-sm">{c.nationalId}</span>
+            <span className="font-sm color-text-paragraph-2">{c.nationalId}</span>
           </td>
 
     
@@ -430,8 +443,6 @@ export default function CandidatesPage() {
             <ul className="pager justify-content-lg-end">
               <li><a className="pager-prev"></a></li>
               <li><a className="pager-number active">1</a></li>
-              <li><a className="pager-number">2</a></li>
-              <li><a className="pager-number">3</a></li>
               <li><a className="pager-next"></a></li>
             </ul>
           </div>

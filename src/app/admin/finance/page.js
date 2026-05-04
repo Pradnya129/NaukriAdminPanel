@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Footer from "../../../components/Footer";
-
+import { DollarSign, CreditCard, RefreshCcw, Wallet } from "lucide-react";
 export default function FinancePage() {
 
   const [activeTab, setActiveTab] = useState("transactions");
@@ -253,166 +253,66 @@ export default function FinancePage() {
       </div>
 
       {/* ───────── STATS ───────── */}
-      <div className="row mt-20">
+   <div className="row mt-20">
+  {[
+    {
+      title: "Total Revenue",
+      value: "$148,290",
+      change: "+12.4%",
+      icon: DollarSign
+    },
+    {
+      title: "Credits Sold",
+      value: "842,500",
+      change: "+8.1%",
+      icon: CreditCard
+    },
+    {
+      title: "Refunds ",
+      value: "$1,420",
+      change: "-2.3%",
+      icon: RefreshCcw
+    },
+    {
+      title: "Total Payouts",
+      value: "$42,105",
+      change: "+5.4%",
+      icon: Wallet
+    }
+  ].map((item, i) => {
+    const Icon = item.icon;
 
-        {[
-          {
-            title: "TOTAL REVENUE",
-            value: "$148,290",
-            change: "+12.4%",
-            icon: "fi-rr-dollar"
-          },
-          {
-            title: "CREDITS SOLD",
-            value: "842,500",
-            change: "+8.1%",
-            icon: "fi-rr-credit-card"
-          },
-          {
-            title: "REFUNDS PROCESSED",
-            value: "$1,420",
-            change: "-2.3%",
-            icon: "fi-rr-refresh"
-          },
-          {
-            title: "TOTAL PAYOUTS",
-            value: "$42,105",
-            change: "+5.4%",
-            icon: "fi-rr-wallet"
-          }
-        ].map((item, i) => (
+    return (
+      <div key={i} className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div className="card-style-1 hover-up">
 
-          <div key={i} className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-3">
-
-            <div className="card-style-1 hover-up">
-
-              {/* ICON */}
-              <div className="" style={{
-                width: '40px',
-                height: '45px',
-                borderRadius: '12px',
-                background: '#eef2ff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <i className={item.icon} style={{ fontSize: '18px', color: '#3C65F5' }}></i>
-              </div>
-
-              {/* CONTENT */}
-              <div className="card-info">
-
-                <div className="card-title">
-                  <h3>
-                    {item.value}<br></br>
-                    <span className={`font-sm status ${item.change.includes('-') ? 'down' : 'up'}`}>
-                      {item.change}
-                    </span>
-                  </h3>
-                </div>
-
-                <p className="color-text-paragraph-2" style={{ fontSize: "12px" }}>
-                  {item.title}
-                </p>
-
-              </div>
-
-            </div>
-
+          {/* ✅ SAME as your reference */}
+          <div className="card-image">
+            <Icon size={28} strokeWidth={2.2} />
           </div>
 
-        ))}
+          <div className="card-info">
+            <div className="card-title">
+              <h3>
+                {item.value}
+                <span className={`font-sm status ${item.change.includes('-') ? 'down' : 'up'}`}>
+                  {item.change}
+                </span>
+              </h3>
+            </div>
 
-      </div>
-
-      {/* ───────── CHART ───────── */}
-      <div className="panel-white mt-10">
-
-        <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-20">
-
-          <div>
-            <h5 className="mb-0">Revenue Growth Trend</h5>
-            <p className="color-text-paragraph-2 mb-0">
-              Daily revenue aggregated across all platforms over the last 30 days.
+            <p className="color-text-paragraph-2">
+              {item.title}
             </p>
           </div>
 
-          <div className="d-flex gap-2">
-            <button className="btn btn-light btn-sm">
-              <i className="fi-rr-calendar mr-5"></i> Last 30 Days
-            </button>
-            <button className="btn btn-light btn-sm">
-              <i className="fi-rr-download mr-5"></i> Export CSV
-            </button>
-          </div>
-
         </div>
-
-        {/* Chart Placeholder */}
-        <div style={{ height: '260px', position: 'relative', padding: '20px' }}>
-
-          {/* GRID LINES */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              "repeating-linear-gradient(to top, #e5e7eb 0px, #e5e7eb 1px, transparent 1px, transparent 40px)"
-          }} />
-
-          {/* LINE GRAPH */}
-          <div style={{
-            position: 'absolute',
-            bottom: '20px',
-            left: '20px',
-            right: '20px',
-            height: '200px',
-            display: 'flex',
-            alignItems: 'flex-end',
-            gap: '10px'
-          }}>
-
-            {[40, 70, 55, 90, 80, 120, 100].map((val, i) => (
-              <div key={i} style={{ flex: 1, position: 'relative' }}>
-
-                {/* LINE POINT */}
-                <div style={{
-                  width: '8px',
-                  height: '8px',
-                  background: '#3C65F5',
-                  borderRadius: '50%',
-                  position: 'absolute',
-                  bottom: `${val}px`,
-                  left: '50%',
-                  transform: 'translateX(-50%)'
-                }} />
-
-                {/* BAR (for visual depth) */}
-                <div style={{
-                  width: '6px',
-                  height: `${val}px`,
-                  background: 'rgba(60,101,245,0.2)',
-                  borderRadius: '4px',
-                  margin: '0 auto'
-                }} />
-
-              </div>
-            ))}
-
-          </div>
-
-          {/* X AXIS LABELS */}
-          <div className="d-flex justify-content-between mt-10" style={{ position: 'absolute', bottom: 0, left: '20px', right: '20px' }}>
-            {["1 May", "5 May", "10 May", "15 May", "20 May", "25 May", "30 May"].map((d, i) => (
-              <span key={i} style={{ fontSize: '11px', color: '#6b7280' }}>{d}</span>
-            ))}
-          </div>
-
-        </div>
-
       </div>
+    );
+  })}
+</div>
+
+      {/* ───────── CHART ───────── */}
 
       {/* ───────── TABS + TABLE ───────── */}
       <div className="panel-white mt-20">
@@ -432,7 +332,7 @@ export default function FinancePage() {
             ))}
           </div>
 
-          <div className="d-flex align-items-center" style={{ gap: "8px", flexWrap: "wrap" }}>
+          <div className="d-flex align-items-center mb-3" style={{ gap: "8px", flexWrap: "wrap" }}>
 
             <select
               className="form-control"
@@ -462,12 +362,11 @@ export default function FinancePage() {
             )}
 
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary  h-100  py-3"
               onClick={() => setFilters({ status: "all", type: "all" })}
             >
-              Reset
-            </button>
-
+  Clear Filters            </button>
+ 
           </div>
 
         </div>
@@ -537,7 +436,8 @@ export default function FinancePage() {
                           )}
 
                         </div>
-                      </td>            <td className="font-sm color-text-paragraph-2">{row.transaction_type}</td>
+                      </td>
+                      <td className="font-sm color-text-paragraph-2">{row.transaction_type}</td>
                       <td className="font-sm color-text-paragraph-2">{row.amount}</td>
                       <td className="font-sm color-text-paragraph-2">{row.gateway}</td>
                       <td className="font-sm color-text-paragraph-2">{row.payment_method}</td>
@@ -706,14 +606,23 @@ export default function FinancePage() {
         </div>
 
         {/* FOOTER */}
-        <div className="d-flex justify-content-between align-items-center mt-10 flex-wrap">
-          <p className="mb-0">Showing 5 of 1,240 records</p>
+             <div className="paginations mt-25">
+        <div className="row align-items-center g-2">
+          <div className="col-lg-6">
+            <p className="font-sm color-text-paragraph-2 mb-0">
+              Showing 1–6 of <strong>3,248</strong> candidates
+            </p>
+          </div>
 
-          <div className="d-flex gap-2">
-            <button className="btn btn-light btn-sm">Previous</button>
-            <button className="btn btn-light btn-sm">Next</button>
+          <div className="col-lg-6 text-lg-end">
+            <ul className="pager justify-content-lg-end">
+              <li><a className="pager-prev"></a></li>
+              <li><a className="pager-number active">1</a></li>
+              <li><a className="pager-next"></a></li>
+            </ul>
           </div>
         </div>
+      </div>
 
       </div>
 

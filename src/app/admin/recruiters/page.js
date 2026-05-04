@@ -2,6 +2,9 @@
 
 import Footer from "../../../components/Footer"
 import Link from "next/link"
+import { Building, Clock, ShieldCheck, FileText } from "lucide-react";
+import { useState } from "react";
+
 
 const recruiters = [
   {
@@ -67,19 +70,31 @@ const recruiters = [
 ]
 
 export default function RecruiterPage() {
-
+  const [search, setSearch] = useState("");
+  const [plan, setPlan] = useState("");
+  const [gst, setGst] = useState("");
+  const [status, setStatus] = useState("");
   const getStatusStyle = (status) => {
-  switch (status) {
-    case 'Active':
-      return { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
-    case 'Pending':
-      return { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
-    case 'Suspended':
-      return { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
-    default:
-      return { bg: '#f5f5f5', color: '#555', border: '#ddd' }
+    switch (status) {
+      case 'Active':
+        return { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
+      case 'Pending':
+        return { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
+      case 'Suspended':
+        return { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
+      default:
+        return { bg: '#f5f5f5', color: '#555', border: '#ddd' }
+    }
   }
-}
+  const filteredRecruiters = recruiters.filter((r) => {
+    return (
+      (r.company.toLowerCase().includes(search.toLowerCase()) ||
+        r.email.toLowerCase().includes(search.toLowerCase())) &&
+      (plan === "" || r.plan === plan) &&
+      (gst === "" || r.gst === gst) &&
+      (status === "" || r.status === status)
+    );
+  });
   return (
     <>
 
@@ -109,91 +124,93 @@ export default function RecruiterPage() {
         </div>
       </div>
 
-     {/* Stats */}
-{/* Stats */}
-<div className="section-box mt-20">
-  <div className="row g-3 align-items-stretch">
+      {/* Stats */}
+      <div className="section-box mt-20">
+        <div className="row g-3 align-items-stretch">
 
-    {/* 1 */}
-    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
-      <div className="card-style-1 hover-up w-100">
-        <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/candidates.svg" alt="" />
-        </div>
-        <div className="card-info">
-          <div className="card-title">
-            <h3>
-              1,284
-              <span className="font-sm status up ms-2">+12%</span>
-            </h3>
+          {/* 1 */}
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+            <div className="card-style-1 hover-up w-100">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/candidates.svg" alt="" />
+              </div>
+              <div className="card-info">
+                <div className="card-title">
+                  <h3>
+                    1,284
+                    <span className="font-sm status up ms-2">+12%</span>
+                  </h3>
+                </div>
+                <p className="color-text-paragraph-2">Total Employers</p>
+              </div>
+            </div>
           </div>
-          <p className="color-text-paragraph-2">Total Employers</p>
+
+          {/* 2 */}
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+            <div className="card-style-1 hover-up w-100">
+              <div className="card-image">
+                <img src="/assets/imgs/page/dashboard/tasks.svg" alt="" />
+              </div>
+              <div className="card-info">
+                <div className="card-title">
+                  <h3>
+                    24 <br></br>
+                    <span className="font-sm status down ms-2">Pending</span>
+                  </h3>
+                </div>
+                <p className="color-text-paragraph-2">Pending Approvals</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 3 */}
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+            <div className="card-style-1 hover-up w-100">
+              <div className="card-image">
+                <ShieldCheck size={28} strokeWidth={2.2} />
+              </div>
+              <div className="card-info">
+                <div className="card-title">
+                  <h3>
+                    92% <br></br>
+                    <span className="font-sm status up ms-2">GST</span>
+                  </h3>
+                </div>
+                <p className="color-text-paragraph-2">Verification Rate</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 */}
+          <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
+            <div className="card-style-1 hover-up w-100">
+              <div className="card-image">
+                <FileText size={28} strokeWidth={2.2} />
+              </div>
+              <div className="card-info">
+                <div className="card-title">
+                  <h3>
+                    842 <br></br>
+                    <span className="font-sm status up ms-2">+5%</span>
+                  </h3>
+                </div>
+                <p className="color-text-paragraph-2">Active Recruiters</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-
-    {/* 2 */}
-    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
-      <div className="card-style-1 hover-up w-100">
-        <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/tasks.svg" alt="" />
-        </div>
-        <div className="card-info">
-          <div className="card-title">
-            <h3>
-              24 <br></br>
-              <span className="font-sm status down ms-2">Pending</span>
-            </h3>
-          </div>
-          <p className="color-text-paragraph-2">Pending Approvals</p>
-        </div>
-      </div>
-    </div>
-
-    {/* 3 */}
-    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
-      <div className="card-style-1 hover-up w-100">
-        <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/authentication.svg" alt="" />
-        </div>
-        <div className="card-info">
-          <div className="card-title">
-            <h3>
-              92% <br></br>
-              <span className="font-sm status up ms-2">GST</span>
-            </h3>
-          </div>
-          <p className="color-text-paragraph-2">Verification Rate</p>
-        </div>
-      </div>
-    </div>
-
-    {/* 4 */}
-    <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 d-flex">
-      <div className="card-style-1 hover-up w-100">
-        <div className="card-image">
-          <img src="/assets/imgs/page/dashboard/doc.svg" alt="" />
-        </div>
-        <div className="card-info">
-          <div className="card-title">
-            <h3>
-              842 <br></br>
-              <span className="font-sm status up ms-2">+5%</span>
-            </h3>
-          </div>
-          <p className="color-text-paragraph-2">Active Subscriptions</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
       {/* Search + Filters */}
+     
+
+      {/* Table */}
       <div className="section-box">
-        <div className="panel-white mb-20">
+        <div className="panel-white">
           <div className="box-padding">
-            <div className="row g-3 align-items-end">
+   <div className="row g-3 align-items-end mb-3">
 
               <div className="col-xl-5 col-lg-12">
                 <label className="font-sm mb-10">
@@ -203,6 +220,9 @@ export default function RecruiterPage() {
                   type="text"
                   className="form-control"
                   placeholder="Search by Company, Email or GST..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+
                 />
               </div>
 
@@ -211,36 +231,48 @@ export default function RecruiterPage() {
 
                   {/* Plan */}
                   <div className="col-md-3 col-6">
-                    <select className="form-control filter-select">
-                      <option>Plan: All</option>
-                      <option>Paid</option>
-                      <option>Trial</option>
+                    <select
+                      className="form-control filter-select"
+                      value={plan}
+                      onChange={(e) => setPlan(e.target.value)}
+                    >
+                      <option value="">Plan: All</option>
+                      <option value="Paid">Paid</option>
+                      <option value="Trial">Trial</option>
                     </select>
                   </div>
 
                   {/* GST */}
                   <div className="col-md-3 col-6">
-                    <select className="form-control filter-select">
-                      <option>GST: All</option>
-                      <option>Verified</option>
-                      <option>Pending</option>
-                      <option>Rejected</option>
+                    <select
+                      className="form-control filter-select"
+                      value={gst}
+                      onChange={(e) => setGst(e.target.value)}
+                    >
+                      <option value="">GST: All</option>
+                      <option value="Verified">Verified</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Rejected">Rejected</option>
                     </select>
                   </div>
 
                   {/* Status (FIXED) */}
                   <div className="col-md-3 col-6">
-                    <select className="form-control filter-select">
-                      <option>Status: All</option>
-                      <option>Active</option>
-                      <option>Pending</option>
-                      <option>Suspended</option>
+                    <select
+                      className="form-control filter-select"
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="">Status: All</option>
+                      <option value="Active">Active</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Suspended">Suspended</option>
                     </select>
                   </div>
 
                   {/* Clear */}
                   <div className="col-md-3 col-6">
-                    <button className="btn btn-grey-small w-100 h-100  py-3">
+                    <button className="btn btn-secondary w-100 h-100 py-3  ">
                       Clear Filters
                     </button>
                   </div>
@@ -252,15 +284,6 @@ export default function RecruiterPage() {
 
 
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Table */}
-      <div className="section-box">
-        <div className="panel-white">
-          <div className="box-padding">
-
             <div className="table-responsive">
               <table className="table table-hover align-middle">
 
@@ -272,8 +295,8 @@ export default function RecruiterPage() {
                     <th style={{ minWidth: "220px" }}>
                       Contact Person
                     </th>
-                    <th>Plan</th>
-                    <th>GST Status</th>
+                    <th style={{ minWidth: "50px" }} className="text-center">Plan</th>
+                    <th style={{ minWidth: "120px" }}>GST Status</th>
                     <th>Status</th>
                     <th>Registered</th>
                     <th>Actions</th>
@@ -281,7 +304,7 @@ export default function RecruiterPage() {
                 </thead>
 
                 <tbody>
-                  {recruiters.map((r) => (
+                  {filteredRecruiters.map((r) => (
                     <tr key={r.id}>
 
                       {/* Company */}
@@ -316,59 +339,80 @@ export default function RecruiterPage() {
 
                       {/* Plan */}
                       <td>
-                        <span className="btn btn-tags-sm">
-                          {r.plan}
-                        </span>
+                        {(() => {
+                          const gstStyle =
+                            r.plan === 'Paid'
+                              ? { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
+                              : r.plan === 'Trail'
+                                ? { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
+                                : { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
+
+                          return (
+                            <span
+                              style={{
+                                fontSize: '11px',
+                                fontWeight: 600,
+                                padding: '4px 12px',
+                                borderRadius: '20px',
+                                background: gstStyle.bg,
+                                color: gstStyle.color,
+                                border: `1px solid ${gstStyle.border}`
+                              }}
+                            >
+                              {r.plan}
+                            </span>
+                          )
+                        })()}
                       </td>
 
                       {/* GST */}
                       <td>
-                       {(() => {
-  const gstStyle =
-    r.gst === 'Verified'
-      ? { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
-      : r.gst === 'Pending'
-      ? { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
-      : { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
+                        {(() => {
+                          const gstStyle =
+                            r.gst === 'Verified'
+                              ? { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' }
+                              : r.gst === 'Pending'
+                                ? { bg: '#fff3e0', color: '#e65100', border: '#ffcc80' }
+                                : { bg: '#fdecea', color: '#c62828', border: '#ef9a9a' }
 
-  return (
-    <span
-      style={{
-        fontSize: '11px',
-        fontWeight: 600,
-        padding: '4px 12px',
-        borderRadius: '20px',
-        background: gstStyle.bg,
-        color: gstStyle.color,
-        border: `1px solid ${gstStyle.border}`
-      }}
-    >
-      {r.gst}
-    </span>
-  )
-})()}
+                          return (
+                            <span
+                              style={{
+                                fontSize: '11px',
+                                fontWeight: 600,
+                                padding: '4px 12px',
+                                borderRadius: '20px',
+                                background: gstStyle.bg,
+                                color: gstStyle.color,
+                                border: `1px solid ${gstStyle.border}`
+                              }}
+                            >
+                              {r.gst}
+                            </span>
+                          )
+                        })()}
                       </td>
 
                       {/* Status */}
                       <td>
                         {(() => {
-  const s = getStatusStyle(r.status)
-  return (
-    <span
-      style={{
-        fontSize: '11px',
-        fontWeight: 600,
-        padding: '4px 12px',
-        borderRadius: '20px',
-        background: s.bg,
-        color: s.color,
-        border: `1px solid ${s.border}`
-      }}
-    >
-      {r.status}
-    </span>
-  )
-})()}
+                          const s = getStatusStyle(r.status)
+                          return (
+                            <span
+                              style={{
+                                fontSize: '11px',
+                                fontWeight: 600,
+                                padding: '4px 12px',
+                                borderRadius: '20px',
+                                background: s.bg,
+                                color: s.color,
+                                border: `1px solid ${s.border}`
+                              }}
+                            >
+                              {r.status}
+                            </span>
+                          )
+                        })()}
                       </td>
 
                       {/* Registered */}
@@ -406,22 +450,23 @@ export default function RecruiterPage() {
               </table>
             </div>
 
-            {/* Footer */}
-            <div className="d-flex justify-content-between align-items-center mt-25 flex-wrap gap-2">
-              <p className="font-sm color-text-paragraph-2 mb-0">
-                Showing 5 of 1,284 employers
-              </p>
+         <div className="paginations mt-25">
+        <div className="row align-items-center g-2">
+          <div className="col-lg-6">
+            <p className="font-sm color-text-paragraph-2 mb-0">
+              Showing 1–6 of <strong>3,248</strong> candidates
+            </p>
+          </div>
 
-              <div className="d-flex gap-2">
-                <button className="action-btn">
-                  Previous
-                </button>
-
-                <button className="action-btn primary-fill">
-                  Next
-                </button>
-              </div>
-            </div>
+          <div className="col-lg-6 text-lg-end">
+            <ul className="pager justify-content-lg-end">
+              <li><a className="pager-prev"></a></li>
+              <li><a className="pager-number active">1</a></li>
+              <li><a className="pager-next"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
           </div>
         </div>

@@ -119,7 +119,7 @@ export default function LoginPage() {
       setStep(2)
 
       // ── Show OTP in browser alert (dev/demo only — remove when real SMS/email API is wired) ──
-      alert(`[DEV MODE]\n\nYour OTP for ${identifier} is:\n\n${otp6}\n\n(This alert will not appear in production.)`)
+      alert(`\nYour OTP for ${identifier} is:\n${otp6}\n(This alert will not appear in production.)`)
 
       // Auto-focus first OTP box after alert is dismissed
       setTimeout(() => otpRefs.current[0]?.focus(), 50)

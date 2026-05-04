@@ -1,19 +1,31 @@
 'use client'
 import { useState } from 'react'
+import React from 'react'; // ensure import
 import Footer from '../../../components/Footer'
-
+import {
+  Users,
+  UserCheck,
+  UserX,
+  ShieldCheck,
+  Plus,
+    LayoutDashboard,
+  CreditCard,
+  Settings,
+  ClipboardList,
+  Key
+} from "lucide-react";
 // ── All pages/features the admin can grant access to ──
 const ACCESS_MODULES = [
   {
     group: 'Dashboard',
-    icon: '🏠',
+    icon: LayoutDashboard,
     items: [
       { key: 'dashboard', label: 'Dashboard' },
     ],
   },
   {
     group: 'User Management',
-    icon: '👥',
+    icon:Users,
     items: [
       { key: 'candidates',        label: 'View Candidates' },
       { key: 'candidates.approve', label: 'Approve / Reject Candidates' },
@@ -25,7 +37,7 @@ const ACCESS_MODULES = [
   },
   {
     group: 'Verification Queues',
-    icon: '🛡️',
+    icon: ShieldCheck,
     items: [
       { key: 'verify.kyc',      label: 'KYC / National ID Queue' },
       { key: 'verify.passport', label: 'Passport Queue' },
@@ -38,7 +50,7 @@ const ACCESS_MODULES = [
   },
   {
     group: 'Finance & Payments',
-    icon: '💳',
+    icon: CreditCard,
     items: [
       { key: 'finance.view',    label: 'View Transactions' },
       { key: 'finance.invoice', label: 'Download GST Invoices' },
@@ -48,7 +60,7 @@ const ACCESS_MODULES = [
   },
   {
     group: 'Platform Settings',
-    icon: '⚙️',
+    icon: Settings,
     items: [
       { key: 'settings.view',   label: 'View Settings' },
       { key: 'settings.edit',   label: 'Edit Platform Config' },
@@ -57,7 +69,7 @@ const ACCESS_MODULES = [
   },
   {
     group: 'Audit & Compliance',
-    icon: '📋',
+    icon: ClipboardList,
     items: [
       { key: 'audit.view',   label: 'View Audit Logs' },
       { key: 'audit.export', label: 'Export Reports / DPDP' },
@@ -65,7 +77,7 @@ const ACCESS_MODULES = [
   },
   {
     group: 'Sub Admin',
-    icon: '🔑',
+    icon:Key,
     items: [
       { key: 'subadmin.view',   label: 'View Sub Admins' },
       { key: 'subadmin.create', label: 'Create Sub Admins' },
@@ -159,14 +171,25 @@ export default function SubAdminPage() {
   const [viewId, setViewId]   = useState(null)      // expanded permissions row
   const [delId,  setDelId]    = useState(null)      // confirm delete
 
-  const filtered = admins.filter(a =>
-    [a.name, a.email, a.role].some(v => v.toLowerCase().includes(search.toLowerCase()))
-  )
+const filtered = drawer
+  ? admins   // ← show ALL admins when drawer is open (table is behind overlay anyway)
+  : admins.filter(a =>
+      [a.name, a.email, a.role].some(v => v.toLowerCase().includes(search.toLowerCase()))
+    )
 
   // ── form helpers ──
-  const openCreate = () => { setForm({ ...BLANK, access: [...PRESETS['Verification Officer']] }); setEditId(null); setDrawer('create') }
-  const openEdit   = (a) => { setForm({ name: a.name, email: a.email, phone: a.phone, password: '', role: a.role, status: a.status, access: [...a.access] }); setEditId(a.id); setDrawer('edit') }
-
+const openCreate = () => {
+  setSearch('')   // ← ADD THIS LINE
+  setForm({ ...BLANK, access: [...PRESETS['Verification Officer']] })
+  setEditId(null)
+  setDrawer('create')
+}// In openEdit, add search reset so filtered table stays visible:
+const openEdit = (a) => {
+  setSearch('')   // ← ADD THIS LINE
+  setForm({ name: a.name, email: a.email, phone: a.phone, password: '', role: a.role, status: a.status, access: [...a.access] })
+  setEditId(a.id)
+  setDrawer('edit')
+}
   const applyPreset = (role) => {
     const keys = PRESETS[role] || []
     setForm(f => ({ ...f, role, access: [...keys] }))
@@ -232,26 +255,57 @@ export default function SubAdminPage() {
       </div>
 
       {/* ── STAT CARDS ── */}
-      <div className="section-box">
-        <div className="row">
-          {[
-            { label: 'Total Sub Admins', value: admins.length,                                       icon: 'man.svg',            accent: '#3C65F5' },
-            { label: 'Active',           value: admins.filter(a => a.status === 'Active').length,     icon: 'look.svg',           accent: '#2e7d32' },
-            { label: 'Suspended',        value: admins.filter(a => a.status === 'Suspended').length,  icon: 'open-file.svg',      accent: '#c62828' },
-            { label: 'Role Presets',     value: Object.keys(PRESETS).length,                          icon: 'authentication.svg', accent: '#7c3aed' },
-          ].map(c => (
-            <div key={c.label} className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div className="card-style-1 hover-up" >
-                <div className="card-image"><img src={`/assets/imgs/page/dashboard/${c.icon}`} alt="" /></div>
-                <div className="card-info">
-                  <div className="card-title"><h3>{c.value}</h3></div>
-                  <p className="color-text-paragraph-2">{c.label}</p>
-                </div>
-              </div>
+     <div className="section-box">
+  <div className="row">
+    {[
+      {
+        label: 'Total Sub Admins',
+        value: admins.length,
+        icon: Users
+      },
+      {
+        label: 'Active',
+        value: admins.filter(a => a.status === 'Active').length,
+        icon: UserCheck
+      },
+      {
+        label: 'Suspended',
+        value: admins.filter(a => a.status === 'Suspended').length,
+        icon: UserX
+      },
+      {
+        label: 'Role Presets',
+        value: Object.keys(PRESETS).length,
+        icon: ShieldCheck
+      },
+    ].map((c, i) => {
+      const Icon = c.icon;
+
+      return (
+        <div key={i} className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6">
+          <div className="card-style-1 hover-up">
+
+            {/* ✅ SAME STRUCTURE */}
+            <div className="card-image">
+              <Icon size={28} strokeWidth={2.2} />
             </div>
-          ))}
+
+            <div className="card-info">
+              <div className="card-title">
+                <h3>{c.value}</h3>
+              </div>
+
+              <p className="color-text-paragraph-2">
+                {c.label}
+              </p>
+            </div>
+
+          </div>
         </div>
-      </div>
+      );
+    })}
+  </div>
+</div>
 
       {/* ── SUB ADMIN TABLE PANEL ── */}
       <div className="section-box">
@@ -261,21 +315,35 @@ export default function SubAdminPage() {
           <div className="panel-head" style={{ flexWrap: 'wrap', gap: '10px' }}>
             <h5 className="mb-0">All Sub Admins</h5>
             <div className="d-flex align-items-center mt-5" style={{ gap: '10px', marginLeft: 'auto', flexWrap: 'wrap' }}>
-              <div style={{ position: 'relative' }}>
-                <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#aaa' }}>🔍</span>
-                <input className="form-control font-xs " placeholder="Search name, email, role..."
-                  value={search} onChange={e => setSearch(e.target.value)}
-                  style={{ paddingLeft: '30px', minWidth: '220px' }} />
-              </div>
-              <button className="btn btn-default hover-up" onClick={openCreate}
-                style={{ padding: '9px 18px', fontSize: '13px', fontWeight: 600 }}>
-                + Add Sub Admin
-              </button>
+       <div style={{ position: 'relative' }}>
+  {/* Dummy hidden fields trick Chrome into NOT autofilling the real search */}
+  <input type="text" name="username" style={{ display: 'none' }} readOnly />
+  <input type="password" name="password" style={{ display: 'none' }} readOnly />
+  
+  <input
+    className="form-control font-xs"
+    placeholder="Search name, email, role..."
+    value={search}
+    onChange={e => setSearch(e.target.value)}
+    autoComplete="off"
+    type="search"
+    name="admin-search"
+    style={{ paddingLeft: '12px', width: '320px' }}
+  />
+</div>
+            <button
+  className="btn btn-default hover-up d-flex align-items-center gap-2"
+  onClick={openCreate}
+  style={{ padding: '13px 18px', fontSize: '13px', fontWeight: 600 }}
+>
+  <Plus size={16} strokeWidth={2.5} />
+  Add Sub Admin
+</button>
             </div>
           </div>
 
           {/* Table */}
-          <div style={{ overflowX: 'scroll' }}>
+          <div>
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '750px' }}>
               <thead>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
@@ -289,7 +357,7 @@ export default function SubAdminPage() {
               </thead>
               <tbody>
                 {filtered.map(admin => (
-                  <>
+                <React.Fragment key={admin.id}>
                     <tr key={admin.id} className="hover-up"
                       style={{ borderBottom: viewId === admin.id ? 'none' : '1px solid #f5f5f5' }}>
 
@@ -396,9 +464,10 @@ export default function SubAdminPage() {
                               if (!granted.length) return null
                               return (
                                 <div key={module.group} className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-15">
-                                  <p className="font-xs mb-8" style={{ fontWeight: 700, color: '#05264E' }}>
-                                    {module.icon} {module.group}
-                                  </p>
+                                 <p className="font-xs mb-8" style={{ fontWeight: 700, color: '#05264E', display: 'flex', alignItems: 'center', gap: '5px' }}>
+  {React.createElement(module.icon, { size: 13, strokeWidth: 2.2 })}
+  {module.group}
+</p>
                                   {granted.map(item => (
                                     <div key={item.key} className="d-flex align-items-center mb-5" style={{ gap: '6px' }}>
                                       <span style={{ color: '#2e7d32', fontSize: '11px' }}>✓</span>
@@ -412,13 +481,13 @@ export default function SubAdminPage() {
                           <div className="mt-10">
                             <button className="btn btn-default hover-up font-xs" onClick={() => openEdit(admin)}
                               style={{ padding: '6px 14px' }}>
-                              ✎ Edit Permissions
+                               Edit Permissions
                             </button>
                           </div>
                         </td>
                       </tr>
                     )}
-                  </>
+              </React.Fragment>
                 ))}
 
                 {filtered.length === 0 && (
@@ -429,7 +498,25 @@ export default function SubAdminPage() {
                   </tr>
                 )}
               </tbody>
+              
             </table>
+                 <div className="paginations mt-25">
+        <div className="row align-items-center g-2">
+          <div className="col-lg-6">
+            <p className="font-sm color-text-paragraph-2 mb-0">
+              Showing 1–6 of <strong>3,248</strong> candidates
+            </p>
+          </div>
+
+          <div className="col-lg-6 text-lg-end">
+            <ul className="pager justify-content-lg-end">
+              <li><a className="pager-prev"></a></li>
+              <li><a className="pager-number active">1</a></li>
+              <li><a className="pager-next"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
           </div>
 
         </div>
@@ -577,11 +664,20 @@ export default function SubAdminPage() {
                         background: allOn ? '#EEF3FE' : someOn ? '#FAFBFF' : '#fff',
                         cursor: 'pointer',
                       }} onClick={() => toggleGroup(module)}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{ fontSize: '16px' }}>{module.icon}</span>
-                          <span className="font-sm" style={{ fontWeight: 700, color: '#05264E' }}>{module.group}</span>
-                          <span style={{ fontSize: '10px', color: '#888' }}>({module.items.filter(i => form.access.includes(i.key)).length}/{module.items.length})</span>
-                        </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+  {(() => {
+    const Icon = module.icon;
+    return <Icon size={16} strokeWidth={2.2} />;
+  })()}
+
+  <span className="font-sm" style={{ fontWeight: 700, color: '#05264E' }}>
+    {module.group}
+  </span>
+
+  <span style={{ fontSize: '10px', color: '#888' }}>
+    ({module.items.filter(i => form.access.includes(i.key)).length}/{module.items.length})
+  </span>
+</div>
                         <Toggle value={allOn} onChange={() => toggleGroup(module)} />
                       </div>
 
