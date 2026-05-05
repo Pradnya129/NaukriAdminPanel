@@ -13,7 +13,7 @@ export default function Header() {
 
           <div className="header-left">
             <div className="header-logo">
-              <Link className="d-flex" href="/dashboard">
+              <Link className="d-flex" href="/admin/dashboard">
                 <img alt="jobBox" src="/assets/imgs/page/dashboard/logo.svg" />
               </Link>
             </div>
@@ -21,7 +21,7 @@ export default function Header() {
           </div>
 
           <div className="header-search">
-            <div className="box-search">
+            {/* <div className="box-search">
               <form action="">
                 <input
                   className="form-control input-search"
@@ -30,7 +30,7 @@ export default function Header() {
                   placeholder="Search"
                 />
               </form>
-            </div>
+            </div> */}
           </div>
 
           {/* <div className="header-menu d-none d-md-block">
