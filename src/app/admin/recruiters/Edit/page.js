@@ -848,7 +848,7 @@ export default function RecruiterEditPage() {
                   <input className="form-control" type="number" defaultValue="12450" style={{ flex: 1 }} />
                   <button className="btn btn-default hover-up" style={{ whiteSpace: 'nowrap' }}>Apply</button>
                 </div>
-                <div className="mt-15"><a className="font-sm color-brand-1" href="#">View Billing History ↗</a></div>
+                {/* <div className="mt-15"><a className="font-sm color-brand-1" href="#">View Billing History ↗</a></div> */}
               </div>
             </div>
           </div>

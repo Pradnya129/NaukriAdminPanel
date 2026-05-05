@@ -57,46 +57,7 @@ export default function EditCandidatePage() {
                 <div className="d-flex justify-content-between align-items-center mb-20">
                   <h5 className="mb-0">Profile Information</h5>
 
-                  <div className="d-flex gap-2 flex-wrap">
-                    <button
-                      className="btn btn-default hover-up"
-                      style={{
-                        background: '#fff3e0',
-                        color: '#e65100',
-                        border: '1px solid #ffcc80',
-                        height: '36px',
-                        padding: '0 14px'
-                      }}
-                    >
-                      Suspend
-                    </button>
-
-                    <button
-                      className="btn btn-default hover-up"
-                      style={{
-                        background: '#fdecea',
-                        color: '#c62828',
-                        border: '1px solid #ef9a9a',
-                        height: '36px',
-                        padding: '0 14px'
-                      }}
-                    >
-                      Reject
-                    </button>
-
-                    <button
-                      className="btn btn-default hover-up"
-                      style={{
-                        background: '#e8f5e9',
-                        color: '#2e7d32',
-                        border: '1px solid #a5d6a7',
-                        height: '36px',
-                        padding: '0 14px'
-                      }}
-                    >
-                      Approve
-                    </button>
-                  </div>
+                
                 </div>
 
                 <div className="row">
@@ -351,6 +312,24 @@ export default function EditCandidatePage() {
           </div>
 
         </div>
+           <div className="section-box">
+       
+          <div className="section-box">
+        <div className="panel-white" style={{ padding: '16px 20px' }}>
+          <div className="d-flex align-items-center justify-content-between" style={{ flexWrap: 'wrap', gap: '12px' }}>
+            <div className="d-flex align-items-center" style={{ gap: '20px', flexWrap: 'wrap' }}>
+            </div>
+            <div className="d-flex gap-2 flex-wrap">
+              <button className="btn btn-default hover-up" style={{ background: '#e8f5e9', color: '#2e7d32', border: '1px solid #a5d6a7', height: '44px', borderRadius: '10px' }}>Approve</button>
+              <button className="btn btn-default hover-up" style={{ background: '#fdecea', color: '#c62828', border: '1px solid #ef9a9a', height: '44px', borderRadius: '10px' }}>Reject</button>
+              <button className="btn btn-default hover-up" style={{ background: '#fff3e0', color: '#e65100', border: '1px solid #ffcc80', height: '44px', borderRadius: '10px' }}>Flag</button>
+              <a href="/recruiters" className="btn d-flex align-items-center justify-content-center" style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}>Discard Changes</a>
+              <a href="#" className="btn btn-primary d-flex align-items-center justify-content-center" style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}>Save Changes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       </div>
 
       <Footer />

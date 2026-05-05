@@ -704,31 +704,22 @@ export default function UserVerificationPage() {
 
       {/* ── BOTTOM QUEUE BAR ── */}
       <div className="section-box">
-        <div className="panel-white">
-          <div className="panel-body">
-            <div className="d-flex align-items-center justify-content-between flex-wrap" style={{ gap: '10px' }}>
-              <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                <a className="btn btn-grey-small hover-up" href="#" title="Previous">
-                  <i className="fi-rr-arrow-left"></i>
-                </a>
-                <a className="btn btn-grey-small hover-up" href="#" title="Next">
-                  <i className="fi-rr-arrow-right"></i>
-                </a>
-                <span className="font-sm color-text-paragraph-2">
-                  Verification Queue: <strong className="color-brand-1">Item 12 of 45</strong>
-                </span>
-              </div>
-              <div className="d-flex align-items-center" style={{ gap: '16px' }}>
-                <span className="font-xs color-text-paragraph-2">
-                  <i className="fi-rr-settings mr-5"></i>Session: 0x4f...a23
-                </span>
-                <a className="font-sm color-brand-2 hover-up" href="/admin/verifications">
-                  Return to Verification Queue
-                </a>
-              </div>
+       
+          <div className="section-box">
+        <div className="panel-white" style={{ padding: '16px 20px' }}>
+          <div className="d-flex align-items-center justify-content-between" style={{ flexWrap: 'wrap', gap: '12px' }}>
+            <div className="d-flex align-items-center" style={{ gap: '20px', flexWrap: 'wrap' }}>
+            </div>
+            <div className="d-flex gap-2 flex-wrap">
+              <button className="btn btn-default hover-up" style={{ background: '#e8f5e9', color: '#2e7d32', border: '1px solid #a5d6a7', height: '44px', borderRadius: '10px' }}>Approve</button>
+              <button className="btn btn-default hover-up" style={{ background: '#fdecea', color: '#c62828', border: '1px solid #ef9a9a', height: '44px', borderRadius: '10px' }}>Reject</button>
+              <button className="btn btn-default hover-up" style={{ background: '#fff3e0', color: '#e65100', border: '1px solid #ffcc80', height: '44px', borderRadius: '10px' }}>Flag</button>
+              <a href="/recruiters" className="btn d-flex align-items-center justify-content-center" style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}>Discard Changes</a>
+              <a href="#" className="btn btn-primary d-flex align-items-center justify-content-center" style={{ height: '44px', padding: '0 18px', borderRadius: '10px' }}>Save Changes</a>
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       <Footer />
