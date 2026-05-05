@@ -38,6 +38,10 @@ input[type=date]:before {
   align-items: center;
   justify-content: center;
 }
+
+#scrollUp {
+visibility: hidden;
+}
 /* reduce main content padding */
 .box-content {
   padding: 20px !important;

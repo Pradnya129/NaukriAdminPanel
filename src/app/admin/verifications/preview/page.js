@@ -1,7 +1,15 @@
 'use client'
 import { useState } from 'react'
 import Footer from '../../../../components/Footer'
-
+import {
+  Clock,
+  PlusCircle,
+  Edit3,
+  Trash2,
+  CheckCircle,
+  XCircle,
+  LogIn
+} from "lucide-react";
 /* ─────────────────────────────────────────
    Inline-editable field component
    Shows value + pencil icon in preview mode.
@@ -247,22 +255,10 @@ export default function UserVerificationPage() {
             <div className="panel-white p-0" style={{ borderRadius: '16px', overflow: 'hidden' }}>
 
               {/* ───────── TOP STRIP ───────── */}
-              <div className="d-flex justify-content-end align-items-center p-3"
-                style={{ background: '#E0E6F7' }}>
-
-                <div className="d-flex gap-2 flex-wrap">
-                  <a className="btn btn-light btn-sm d-flex align-items-center gap-1" href="#">
-                    <i className="fi-rr-user"></i> User Public Profile
-                  </a>
-
-                  <a className="btn btn-light btn-sm d-flex align-items-center gap-1" href="#">
-                    <i className="fi-rr-shield-check"></i> Security History
-                  </a>
-                </div>
-              </div>
+              
 
               {/* ───────── MAIN BODY ───────── */}
-              <div className="panel-body p-4" style={{ marginTop: '-40px' }}>
+              <div className="panel-body p-4" style={{ marginTop: '0px' }}>
 
                 {/* Avatar + Info */}
                 <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
@@ -609,20 +605,20 @@ export default function UserVerificationPage() {
                   </div>
                 </div>
                 <div className="row mt-20">
-                  <div className="col-6">
+                  <div className="col-12">
                     <div style={{ background: '#F8FAFF', border: '1px solid #E0E6F7', borderRadius: '8px', padding: '10px' }}>
                       <p className="font-xs color-text-paragraph-2 mb-5"
                         style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.4px' }}>Risk Level</p>
                       <p className="font-sm mb-0" style={{ fontWeight: 700, color: '#2e7d32' }}>Very Low</p>
                     </div>
                   </div>
-                  <div className="col-6">
+                  {/* <div className="col-6">
                     <div style={{ background: '#F8FAFF', border: '1px solid #E0E6F7', borderRadius: '8px', padding: '10px' }}>
                       <p className="font-xs color-text-paragraph-2 mb-5"
                         style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.4px' }}>Anomaly</p>
                       <p className="font-sm mb-0" style={{ fontWeight: 700, color: '#05264E' }}>None detected</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -640,10 +636,7 @@ export default function UserVerificationPage() {
                 </div>
               </div>
               <div className="panel-body">
-                <a className="btn btn-default hover-up font-sm mb-10"
-                  href="#" style={{ width: '100%', textAlign: 'center', display: 'block' }}>
-                  Approve
-                </a>
+              
                 <p className="font-xs color-text-paragraph-2 mb-5" style={{ fontWeight: 600 }}>
                   Decision Notes (Internal)
                 </p>
@@ -656,18 +649,21 @@ export default function UserVerificationPage() {
                     style={{ minHeight: '90px', resize: 'vertical', borderRadius: '8px' }}
                   />
                 </div>
+                   <a className="btn btn-default hover-up font-sm mb-10"
+                  href="#" style={{ width: '100%', textAlign: 'center', display: 'block' }}>
+                  Send
+                </a>
                 <div className="d-flex align-items-center mb-15" style={{ gap: '8px' }}>
+
+                  
                   <a className="btn hover-up font-sm" href="#" style={{
                     flex: 1, textAlign: 'center',
                     background: '#fff', border: '1px solid #f87171',
                     color: '#dc2626', borderRadius: '8px', padding: '10px 12px', lineHeight: '22px',
                   }}>
-                    <i className="fi-rr-cross-circle mr-5"></i>Reject
+                  Cancel
                   </a>
-                  <a className="btn btn-grey-big hover-up font-sm" href="#"
-                    style={{ flex: 1, textAlign: 'center' }}>
-                    <i className="fi-rr-info mr-5"></i>More Info
-                  </a>
+                  
                 </div>
                 <p className="font-xs color-text-paragraph-2 mb-0 text-center">
                   <i className="fi-rr-clock mr-5"></i>This action will notify the user via email instantly.
@@ -681,22 +677,14 @@ export default function UserVerificationPage() {
             <div className="panel-white">
               <div className="panel-head" style={{ alignItems: 'center' }}>
                 <div className="d-flex align-items-center" style={{ gap: '8px' }}>
-                  <i className="fi-rr-time-past font-sm color-brand-2"></i>
+                  <i className="fi-rr-time-past font-sm color-brand-2 ms-4 d-none"></i>
                   <h6 className="mb-0">Audit History</h6>
                 </div>
               </div>
               <div className="panel-body">
                 {auditHistory.map((item, i) => (
-                  <div key={i} className="d-flex"
-                    style={{ gap: '12px', marginBottom: i < auditHistory.length - 1 ? '16px' : 0 }}>
-                    <div style={{
-                      width: '30px', height: '30px', borderRadius: '50%',
-                      background: '#EFF2FB', flexShrink: 0,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <i className={`${item.icon} font-xs color-brand-2`}></i>
-                    </div>
-                    <div style={{ flex: 1 }}>
+                  
+                    <div style={{ flex: 1 }} className='my-2'>
                       <p className="font-sm mb-0" style={{ fontWeight: 600, color: '#05264E', lineHeight: 1.3 }}>
                         {item.label}
                       </p>
@@ -704,7 +692,6 @@ export default function UserVerificationPage() {
                         {item.time} &bull; {item.by}
                       </span>
                     </div>
-                  </div>
                 ))}
               </div>
             </div>

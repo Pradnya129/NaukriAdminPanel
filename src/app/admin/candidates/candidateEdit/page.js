@@ -288,28 +288,7 @@ export default function EditCandidatePage() {
 
             </div>
 
-            {/* Internal Use */}
-            <div className="panel-white mb-20">
-              <div className="box-padding">
-                <h5 className="mb-20">Internal Administrative Use</h5>
-
-                <div className="row">
-              
-
-                  <div className="col-md-8">
-                    <label className="font-sm mb-10">
-                      Internal Administrative Notes
-                    </label>
-
-                    <textarea
-                      rows="5"
-                      className="form-control"
-                      defaultValue="Candidate showed excellent technical knowledge during the screening. ITI certificate verified."
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
+       
 
           </div>
 

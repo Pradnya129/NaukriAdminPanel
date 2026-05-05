@@ -206,6 +206,7 @@ const filteredCandidates = candidates.filter((c) => {
               type="text"
               className="form-control form-icons"
               placeholder="Search candidates..."
+              value={search}
                 onChange={(e) => setSearch(e.target.value)}
 
             />

@@ -272,7 +272,14 @@ export default function RecruiterPage() {
 
                   {/* Clear */}
                   <div className="col-md-3 col-6">
-                    <button className="btn btn-secondary w-100 h-100 py-3  ">
+                    <button className="btn btn-secondary w-100 h-100 py-3  "
+                      onClick={() => {
+    setSearch("");
+    setStatus("");
+      setPlan("");
+        setGst("");
+  }}
+                    >
                       Clear Filters
                     </button>
                   </div>

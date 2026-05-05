@@ -313,7 +313,7 @@ export default function LoginPage() {
             style={{ height: '48px', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}
             disabled={loading || otp.join('').length < 6}
           >
-            {loading ? 'Verifying...' : '✓ Verify & Login'}
+            {loading ? 'Verifying...' : ' Verify & Login'}
           </button>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>

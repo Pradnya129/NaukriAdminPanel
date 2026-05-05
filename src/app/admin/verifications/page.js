@@ -29,24 +29,29 @@ const recruiterRecords = [
   { name: 'BlueWave Shipping', id: 'VER-7805', img: 'avata5', type: 'Recruiter', date: '10/24/2023', time: '04:20 PM', priority: 'High', confidence: 76 },
 ]
 
-let records = activeTab === 'candidate' ? candidateRecords : recruiterRecords
+let records = activeTab === 'candidate' ? candidateRecords : recruiterRecords;
 
 records = records.filter((r) => {
+  const searchMatch =
+    search === "" ||
+    r.name.toLowerCase().includes(search.toLowerCase()) ||
+    r.id.toString().toLowerCase().includes(search.toLowerCase()) ||
+    r.type.toLowerCase().includes(search.toLowerCase());
 
   // Priority filter
   if (filters.priority !== 'all' && r.priority !== filters.priority) {
-    return false
+    return false;
   }
 
   // Confidence filter
   if (filters.confidence !== 'all') {
-    if (filters.confidence === 'high' && r.confidence < 90) return false
-    if (filters.confidence === 'medium' && (r.confidence < 80 || r.confidence > 90)) return false
-    if (filters.confidence === 'low' && r.confidence >= 80) return false
+    if (filters.confidence === 'high' && r.confidence < 90) return false;
+    if (filters.confidence === 'medium' && (r.confidence < 80 || r.confidence > 90)) return false;
+    if (filters.confidence === 'low' && r.confidence >= 80) return false;
   }
 
-  return true
-})
+  return searchMatch; // ✅ IMPORTANT
+});
   return (
     <>
       {/* PAGE HEADING */}
@@ -177,8 +182,10 @@ records = records.filter((r) => {
   <button
     className="btn btn-secondary"
     style={{ whiteSpace: 'nowrap' }}
-    onClick={() => setFilters({ priority: 'all', confidence: 'all' })}
-  >
+ onClick={() => {
+    setFilters({ priority: 'all', confidence: 'all' });
+    setSearch(""); // ✅ CLEAR SEARCH ALSO
+  }}  >
                       Clear Filters
   </button>
 

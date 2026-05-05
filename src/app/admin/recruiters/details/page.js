@@ -1,8 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Footer from '../../../../components/Footer'
-import { Brain, AlertTriangle, User, Clock } from "lucide-react";
-
+import { Brain, AlertTriangle, User, Clock , Calendar, Briefcase, Wallet } from "lucide-react";
 export default function EmployerDetailsPage() {
     const [previewDoc, setPreviewDoc] = useState(null)
     return (
@@ -507,59 +506,75 @@ export default function EmployerDetailsPage() {
     </div>
   </div>
 </div>
-                    {/* Quick Insights */}
-                    <div className="section-box">
-                        <div className="panel-white">
-                            <div className="panel-head">
-                                <h6 className="mb-0" style={{
-                                    textTransform: 'uppercase', fontSize: '11px',
-                                    letterSpacing: '0.6px', color: '#66789C',
-                                }}>Quick Insights</h6>
-                            </div>
-                            <div className="panel-body">
-                                <div className="card-style-1 hover-up mb-15">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/doc.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Registered On
-                                        </p>
-                                        <div className="card-title mt-2"><h5 className="mb-0">Oct 2023</h5></div>
-                                    </div>
-                                </div>
+                   {/* Quick Insights */}
+<div className="section-box">
+  <div className="panel-white">
+    <div className="panel-head">
+      <h6 className="mb-0" style={{
+        textTransform: 'uppercase',
+        fontSize: '11px',
+        letterSpacing: '0.6px',
+        color: '#66789C',
+      }}>
+        Quick Insights
+      </h6>
+    </div>
 
-                                <div className="card-style-1 hover-up mb-15">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/recruiters.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Total Open Jobs
-                                        </p>
-                                        <div className="card-title mt-2">
-                                            <h5 className="mb-0">42 <span className="font-xs status up">+5 this month</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
+    <div className="panel-body">
 
-                                <div className="card-style-1 hover-up">
-                                    <div className="card-image">
-                                        <img src="/assets/imgs/page/dashboard/bank.svg" alt="jobBox" />
-                                    </div>
-                                    <div className="card-info">
-                                        <p className="font-xs color-text-paragraph-2 mb-0"
-                                            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
-                                            Current Credits
-                                        </p>
-                                        <div className="card-title mt-2"><h5 className="mb-0">12,500</h5></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      {/* Registered */}
+      <div className="card-style-1 hover-up mb-15">
+        <div className="card-image">
+          <Calendar size={24} strokeWidth={2.2} />
+        </div>
+        <div className="card-info">
+          <p className="font-xs color-text-paragraph-2 mb-0"
+            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
+            Registered On
+          </p>
+          <div className="card-title mt-2">
+            <h5 className="mb-0">Oct 2023</h5>
+          </div>
+        </div>
+      </div>
+
+      {/* Jobs */}
+      <div className="card-style-1 hover-up mb-15">
+        <div className="card-image">
+          <Briefcase size={24} strokeWidth={2.2} />
+        </div>
+        <div className="card-info">
+          <p className="font-xs color-text-paragraph-2 mb-0"
+            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
+            Total Open Jobs
+          </p>
+          <div className="card-title mt-2">
+            <h5 className="mb-0">
+              42 <span className="font-xs status up">+5 this month</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      {/* Credits */}
+      <div className="card-style-1 hover-up">
+        <div className="card-image">
+          <Wallet size={24} strokeWidth={2.2} />
+        </div>
+        <div className="card-info">
+          <p className="font-xs color-text-paragraph-2 mb-0"
+            style={{ textTransform: 'uppercase', fontSize: '9px', letterSpacing: '0.5px' }}>
+            Current Credits
+          </p>
+          <div className="card-title mt-2">
+            <h5 className="mb-0">12,500</h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
                     {/* Account Health */}
                     <div className="section-box">
