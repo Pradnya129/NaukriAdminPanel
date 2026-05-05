@@ -94,14 +94,14 @@ export default function AuditLogsPage() {
 
       </div>
       <div className="d-flex align-items-center mb-5 justify-content-end" style={{ gap: '10px', flexShrink: 0, flexWrap: 'wrap' }}>
-        <a className="btn btn-secondary hover-up" href="#"
+        {/* <a className="btn btn-secondary hover-up" href="#"
           style={{ padding: '9px 16px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '5px' }}>
           Export CSV
         </a>
         <a className="btn btn-primary hover-up" href="#"
           style={{ padding: '9px 16px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
           Export for DPDP
-        </a>
+        </a> */}
 
       </div>
       {/* ✅ FIXED: FULL WIDTH WIDGETS */}
